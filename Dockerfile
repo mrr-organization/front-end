@@ -24,4 +24,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Docker Command to Start Service
-CMD [ "yarn", "main" ]
+CMD [ "yarn", "serve" ]
