@@ -2,7 +2,7 @@
   <div class="flex items-center justify-center min-h-screen ">
       <div class="flex flex-row w-full mx-10 h-96">
           <div class="flex flex-col items-center justify-center w-1/2 border-r-2 border-black ">
-         <div class="fixed text-2xl font-bold -mt-60" style="color:#312A21;">MRR</div>
+         <div class=" text-2xl font-bold" style="color:#312A21;">MRR</div>
               <Form @submit="handleLogin" :validation-schema="schema">
                
              <div class="flex flex-col mt-10 space-y-5 item-center w-60">
@@ -74,7 +74,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/userlogin");
     }
   },
   methods: {
