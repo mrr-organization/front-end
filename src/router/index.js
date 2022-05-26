@@ -25,6 +25,26 @@ const routes = [
     name: 'adminlogin',
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminLogin.vue')
   },
+  {
+    path: '/register',
+    name: 'registeruser',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserRegister.vue')
+  },
+  {
+    path: '/mainuser',
+    name: 'mainuser',
+    component: () => import(/* webpackChunkName: "about" */ '../views/MainUser.vue')
+  },
+  {
+    path: '/mainadmin',
+    name: 'mainadmin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/MainAdmin.vue')
+  },
+  {
+    path: '/notirepair',
+    name: 'notify',
+    component: () => import(/* webpackChunkName: "about" */ '../views/NotifyRepairuser.vue')
+  },
 ]
 
 const router = createRouter({
