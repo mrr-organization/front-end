@@ -12,7 +12,7 @@
     </div>
      <div class="flex flex-row w-64 mt-5 space-x-16 item-center">
        <router-link to="/UserLogin"><ButtonCom msg = "Register" class="p-3 "></ButtonCom></router-link>
-       <ButtonCom msg = "Cancel" class="p-3 text-white " style = "background-color: #F25F54"></ButtonCom>
+       <router-link to="/UserLogin"><ButtonCom msg = "Cancel" class="p-3 text-white " style = "background-color: #F25F54"></ButtonCom></router-link>
     </div>
   </div>
 </template>
