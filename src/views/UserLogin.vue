@@ -1,27 +1,27 @@
 <template>
-  <div class=" min-h-screen flex items-center justify-center">
-      <div class=" w-full h-96 flex flex-row mx-10 ">
-          <div class=" w-1/2 flex flex-col items-center justify-center border-r-2 border-black ">
-         <div class="font-bold text-2xl fixed -mt-60" style="color:#312A21;">MRR</div>
-             <Form @submit="handleLogin" :validation-schema="schema">
-                
-             <div class=" mt-10 flex flex-col item-center space-y-5 w-60">
+  <div class="flex items-center justify-center min-h-screen ">
+      <div class="flex flex-row w-full mx-10 h-96">
+          <div class="flex flex-col items-center justify-center w-1/2 border-r-2 border-black ">
+         <div class="fixed text-2xl font-bold -mt-60" style="color:#312A21;">MRR</div>
+              <Form @submit="handleLogin" :validation-schema="schema">
+               
+             <div class="flex flex-col mt-10 space-y-5 item-center w-60">
                  <div class="form-group">
-                    <Field name="username" type="text" class="form-control" placeholder="Email" />
+                    <Field name="username" type="text" class="form-control ring-1 ring-black" placeholder="Email" />
                      <ErrorMessage name="username" class="error-feedback" />
                  </div>
                 <div class="form-group">
                 
-                    <Field name="password" type="password" class="form-control" placeholder="Password"/>
+                    <Field name="password" type="password" class="form-control ring-1 ring-black" placeholder="Password"/>
                     <ErrorMessage name="password" class="error-feedback" />
                 </div>
                 <div class="form-group">
-                <button class="btn btn-primary btn-block" :disabled="loading">
+                <button class="btn btn-block" style="background-color: #FEF1E6;"  :disabled="loading">
                 <span
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
                 ></span>
-                <span class="">Sign In</span>
+                <span class="text-xl font-semibold" style="color:#312A21;">Sign In</span>
                 </button>
                 </div>
             <div class="form-group">
@@ -31,14 +31,15 @@
             </div>
              </div>
              </Form>
+             
           </div>
-          <div class=" w-1/2 flex flex-col items-center justify-center"> 
-              <div class=" mt-10 flex flex-col item-center space-y-5 w-60">
+          <div class="flex flex-col items-center justify-center w-1/2 "> 
+              <div class="flex flex-col mt-10 space-y-5 item-center w-60">
                     <ButtonCom msg = "Sigh in with Google" class="p-3 "></ButtonCom>
-                    <div class="font-semibold w-full flex items-center justify-center " style="color:#312A21;"><span class="w-4/5 h-0.5 bg-black mx-2"/> 
+                    <div class="flex items-center justify-center w-full font-semibold " style="color:#312A21;"><span class="w-4/5 h-0.5 bg-black mx-2"/> 
                      <div class="px-2"> or </div>
                     <span class="w-4/5 h-0.5 bg-black mx-2 "/></div>
-                    <ButtonCom msg = "Register" class="p-3 "></ButtonCom>
+                   <router-link to="/register"><ButtonCom msg = "Register" class="p-3 "></ButtonCom></router-link>
     </div>
               </div>
           
@@ -81,7 +82,7 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.$router.push("/mainuser");
         },
         (error) => {
           this.loading = false;

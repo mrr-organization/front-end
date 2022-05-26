@@ -1,5 +1,5 @@
 <template>
-   <input :placeholder="msg" class="p-2 border border-black rounded">
+   <input :placeholder="msg" class="p-3 rounded ring-black ring-1">
 </template>
 
 <script>
