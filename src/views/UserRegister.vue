@@ -13,7 +13,7 @@
               name="email"
               type="email"
               class="form-control ring-1 ring-black"
-              placeholder="email@kmutt.ac.th"
+              placeholder="email@mail.kmutt.ac.th"
             />
             <ErrorMessage name="email" class="error-feedback" />
           </div>
@@ -93,13 +93,12 @@ export default {
       email: yup
         .string()
         .required("Email is required!")
-        .email("Email is invalid!")
-        .min(3, "Must be at least 3 characters!")
-        .max(20, "Must be maximum 20 characters!"),
+        .email("Email is invalid!"),
       password: yup
         .string()
         .required("Password is required!")
-        .max(50, "Must be maximum 50 characters!"),
+        .min(6, "Must be at least 6 characters!")
+        .max(40, "Must be maximum 40 characters!"),
       comfirmPassword: yup
         .string()
         .required("Confirm password is required!")
