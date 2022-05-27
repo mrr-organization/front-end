@@ -95,7 +95,7 @@ export default {
         .required("Email is required!")
         .email("Email is invalid!")
         .min(3, "Must be at least 3 characters!")
-        .max(20, "Must be maximum 20 characters!"),
+        .max(255, "Must be maximum 255 characters!"),
       password: yup
         .string()
         .required("Password is required!")
