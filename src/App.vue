@@ -1,15 +1,34 @@
 <template>
-<div class="">
-  <nav class="fixed top-0 left-0 right-0 p-1 bg-white">
-    <div class="w-full h-full ">
-    <div class="relative flex flex-row justify-center w-full ">
-      <router-link to="/" class="self-center p-2 text-2xl font-semibold uppercase rounded-lg" style="color:#312A21">MRR</router-link>
-      <router-link to="/about" class="absolute self-end p-2 my-1 text-base font-semibold rounded right-4" style="color:#312A21; background-color: #FEF1E6; " href="#">About Me</router-link>
-    </div>
-  </div>
-
-  </nav>
-  <router-view/>
+  <div class="">
+    <nav class="fixed top-0 left-0 right-0 p-1 bg-white">
+      <div class="w-full h-full">
+        <div class="relative flex flex-row justify-center w-full">
+          <router-link
+            to="/"
+            class="self-center p-2 text-2xl font-semibold uppercase rounded-lg"
+            style="color: #312a21"
+            >MRR</router-link
+          >
+          <router-link
+            to="/about"
+            class="
+              absolute
+              self-end
+              p-2
+              my-1
+              text-base
+              font-semibold
+              rounded
+              right-4
+            "
+            style="color: #312a21; background-color: #fef1e6"
+            href="#"
+            >About Me</router-link
+          >
+        </div>
+      </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 
