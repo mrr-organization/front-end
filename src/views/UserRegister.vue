@@ -13,7 +13,7 @@
               name="email"
               type="email"
               class="form-control ring-1 ring-black"
-              placeholder="email@kmutt.ac.th"
+              placeholder="email@mail.kmutt.ac.th"
             />
             <ErrorMessage name="email" class="error-feedback" />
           </div>
