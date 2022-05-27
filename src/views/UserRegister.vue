@@ -15,7 +15,7 @@
               class="form-control ring-1 ring-black"
               placeholder="email@mail.kmutt.ac.th"
             />
-            <ErrorMessage name="email" class="error-feedback" />
+            <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
           </div>
           <div class="form-group">
             <Field
@@ -24,7 +24,7 @@
               class="form-control ring-1 ring-black"
               placeholder="Password"
             />
-            <ErrorMessage name="password" class="error-feedback" />
+            <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
           </div>
           <div class="form-group">
             <Field
@@ -33,7 +33,7 @@
               class="form-control ring-1 ring-black"
               placeholder="Confirm password"
             />
-            <ErrorMessage name="comfirmPassword" class="error-feedback" />
+            <ErrorMessage name="comfirmPassword" class="font-semibold text-red-500 error-feedback" />
           </div>
           <div class="form-group">
             <Field
@@ -42,10 +42,10 @@
               class="form-control ring-1 ring-black"
               placeholder="Phone number"
             />
-            <ErrorMessage name="phone" class="error-feedback" />
+            <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
           </div>
           <div class="form-group">
-            <div class="flex flex-row w-64 mt-5 space-x-16 item-center">
+            <div class="flex flex-row w-64 mt-5 space-x-12 item-center">
               <button
                 class="btn btn-block"
                 style="background-color: #fef1e6"

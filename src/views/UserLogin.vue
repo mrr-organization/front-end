@@ -2,13 +2,7 @@
   <div class="flex items-center justify-center min-h-screen">
     <div class="flex flex-row w-full mx-10 h-96">
       <div
-        class="
-          flex flex-col
-          items-center
-          justify-center
-          w-1/2
-          border-r-2 border-black
-        "
+        class="flex flex-col items-center justify-center w-1/2 border-r-2 border-black "
       >
         <div class="text-2xl font-bold" style="color: #312a21">MRR</div>
         <Form @submit="handleLogin" :validation-schema="schema">
@@ -20,7 +14,7 @@
                 class="form-control ring-1 ring-black"
                 placeholder="Email"
               />
-              <ErrorMessage name="username" class="error-feedback" />
+              <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
             </div>
             <div class="form-group">
               <Field
@@ -29,7 +23,7 @@
                 class="form-control ring-1 ring-black"
                 placeholder="Password"
               />
-              <ErrorMessage name="password" class="error-feedback" />
+              <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
             </div>
             <div class="form-group">
               <button

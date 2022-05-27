@@ -1,16 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen">
     <div
-      class="
-        flex
-        items-center
-        justify-center
-        p-10
-        bg-white
-        rounded-full
-        h-96
-        w-96
-      "
+      class="flex items-center justify-center bg-white rounded-full p-7 w-80 h-80"
     >
       <img src="@/assets/Admin.png" class="w-5/6 h-5/6" />
     </div>
@@ -26,7 +17,7 @@
             class="form-control ring-1 ring-black"
             placeholder="Email"
           />
-          <ErrorMessage name="username" class="error-feedback" />
+          <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
         </div>
         <div class="form-group">
           <Field
@@ -35,7 +26,7 @@
             class="form-control ring-1 ring-black"
             placeholder="Password"
           />
-          <ErrorMessage name="password" class="error-feedback" />
+          <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
         </div>
         <div class="form-group">
           <button
