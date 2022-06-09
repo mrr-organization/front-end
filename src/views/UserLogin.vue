@@ -4,7 +4,7 @@
       <div
         class="flex flex-col items-center justify-center w-1/2 border-r-2 border-black "
       >
-        <div class="text-2xl font-bold" style="color: #312a21">MRR</div>
+        <div class="text-2xl font-bold" style="color: #312a21">MRR User Login</div>
         <Form @submit="handleLogin" :validation-schema="schema">
           <div class="flex flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">
