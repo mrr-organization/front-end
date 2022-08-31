@@ -1,12 +1,8 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen">
-    <div
-      class="flex items-center justify-center bg-white rounded-full p-7 w-80 h-80"
-    >
-      <img src="@/assets/Admin.png" class="w-5/6 h-5/6" />
-    </div>
+    
     <div class="flex flex-row justify-around w-full mt-10 item-center">
-      <h1 class="text-3xl font-semibold" style="color: #312a21">Admin</h1>
+      <h1 class="text-3xl font-semibold" style="color: #312a21">หน่วยงาน / ผู้ดูแลระบบ </h1>
     </div>
     <Form @submit="handleLogin" :validation-schema="schema">
       <div class="flex flex-col mt-10 space-y-4 item-center w-72">
@@ -31,18 +27,20 @@
         <div class="form-group">
           <button
             class="btn btn-block"
-            style="background-color: #fef1e6"
+            style="background-color: #384BB1"
             :disabled="loading"
           >
             <span
               v-show="loading"
               class="spinner-border spinner-border-sm"
             ></span>
-            <span class="text-xl font-semibold" style="color: #312a21"
-              >Sign In</span
+            <span class="text-xl font-semibold" style="color: #FFFFFF"
+              >เข้าสู่ระบบ</span
             >
           </button>
         </div>
+      
+      
         <div class="form-group">
           <div v-if="message" class="alert alert-danger" role="alert">
             {{ message }}
@@ -54,11 +52,12 @@
 </template>
 
 <script>
+
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 export default {
   name: "SignIn",
-  components: { Form, Field, ErrorMessage },
+  components: {  Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
       username: yup.string().required("Email is required!"),

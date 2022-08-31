@@ -1,10 +1,14 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="flex flex-row w-full mx-10 h-96">
+  <div class="flex items-center justify-center min-h-screen ">
+    <div class="flex flex-col w-full mx-10 mb-10 h-96">
       <div
-        class="flex flex-col items-center justify-center w-1/2 border-r-2 border-black "
+        class="flex flex-col items-center justify-center "
       >
+<<<<<<< HEAD
         <div class="text-2xl font-bold" style="color: #312a21">MRR User Login</div>
+=======
+        <div class="text-2xl font-bold" style="color: #312a21">ยินดีต้อนรับสู่ MRR</div>
+>>>>>>> dev
         <Form @submit="handleLogin" :validation-schema="schema">
           <div class="flex flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">
@@ -28,15 +32,15 @@
             <div class="form-group">
               <button
                 class="btn btn-block"
-                style="background-color: #fef1e6"
+                style="background-color: #384BB1"
                 :disabled="loading"
               >
                 <span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
                 ></span>
-                <span class="text-xl font-semibold" style="color: #312a21"
-                  >Sign In</span
+                <span class="text-xl font-semibold" style="color: #FFFFFF"
+                  > เข้าสู่ระบบ </span
                 >
               </button>
             </div>
@@ -48,19 +52,20 @@
           </div>
         </Form>
       </div>
-      <div class="flex flex-col items-center justify-center w-1/2">
-        <div class="flex flex-col mt-10 space-y-5 item-center w-60">
-          <ButtonCom msg="Sigh in with Google" class="p-3"></ButtonCom>
-          <div
-            class="flex items-center justify-center w-full font-semibold"
+       <div
+            class="flex items-center justify-center mx-auto font-semibold w-60"
             style="color: #312a21"
           >
-            <span class="w-4/5 h-0.5 bg-black mx-2" />
+            <span class="w-1/2 h-0.5 bg-black mx-2" />
             <div class="px-2">or</div>
-            <span class="w-4/5 h-0.5 bg-black mx-2" />
+            <span class="w-1/2 h-0.5 bg-black mx-2" />
           </div>
+      <div class="flex flex-col items-center justify-center ">
+        <div class="flex flex-col mt-10 space-y-5 item-center w-60">
+          <ButtonCom msg="ลงชื่อเข้าใช้ด้วย Google" class="p-3" style="background-color: #FAF0EF ; color :#312a21 "></ButtonCom>
+         
           <router-link to="/register"
-            ><ButtonCom msg="Register" class="w-56 p-3"></ButtonCom
+            ><ButtonCom msg="สมัครใช้งาน" class="w-56 p-3" style="background-color: #FAF0EF ; color :#312a21 "></ButtonCom
           ></router-link>
         </div>
       </div>

@@ -6,22 +6,13 @@
           <router-link
             to="/"
             class="self-center p-2 text-2xl font-semibold uppercase rounded-lg"
-            style="color: #312a21"
+            style="color: #384bb1"
             >MRR</router-link
           >
           <router-link
             to="/about"
-            class="
-              absolute
-              self-end
-              p-2
-              my-1
-              text-base
-              font-semibold
-              rounded
-              right-4
-            "
-            style="color: #312a21; background-color: #fef1e6"
+            class="absolute self-end p-2 my-1 text-base font-semibold rounded right-4"
+            style="color: #ffffff; background-color: #384bb1 "
             href="#"
             >About Me</router-link
           >
