@@ -1,21 +1,48 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-screen">
-    <div class="flex items-center justify-center p-5">
-      <h1 class="text-3xl font-semibold" style="color: #312a21">
-        Register MRR
+  <div class="flex flex-col items-center justify-center ">
+    <div class="flex items-center justify-center p-4 mt-16">
+      <h1 class="text-3xl font-semibold " style="color: #312a21">
+        สมัครใช้งาน MMR
       </h1>
     </div>
     <div class="flex flex-col space-y-8 item-center w-72">
       <Form @submit="handleRegister" :validation-schema="schema">
         <div v-if="!successful">
+        <div class=" form-group">
+            <Field
+              name="username"
+              type="username"
+              class="form-control ring-1 ring-black"
+              placeholder="Username"
+            />
+            <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
+          </div>
           <div class="form-group">
             <Field
               name="email"
               type="email"
               class="form-control ring-1 ring-black"
-              placeholder="email@mail.kmutt.ac.th"
+              placeholder="Email@mail.kmutt.ac.th"
             />
             <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
+          </div>
+          <div class="form-group">
+            <Field
+              name="fname"
+              type="fname"
+              class="form-control ring-1 ring-black"
+              placeholder="Firstname"
+            />
+            <ErrorMessage name="fname" class="font-semibold text-red-500 error-feedback" />
+          </div>
+                    <div class="form-group">
+            <Field
+              name="lname"
+              type="lname"
+              class="form-control ring-1 ring-black"
+              placeholder="Lastname"
+            />
+            <ErrorMessage name="lname" class="font-semibold text-red-500 error-feedback" />
           </div>
           <div class="form-group">
             <Field
@@ -44,30 +71,31 @@
             />
             <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
-            <div class="flex flex-row w-64 mt-5 space-x-12 item-center">
+        
+            <div class="flex flex-row justify-between mt-5 item-center">
               <button
-                class="btn btn-block"
-                style="background-color: #fef1e6"
+                class="bg-[#384BB1] px-10 py-1 rounded"
                 :disabled="loading"
               >
                 <span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
                 ></span>
-                <span class="text-xl font-semibold" style="color: #312a21"
-                  >Register</span
+                <span class="text-xl font-semibold" style="color: #ffffff"
+                  >สมัคร</span
                 >
               </button>
               <router-link to="/UserLogin"
-                ><ButtonCom
-                  msg="Cancel"
-                  class="p-3 text-white"
-                  style="background-color: #f25f54"
-                ></ButtonCom
-              ></router-link>
+                ><button
+                class="bg-[#FC2525] px-10 py-1 rounded"
+              >
+                <span class="text-xl font-semibold" style="color: #ffffff"
+                  >ยกเลิก</span
+                >
+              </button>
+                </router-link>
             </div>
-          </div>
+          
         </div>
       </Form>
     </div>
@@ -82,21 +110,35 @@
 </template>
 
 <script>
-import ButtonCom from "@/components/ButtonCom.vue";
+
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 export default {
   name: "RegisterUser",
-  components: { ButtonCom, Form, Field, ErrorMessage },
+  components: { Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
+      username: yup
+        .string()
+        .required("Username is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(255, "Must be maximum 255 characters!"),
       email: yup
         .string()
         .required("Email is required!")
         .email("Email is invalid!")
         .min(3, "Must be at least 3 characters!")
         .max(255, "Must be maximum 255 characters!"),
-        
+      fname: yup
+        .string()
+        .required("Firstname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
+      lname: yup
+        .string()
+        .required("Lastname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
       password: yup
         .string()
         .required("Password is required!")

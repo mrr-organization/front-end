@@ -16,12 +16,12 @@
         /></router-link>
       </div>
     </div>
-    <div class="flex flex-row justify-around w-full item-center">
+    <div class="flex flex-row justify-around w-full font-bold item-center">
       <router-link to="/userlogin"
-        ><ButtonCom msg="Login User" class="p-4"></ButtonCom
+        ><ButtonCom msg="ผู้ใช้งาน" class="p-4"></ButtonCom
       ></router-link>
       <router-link to="/adminlogin"
-        ><ButtonCom msg="Login Admin" class="p-4"></ButtonCom
+        ><ButtonCom msg="หน่วยงาน / ผู้ดูแลระบบ" class="p-4"></ButtonCom
       ></router-link>
     </div>
   </div>
