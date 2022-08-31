@@ -4,11 +4,7 @@
       <div
         class="flex flex-col items-center justify-center "
       >
-<<<<<<< HEAD
-        <div class="text-2xl font-bold" style="color: #312a21">MRR User Login</div>
-=======
         <div class="text-2xl font-bold" style="color: #312a21">ยินดีต้อนรับสู่ MRR</div>
->>>>>>> dev
         <Form @submit="handleLogin" :validation-schema="schema">
           <div class="flex flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">

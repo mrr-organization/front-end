@@ -45,6 +45,7 @@ const routes = [
     name: 'notify',
     component: () => import(/* webpackChunkName: "about" */ '../views/NotifyRepairuser.vue')
   },
+ 
 ]
 
 const router = createRouter({
