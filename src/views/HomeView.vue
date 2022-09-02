@@ -30,10 +30,12 @@
 <script>
 // @ is an alias to /src
 import ButtonCom from "@/components/ButtonCom.vue";
+
 export default {
   name: "HomeView",
   components: {
     ButtonCom,
+    
   },
 };
 </script>
