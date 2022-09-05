@@ -55,6 +55,11 @@ const routes = [
     name: 'trackMrr',
     component: () => import(/* webpackChunkName: "about" */ '../views/TrackMrr.vue')
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProfileUser.vue')
+  },
  
 ]
 

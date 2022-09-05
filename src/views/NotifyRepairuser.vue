@@ -8,7 +8,8 @@
         <h3 class="text-left" style="color: #312a21">หน่วยงานที่รับเรื่อง</h3>
         <div>
           <input
-            class="w-full h-12 ring-1 ring-black"
+            v-model="organize.receiving"
+            class="w-full h-12 p-4 ring-1 ring-black"
             type="text"
             list="auto-complete"
             placeholder="เลือกหน่วยงานที่รับเรื่อง"
@@ -35,7 +36,8 @@
         <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
 
         <textarea
-          class="w-full h-28 ring-1 ring-black"
+          v-model="organize.place"
+          class="w-full p-4 h-28 ring-1 ring-black"
           placeholder="ใส่รายละเอียดสถานที่เรื่องร้องเรียน"
         ></textarea>
       </div>
@@ -44,7 +46,8 @@
       <div>
         <h3 class="text-left" style="color: #312a21">รายละเอียด</h3>
         <textarea
-          class="w-full h-28 ring-1 ring-black"
+          v-model="organize.detail"
+          class="w-full p-4 h-28 ring-1 ring-black"
           placeholder="ใส่รายละเอียด / อธิบายเพิ่มเติม"
         ></textarea>
       </div>
@@ -91,6 +94,7 @@
     </div>
     <div class="flex justify-center space-x-24">
       <ButtonCom
+        @handleClick="showAlert"
         msg="ยืนยัน"
         class="p-2 mt-6 mb-2 text-black w-28"
         style="background-color: #02b072"
@@ -105,6 +109,7 @@
 </template>
 
 <script>
+import 'sweetalert2/dist/sweetalert2.min.css';
 import ButtonCom from "@/components/ButtonCom.vue";
 export default {
   components: { ButtonCom },
@@ -114,6 +119,11 @@ export default {
       image: null,
       preview_list: [],
       image_list: [],
+      organize: {
+        receiving: '',
+        place: '',
+        detail: ''
+      }
     };
   },
   methods: {
@@ -139,6 +149,18 @@ export default {
       this.image_list = [];
       this.preview_list = [];
     },
+    showAlert() {
+      this.$swal({
+        background: "#FF9817",
+        color: "#fff",
+        title: "ส่งข้อมูลเสร็จสิ้น",
+        icon: "success",
+        iconColor: "#fff",
+        confirmButtonText: "ปิด",
+        confirmButtonColor: "#17A87B",
+        allowEnterKey: true,
+      })
+    }
   },
 };
 </script>
