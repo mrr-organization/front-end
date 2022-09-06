@@ -2,14 +2,14 @@
   <div class="flex flex-col items-center justify-center h-screen">
     <div class="flex flex-row justify-around w-full m-16 item-center">
       <div
-        class="flex items-center justify-center p-10 bg-white rounded-full h-96 w-96 "
+        class="flex items-center justify-center w-5/6 p-5 bg-white rounded-full sm:h-96 sm:w-96 h-5/6 "
       >
         <router-link to="/userlogin"
           ><img src="@/assets/User.png" class="w-5/6 h-5/6"
         /></router-link>
       </div>
       <div
-        class="flex items-center justify-center p-10 bg-white rounded-full h-96 w-96"
+        class="flex items-center justify-center p-5 bg-white rounded-full h-96 w-96"
       >
         <router-link to="/adminlogin"
           ><img src="@/assets/Admin.png" class="w-5/6 ml-6 h-5/6"

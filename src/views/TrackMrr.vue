@@ -14,10 +14,10 @@
                 <span :class="`${clrTxtStatus(index, 'wait')}`">รอดำเนินการ</span>
               </div>
 
-              <div :class="`w-full h-1 mt-3 ${clrBgStatus(index, 'pending')}`" />
+              <div :class="`w-full h-1 mt-3 ${clrBgStatus(index )}`" />
 
               <div class="flex flex-col items-center w-full">
-                <div :class="`w-10 h-10 ${clrBgStatus(index, 'pending')} rounded-full`">
+                <div :class="`w-10 h-10  ${clrBgStatus(index, 'pending')} rounded-full`">
                 </div>
                 <span :class="`${clrTxtStatus(index, 'pending')}`">กำลังดำเนินการ</span>
               </div>
@@ -26,10 +26,15 @@
               
               <div class="flex flex-col items-center w-full">
                 <div :class="`w-10 h-10 ${clrBgStatus(index, 'success')} rounded-full`">
-                </div>
+              </div>
                 <span :class="`${clrTxtStatus(index, 'success')}`">เสร็จสิ้น</span>
               </div>
-             
+            </div>
+            <div v-if="item.status === 0" class="w-2/12">
+              <router-link to="/editnotirepair"><button class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium">แก้ไขข้อมูล</button></router-link>
+            </div> 
+            <div v-else class="w-2/12">
+
             </div>
           </div>
         </div>
@@ -37,27 +42,29 @@
     </div>
 </template>
   
+
   <script>
+
   export default {
     components: { },
     data() {
       return {
         items: [
           {
-          topic: 'สวดาเสวกาเ',
-          status: 0
+          topic: 'Test',
+          status: 3
          },
           {
-          topic: 'สวดาเสวกาเ',
-          status: 1
-         },
-          {
-          topic: 'สวดาเสวกาเ',
+          topic: 'Test',
           status: 2
          },
           {
-          topic: 'สวดาเสวกาเ',
-          status: 3
+          topic: 'Test',
+          status: 1
+         },
+          {
+          topic: 'Test',
+          status: 0
          },
       ]
       };
@@ -68,13 +75,13 @@
     methods: {
       clrBgStatus(index, status) {
         if (this.items[index].status === 0) {
-          return 'bg-[#DDDDDD]'
+          return 'bg-[#DDDDDD] fill-current text-green-600'
         } else if (this.items[index].status === 1 && status === 'wait') {
           return 'bg-black'
         } else if ((this.items[index].status === 2)) {
-          return status === 'success' ? 'bg-[#DDDDDD]' : status === 'successLine' ? 'bg-[#DDDDDD]' : 'bg-black'
+          return status === 'success' ? 'bg-[#DDDDDD]' : status === 'successLine' ? 'bg-[#DDDDDD]' : status === 'pending' ? 'bg-[#FFB33F]' : 'bg-black'
         } else if (this.items[index].status === 3) {
-          return status === 'success' ? 'bg-[#02B072]' : 'bg-black'
+          return status === 'success' ? 'bg-[#02B072]' : status === 'pending' ? 'bg-[#FFB33F]' : 'bg-black'
         } else {
           return 'bg-[#DDDDDD]'
         }
@@ -85,9 +92,9 @@
         } else if (this.items[index].status === 1 && status === 'wait') {
           return 'text-black'
         } else if ((this.items[index].status === 2)) {
-          return status === 'success' ? 'text-[#DDDDDD]' : 'text-black'
+          return status === 'success' ? 'text-[#DDDDDD]' : status === 'pending' ? 'text-[#FFB33F]' : 'text-black'
         } else if (this.items[index].status === 3) {
-          return status === 'success' ? 'text-[#02B072]' : 'text-black'
+          return status === 'success' ? 'text-[#02B072]' : status === 'pending' ? 'text-[#FFB33F]' : 'text-black'
         } else {
           return 'text-[#DDDDDD]'
         }
