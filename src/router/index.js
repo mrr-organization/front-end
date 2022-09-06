@@ -45,6 +45,21 @@ const routes = [
     name: 'notify',
     component: () => import(/* webpackChunkName: "about" */ '../views/NotifyRepairuser.vue')
   },
+  {
+    path: '/editnotirepair',
+    name: 'editnotirepair',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EditNotifyrepair.vue')
+  },
+  {
+    path: '/trackMrr',
+    name: 'trackMrr',
+    component: () => import(/* webpackChunkName: "about" */ '../views/TrackMrr.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProfileUser.vue')
+  },
  
 ]
 

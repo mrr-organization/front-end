@@ -10,5 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
     FontAwesomeIcon
 } from './plugins/font-awesome'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
-createApp(App).use(store).use(router).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
+createApp(App).use(VueSweetalert2).use(store).use(router).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
