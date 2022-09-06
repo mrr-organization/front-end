@@ -60,6 +60,11 @@ const routes = [
     name: 'profile',
     component: () => import(/* webpackChunkName: "about" */ '../views/ProfileUser.vue')
   },
+  {
+    path: '/listrepairadmin',
+    name: 'listrepairadmin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ListRepairAdmin.vue')
+  },
  
 ]
 

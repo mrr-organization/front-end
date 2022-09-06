@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isOpenMenu" class="absolute bottom-0 w-1/5 bg-white top-14">
+    <div v-if="isOpenMenu" class="fixed bottom-0 bg-white w-[350px] top-14">
       <div class="absolute p-4 border-t-4 border-black space-y-7 inset-x-10">
         <router-link to="/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
           <img src="../assets/Usernav.svg" /> <span class="self-center ml-4"> บัญชี </span>
