@@ -1,7 +1,7 @@
 <template>
   <button
     @click="showAlert"
-    class="font-bold rounded-lg"
+    class="font-bold rounded-lg "
     style="color: #ffffff; background-color: #384bb1"
   >
     {{ msg }}
