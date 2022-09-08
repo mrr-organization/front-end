@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto sm:mt-24 mt-20 rounded-t-lg max-w-7xl sm:max-w-7xl h-[760px] sm:h-[760px] overflow-auto"
+  <div class="mx-auto sm:mt-24 mt-20 rounded-t-lg max-w-7xl sm:max-w-7xl  overflow-auto"
     style="background-color: #fef1e6">
     <table class="w-full text-xs table-auto sm:text-xl">
       <thead>
@@ -67,12 +67,21 @@
         </tr>
       </tbody>
     </table>
-    <button> </button>
+    
   </div>
+  <div class="mt-2 ">
+  <button class="inline-flex items-center p-2 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg   hover:bg-[#fef1e6]   ">
+  Previous
+</button>
+
+<button class="inline-flex items-center p-2 ml-3 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg  hover:bg-[#fef1e6]  ">
+  Next
+</button>
+</div>
 </template>
   
-
-  <script>
+<script >
+  
 </script>
   
   <style scoped>
@@ -82,4 +91,5 @@
   thead > tr >th{
     @apply whitespace-nowrap px-3
   }
+  
   </style>

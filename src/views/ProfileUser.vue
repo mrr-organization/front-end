@@ -7,14 +7,14 @@
       </div>
     </div>
     <div
-      class="flex flex-col w-full max-w-xl h-auto  mx-auto text-xl gap-3 font-semibold bg-white p-3  p16 rounded-2xl">
+      class="flex flex-col w-full max-w-xl h-auto mx-auto text-xl gap-3 font-semibold bg-white p-3  p16 rounded-2xl overflow-auto">
       <div class="inline-flex flex-row flex-wrap gap-3 justify-between">
-        <span>ชื่อ - นามสกุล: xxxxxxxxxxxx xxxxx</span>
-        <span>อีเมล์: xxxxxxxxxxxxxx</span>
+        <span>ชื่อ - นามสกุล: เจตณัฐ ตติรัตน์</span>
+        <span>อีเมล์: jednuth.tatirat@mail.kmutt.ac.th</span>
       </div>
       <div class="inline-flex flex-row flex-wrap gap-3 justify-between">
-        <span>รหัสสมาชิก: xxxxxxxxxx</span>
-        <span>เบอร์ติดต่อ: xxxxxxxxxxxxxx</span>
+        <span>รหัสสมาชิก: 62130500018</span>
+        <span>เบอร์ติดต่อ: 0931455155</span>
       </div>
     </div>
   </div>
@@ -26,9 +26,8 @@ export default {};
 
 <style scoped>
 span {
-  @apply whitespace-nowrap
+  @apply text-left
 }
-
 @media (min-width: 768px) {
   .p16 {
     padding: 24px
