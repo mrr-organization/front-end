@@ -54,7 +54,7 @@
           >
           <router-link
             to="/about"
-            class="absolute self-end p-2 my-1 text-base font-semibold rounded right-4"
+            class="absolute self-end p-1 sm:p-2 my-1 text-base font-semibold rounded right-4"
             style="color: #ffffff; background-color: #384bb1"
             href="#"
             v-if="!isLogin"
