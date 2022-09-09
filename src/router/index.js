@@ -65,6 +65,11 @@ const routes = [
     name: 'listrepairadmin',
     component: () => import(/* webpackChunkName: "about" */ '../views/ListRepairAdmin.vue')
   },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import(/* webpackChunkName: "about" */ '../views/DashBoard.vue')
+  },
  
 ]
 

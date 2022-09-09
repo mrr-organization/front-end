@@ -1,9 +1,9 @@
 <template>
-  <div class="mx-auto mt-24 max-w-7xl px-2" style="background-color: #fef1e6">
-    <div class="p-6 text-left bg-white mt-14 -mx-2">
+  <div class="px-2 mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
+    <div class="p-6 -mx-2 text-left bg-white mt-14">
       <h2 style="color: #312a21">แจ้งซ่อม / ร้องเรียนปัญหา</h2>
     </div>
-    <div class="max-w-4xl mx-auto mt-3">
+    <!-- <div class="max-w-4xl mx-auto mt-3">
       <div>
         <h3 class="text-left" style="color: #312a21">หน่วยงานที่รับเรื่อง</h3>
         <div>
@@ -18,12 +18,8 @@
 "></option>
           </datalist>
         </div>
-        <!-- <textarea
-          class="w-full h-28 ring-1 ring-black"
-          placeholder="เลือกหน่วยงานที่รับเรื่อง"
-        ></textarea> -->
       </div>
-    </div>
+    </div> -->
     <div class="max-w-4xl mx-auto mt-3">
       <div>
         <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
