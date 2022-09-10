@@ -21,37 +21,7 @@
           <td>20-8-2000 18:04:02</td>
           <td>Lorem ipsum dolor </td>
           <td>Mr. abc edwin</td>
-          <td>ไม่ผ่านการตรวจสอบ</td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td>กำลังดำเนินการ</td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td>การดำเนินการเสร็จสิ้น</td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td>การดำเนินการเสร็จสิ้น</td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] ">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td>การดำเนินการเสร็จสิ้น</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
         </tr>
         <tr>
           <td>20-8-2000 18:04:02</td>
@@ -63,7 +33,37 @@
           <td>20-8-2000 18:04:02</td>
           <td>Lorem ipsum dolor </td>
           <td>Mr. abc edwin</td>
-          <td>การดำเนินการเสร็จสิ้น</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
+        </tr>
+        <tr>
+          <td>20-8-2000 18:04:02</td>
+          <td>Lorem ipsum dolor </td>
+          <td>Mr. abc edwin</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
+        </tr>
+        <tr>
+          <td>20-8-2000 18:04:02</td>
+          <td>Lorem ipsum dolor </td>
+          <td>Mr. abc edwin</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] ">รอดำเนินการ</button></td>
+        </tr>
+        <tr>
+          <td>20-8-2000 18:04:02</td>
+          <td>Lorem ipsum dolor </td>
+          <td>Mr. abc edwin</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
+        </tr>
+        <tr>
+          <td>20-8-2000 18:04:02</td>
+          <td>Lorem ipsum dolor </td>
+          <td>Mr. abc edwin</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
+        </tr>
+        <tr>
+          <td>20-8-2000 18:04:02</td>
+          <td>Lorem ipsum dolor </td>
+          <td>Mr. abc edwin</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
         </tr>
       </tbody>
     </table>

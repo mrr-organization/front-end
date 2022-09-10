@@ -70,7 +70,16 @@ const routes = [
     name: 'dashboard',
     component: () => import(/* webpackChunkName: "about" */ '../views/DashBoard.vue')
   },
- 
+  {
+    path: '/repairinfo',
+    name: 'repairinfo',
+    component: () => import(/* webpackChunkName: "about" */ '../views/RepairInfo.vue')
+  },
+  {
+    path: '/statusrepairadmin',
+    name: 'statusrepairadmin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/StatusRepairAdmin.vue')
+  },
 ]
 
 const router = createRouter({
