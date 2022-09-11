@@ -4,9 +4,9 @@
         <h2 style="color: #312a21">ติดตามสถานะแจ้งซ่อม</h2>
       </div>   
       <div class="min-h-[500px]">
-        <div v-for="(item,index) in items" :key="item.id" class="flex justify-center p-4">
+        <div v-for="(item,index) in listRepair" :key="item.id" class="flex justify-center p-4">
           <div class="flex w-full space-x-5">
-            <div class="">เรื่องแจ้งซ่อม สามารถ คลิก Preview ดูข้อมูลได้ </div>
+            <div class="">เรื่องแจ้งซ่อม สามารถ คลิก Preview ดูข้อมูลได้</div>
             <div class="flex justify-around w-full items">
               <div class="flex flex-col items-center w-full">
                 <div :class="`w-10 h-10 ${clrBgStatus(index, 'wait')} rounded-full`">
@@ -14,7 +14,7 @@
                 <span :class="`${clrTxtStatus(index, 'wait')}`">รอดำเนินการ</span>
               </div>
 
-              <div :class="`w-full h-1 mt-3 ${clrBgStatus(index )}`" />
+              <div :class="`w-full h-1 mt-3 ${clrBgStatus(index)}`" />
 
               <div class="flex flex-col items-center w-full">
                 <div :class="`w-10 h-10  ${clrBgStatus(index, 'pending')} rounded-full`">
@@ -30,7 +30,7 @@
                 <span :class="`${clrTxtStatus(index, 'success')}`">เสร็จสิ้น</span>
               </div>
             </div>
-            <div v-if="item.status === 0" class="w-2/12">
+            <div v-if="item.status === 0 || item.status === 1" class="w-2/12">
               <router-link to="/editnotirepair"><button class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium">แก้ไขข้อมูล</button></router-link>
             </div> 
             <div v-else class="w-2/12">
@@ -40,18 +40,8 @@
         </div>
       </div>
     </div>
-    <div class="mt-2 ">
-  <button class="inline-flex items-center p-2 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg   hover:bg-[#fef1e6]   ">
-  Previous
-</button>
-
-<button class="inline-flex items-center p-2 ml-3 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg  hover:bg-[#fef1e6]  ">
-  Next
-</button>
-</div>
 </template>
   
-
   <script>
   import repairNotificationService from '@/services/repair-notification.service';
   export default {
@@ -59,24 +49,6 @@
       return {
         user: JSON.parse(localStorage.getItem('user')),
         listRepair: [],
-        items: [
-          {
-          topic: 'Test',
-          status: 3
-         },
-          {
-          topic: 'Test',
-          status: 2
-         },
-          {
-          topic: 'Test',
-          status: 1
-         },
-          {
-          topic: 'Test',
-          status: 0
-         },
-      ]
       };
     },
     created(){
@@ -85,26 +57,26 @@
     },
     methods: {
       clrBgStatus(index, status) {
-        if (this.items[index].status === 0) {
+        if (this.listRepair[index].status === '') {
           return 'bg-[#DDDDDD] fill-current text-green-600'
-        } else if (this.items[index].status === 1 && status === 'wait') {
+        } else if (this.listRepair[index].status === 'PENDING' && status === 'wait') {
           return 'bg-black'
-        } else if ((this.items[index].status === 2)) {
+        } else if ((this.listRepair[index].status === 'IN PROGRESS')) {
           return status === 'success' ? 'bg-[#DDDDDD]' : status === 'successLine' ? 'bg-[#DDDDDD]' : status === 'pending' ? 'bg-[#FFB33F]' : 'bg-black'
-        } else if (this.items[index].status === 3) {
+        } else if (this.listRepair[index].status === 'COMPLETED') {
           return status === 'success' ? 'bg-[#02B072]' : status === 'pending' ? 'bg-[#FFB33F]' : 'bg-black'
         } else {
           return 'bg-[#DDDDDD]'
         }
       },
       clrTxtStatus(index, status) {
-        if (this.items[index].status === 0) {
+        if (this.listRepair[index].status === '') {
           return 'text-[#DDDDDD]'
-        } else if (this.items[index].status === 1 && status === 'wait') {
+        } else if (this.listRepair[index].status === 'PENDING' && status === 'wait') {
           return 'text-black'
-        } else if ((this.items[index].status === 2)) {
+        } else if ((this.listRepair[index].status === 'IN PROGRESS')) {
           return status === 'success' ? 'text-[#DDDDDD]' : status === 'pending' ? 'text-[#FFB33F]' : 'text-black'
-        } else if (this.items[index].status === 3) {
+        } else if (this.listRepair[index].status === 'COMPLETED') {
           return status === 'success' ? 'text-[#02B072]' : status === 'pending' ? 'text-[#FFB33F]' : 'text-black'
         } else {
           return 'text-[#DDDDDD]'

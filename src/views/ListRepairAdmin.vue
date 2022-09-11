@@ -10,60 +10,12 @@
           <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="item in listRepairNotification" :key="item.id">
         <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwinx</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] ">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor </td>
-          <td>Mr. abc edwin</td>
-          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">รอดำเนินการ</button></td>
+          <td>{{item.updateDate}}</td>
+          <td>{{item.location}}</td>
+          <td>{{item.userFullName}}</td>
+          <td><button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">{{item.status}}</button></td>
         </tr>
       </tbody>
     </table>
@@ -85,7 +37,7 @@
   export default {
     data(){
       return {
-        listRepairNotification: []
+          listRepairNotification: []
       };
     },
     created(){

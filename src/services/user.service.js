@@ -5,6 +5,8 @@ class UserService {
   editUser(username) {
     return axios.put(API_URL + 'edit-user/' + username, { headers: authHeader()});
   }
-
+  getUserDetailByUserNo (userNo) {
+    return axios.get(API_URL + userNo,  { headers: authHeader()});
+  }
 }
 export default new UserService();
