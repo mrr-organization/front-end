@@ -81,7 +81,25 @@
 </template>
   
 <script >
-  
+  import repairNotificationService from '@/services/repair-notification.service';
+  export default {
+    data(){
+      return {
+        listRepairNotification: []
+      };
+    },
+    created(){
+      this.getListRepairNotification()
+    },
+    methods: {
+      getListRepairNotification(){
+        repairNotificationService.getAllRepairNotification().then(response => {
+          this.listRepairNotification = response.data;
+          console.log(this.listRepairNotification);
+        })
+      }
+    }
+  };
 </script>
   
   <style scoped>

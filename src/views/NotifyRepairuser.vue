@@ -1,37 +1,35 @@
 <template>
   <div class="px-2 mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
+    <form @submit.prevent="createRepairNotification">
     <div class="p-6 -mx-2 text-left bg-white mt-14">
       <h2 style="color: #312a21">แจ้งซ่อม / ร้องเรียนปัญหา</h2>
     </div>
+      <div class="max-w-4xl mx-auto mt-3">
+      <div>
+        <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
+        <div>
+          <!-- <input v-model="from.localtion" class="w-full h-12 p-4 ring-1 ring-black" type="text" list="auto-complete"
+            placeholder="เลือกหน่วยงานที่รับเรื่อง" /> -->
+            <select name="location" class="form-control"  v-model="from.location">
+                        <option v-for="location in location_list" :key="location.id">{{location.locationName}}</option>
+            </select>
+          <!-- <datalist id="auto-complete">
+            <option v-for="localtion in location_list" :value="location.locationName" :key="localtion.id">{{localtion.locationName}}</option>
+          </datalist> -->
+        </div>
+      </div>
+    </div>
     <!-- <div class="max-w-4xl mx-auto mt-3">
       <div>
-        <h3 class="text-left" style="color: #312a21">หน่วยงานที่รับเรื่อง</h3>
-        <div>
-          <input v-model="organize.receiving" class="w-full h-12 p-4 ring-1 ring-black" type="text" list="auto-complete"
-            placeholder="เลือกหน่วยงานที่รับเรื่อง" />
-          <datalist id="auto-complete">
-            <option value="กลุ่มงานไฟฟ้า"></option>
-            <option value="กลุ่มงานเครื่องกล"></option>
-            <option value="กลุ่มงานสถาปนิก"></option>
-            <option value="กลุ่มงานโยธา"></option>
-            <option value="กลุ่มงานระบบสาธารณูปโภค/สาธารณูปการ
-"></option>
-          </datalist>
-        </div>
+        <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
+        <textarea v-model="from.location" class="w-full p-4 h-28 ring-1 ring-black"
+          placeholder="ใส่รายละเอียดสถานที่เรื่องร้องเรียน"></textarea>
       </div>
     </div> -->
     <div class="max-w-4xl mx-auto mt-3">
       <div>
-        <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
-
-        <textarea v-model="organize.place" class="w-full p-4 h-28 ring-1 ring-black"
-          placeholder="ใส่รายละเอียดสถานที่เรื่องร้องเรียน"></textarea>
-      </div>
-    </div>
-    <div class="max-w-4xl mx-auto mt-3">
-      <div>
         <h3 class="text-left" style="color: #312a21">รายละเอียด</h3>
-        <textarea v-model="organize.detail" class="w-full p-4 h-28 ring-1 ring-black"
+        <textarea v-model="from.detail" class="w-full p-4 h-28 ring-1 ring-black"
           placeholder="ใส่รายละเอียด / อธิบายเพิ่มเติม"></textarea>
       </div>
     </div>
@@ -46,11 +44,12 @@
           <template v-if="preview_list.length">
             <div v-for="(item, index) in preview_list" :key="index" class="flex items-center justify-center mt-8">
               <img :src="item" class="w-48 h-48 img-fluid" />
-              <!-- <p class="mb-0">file name: {{ image_list[index].name }}</p>
-                <p>size: {{ image_list[index].size/1024 }}KB</p> -->
+              <p class="mb-0 ml-5">file name: {{ image_list[index].name }}</p>
+                <!-- <p>size: {{ image_list[index].size/1024 }}KB</p> -->
             </div>
+            <ButtonCom msg="Clear all" class="p-1 mt-7" style="background-color: #f9d5a7" @click="reset"></ButtonCom>
           </template>
-          <ButtonCom msg="Clear all" class="p-1 mt-7" style="background-color: #f9d5a7" @click="reset"></ButtonCom>
+          
         </div>
       </div>
     </div>
@@ -59,28 +58,64 @@
         style="background-color: #02b072"></ButtonCom>
       <ButtonCom msg="ยกเลิก" class="p-2 mt-6 mb-2 text-black w-28" style="background-color: #fc2525"></ButtonCom>
     </div>
+    </form>
   </div>
 </template>
 
 <script>
 import 'sweetalert2/dist/sweetalert2.min.css';
 import ButtonCom from "@/components/ButtonCom.vue";
+import LocationService from "../services/location.service";
+import FileStoreService from "../services/file-store.service";
+import repairNotificationService from '@/services/repair-notification.service';
 export default {
   components: { ButtonCom },
   data() {
     return {
-      preview: null,
+      location_list:[],
       image: null,
-      preview_list: [],
-      image_list: [],
-      organize: {
-        receiving: '',
-        place: '',
-        detail: ''
+      preview: null,
+      image_list:[],
+      preview_list:[],
+      repairId: 0,
+      from: {
+        id: 0,
+        location: '',
+        detail: '',
       }
     };
   },
+  created(){
+    this.getLocationList()
+    this.preview
+
+  },
   methods: {
+    createRepairNotification (){
+      console.log(this.from)
+      repairNotificationService.createRepairNotification(this.from).then ((response) => {
+        this.repairId = response.data.repairNotificationId
+      }).then (() => {
+        console.log(this.repairId)
+        console.log(this.image_list)
+        this.uploadFile(this.repairId,this.image_list)
+      })
+    
+    
+    },
+    uploadFile (repairId, image_list){
+      console.log(this.repairId)
+      console.log(this.image_list)
+      FileStoreService.uploadMultipleFiles(repairId,image_list)
+    },
+    getLocationList(){
+      LocationService.getAllLocation().then(reponse => {
+        this.location_list = reponse.data;
+        console.log(reponse);
+      }).catch(e => {
+        console.log(e)
+      })
+    },
     previewMultiImage: function (event) {
       var input = event.target;
       var count = input.files.length;

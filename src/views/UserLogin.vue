@@ -12,7 +12,7 @@
                 name="username"
                 type="text"
                 class="form-control ring-1 ring-black"
-                placeholder="Email"
+                placeholder="username"
               />
               <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
             </div>
@@ -79,7 +79,7 @@ export default {
   components: { ButtonCom, Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Email is required!"),
+      username: yup.string().required("Username is required!"),
       password: yup.string().required("Password is required!"),
     });
     return {

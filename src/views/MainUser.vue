@@ -7,7 +7,7 @@
         /></router-link>
       </div>
       <div class="flex items-center justify-center h-96 w-96">
-        <router-link to="/mainuser"
+        <router-link to="/trackMrr"
           ><img src="@/assets/trackstatus.png" class="w-5/6 ml-3 h-5/6"
         /></router-link>
       </div>

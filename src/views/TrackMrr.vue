@@ -53,11 +53,12 @@
   
 
   <script>
-
+  import repairNotificationService from '@/services/repair-notification.service';
   export default {
-    components: { },
     data() {
       return {
+        user: JSON.parse(localStorage.getItem('user')),
+        listRepair: [],
         items: [
           {
           topic: 'Test',
@@ -78,9 +79,10 @@
       ]
       };
     },
-    computed: {
-
-    }, 
+    created(){
+      this.getListRepairNotificationByUsername(this.user.username)
+      console.log(this.user)
+    },
     methods: {
       clrBgStatus(index, status) {
         if (this.items[index].status === 0) {
@@ -107,6 +109,12 @@
         } else {
           return 'text-[#DDDDDD]'
         }
+      },
+      getListRepairNotificationByUsername (username){
+        repairNotificationService.getAllRepairNotificationByUsername(username).then( reponse => {
+          this.listRepair = reponse.data;
+          console.log(this.listRepair);
+        })
       },
     },
   };
