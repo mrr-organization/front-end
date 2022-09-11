@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'http://localhost:8080/api/repair-notification/';
+const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/repair-notification/';
 class RepairNotificationService {
     // createRepairNotification(from) {
     //   let user = JSON.parse(localStorage.getItem('user'));
