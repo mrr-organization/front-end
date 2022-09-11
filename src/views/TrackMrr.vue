@@ -30,7 +30,7 @@
                 <span :class="`${clrTxtStatus(index, 'success')}`">เสร็จสิ้น</span>
               </div>
             </div>
-            <div v-if="item.status === 0 || item.status === 1" class="w-2/12">
+            <div v-if="item.status === '' || item.status === 'PENDING'" class="w-2/12">
               <router-link to="/editnotirepair"><button class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium">แก้ไขข้อมูล</button></router-link>
             </div> 
             <div v-else class="w-2/12">
