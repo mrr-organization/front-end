@@ -5,10 +5,13 @@
         <router-link to="/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
           <img src="../assets/Usernav.svg" /> <span class="self-center ml-4"> บัญชี </span>
         </router-link>
-        <router-link to="/notirepair" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+        <button  class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
           <img src="../assets/ring.svg" /> <span class="self-center ml-4"> การแจ้งเตือน </span>  
-        </router-link>
-        <router-link to="/notirepair" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+        </button>
+        <!-- <router-link to="/notirepair" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+          <img src="../assets/ring.svg" /> <span class="self-center ml-4"> การแจ้งเตือน </span>  
+        </router-link> -->
+        <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
           <img src="../assets/dashboard.svg" /> <span class="self-center ml-4"> แดชบอร์ด </span>  
         </router-link>
         <router-link to="/notirepair" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
@@ -54,7 +57,7 @@
           >
           <router-link
             to="/about"
-            class="absolute self-end p-2 my-1 text-base font-semibold rounded right-4"
+            class="absolute self-end p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
             style="color: #ffffff; background-color: #384bb1"
             href="#"
             v-if="!isLogin"
