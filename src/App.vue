@@ -8,17 +8,15 @@
 </template>
 
 <script>
-
 import NavBurger from "@/components/NavBurger.vue";
 
 export default {
   components: {
     NavBurger,
-
   },
 };
-</script>
 
+</script>
 
 <style>
 #app {

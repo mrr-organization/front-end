@@ -107,7 +107,7 @@
 
 <script>
 import 'sweetalert2/dist/sweetalert2.min.css';
-import ButtonCom from "@/components/ButtonCom.vue";
+import ButtonCom from "@/components/BasicButton.vue";
 export default {
   components: { ButtonCom },
   data() {

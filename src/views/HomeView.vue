@@ -27,7 +27,7 @@
 
 <script>
 // @ is an alias to /src
-import ButtonCom from "@/components/ButtonCom.vue";
+import ButtonCom from "@/components/BasicButton.vue";
 
 export default {
   name: "HomeView",

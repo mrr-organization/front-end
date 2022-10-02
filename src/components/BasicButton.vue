@@ -13,10 +13,10 @@ export default {
   props: {
     msg: String,
   },
+  
   methods: {
     showAlert() {
       this.$emit('handleClick')
-      console.log('ddd')
     }
   }
 };
