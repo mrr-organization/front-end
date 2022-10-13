@@ -61,7 +61,6 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 export default {
-  name: "SignIn",
   components: { Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
