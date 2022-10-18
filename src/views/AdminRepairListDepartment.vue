@@ -92,7 +92,7 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
 td {
   @apply px-1 py-3 sm:px-2 lg:p-4;
 }

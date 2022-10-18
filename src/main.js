@@ -1,10 +1,5 @@
-import {
-  createApp
-} from 'vue';
-
-import {
-  FontAwesomeIcon
-} from './plugins/font-awesome'
+import { createApp } from 'vue';
+import { FontAwesomeIcon } from './plugins/font-awesome'
 
 import App from './App.vue';
 import router from './router';
@@ -18,12 +13,12 @@ import vue3GoogleLogin from 'vue3-google-login';
 
 const vue = createApp(App)
 
-vue.use(VueSweetalert2)
 vue.use(store)
 vue.use(router)
 vue.use(vue3GoogleLogin, {
   clientId: '572136461344-oadoj9hm1t5e4f048d650ek322n1q9al.apps.googleusercontent.com'
 })
+vue.use(VueSweetalert2)
 
 vue.component("font-awesome-icon", FontAwesomeIcon)
 
