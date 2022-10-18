@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-center min-h-screen">
-    <div class="flex flex-col w-full mx-10 mb-10 h-96">
+    <div class="flex w-full mb-10 mx-96 h-96">
       <!-- basic login-->
       <div class="flex flex-col items-center justify-center">
-        <div class="text-2xl font-bold" style="color: #312a21">
+        <div class="text-3xl font-bold" style="color: #312a21">
           ยินดีต้อนรับสู่ MRR
         </div>
         <Form @submit="handleLogin" :validation-schema="schema">
@@ -12,7 +12,7 @@
               <Field
                 name="username"
                 type="text"
-                class="form-control ring-1 ring-black"
+                class="p-2 rounded form-control ring-1 ring-black"
                 placeholder="username"
               />
               <ErrorMessage
@@ -24,7 +24,7 @@
               <Field
                 name="password"
                 type="password"
-                class="form-control ring-1 ring-black"
+                class="p-2 rounded form-control ring-1 ring-black"
                 placeholder="Password"
               />
               <ErrorMessage
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
               <button
-                class="btn btn-block"
+                class="p-2 px-16 rounded btn btn-block"
                 style="background-color: #384bb1"
                 :disabled="loading"
               >
@@ -57,12 +57,8 @@
       </div>
       <!-- or div-->
       <div
-        class="flex items-center justify-center mx-auto font-semibold w-60"
-        style="color: #312a21"
+        class="w-0.5 mx-auto bg-black h-96"
       >
-        <span class="w-1/2 h-0.5 bg-black mx-2" />
-        <div class="px-2">or</div>
-        <span class="w-1/2 h-0.5 bg-black mx-2" />
       </div>
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
@@ -115,7 +111,7 @@ export default {
   mounted() {},
   methods: {
     redirectToRegisterPage() {
-      this.$router.push("/register");
+      this.$router.push("/user-register");
     },
     handleLogin(user) {
       this.loading = true;

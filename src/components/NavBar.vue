@@ -69,7 +69,7 @@
     </div>
 
     <router-link to="/" 
-    class="p-2 text-2xl font-semibold uppercase rounded-lg" 
+    class="p-2 text-2xl font-semibold uppercase rounded-lg " 
     style="color: #384bb1">MRR</router-link>
     <!-- loggedIn = true -->
     <div v-if="loggedIn" class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4">
