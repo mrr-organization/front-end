@@ -16,8 +16,8 @@
          <!-- onClick = true -->
         <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black">
          
-          <div v-if="levelRole === 1" class="space-y-2 ">
-            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+          <div v-if="levelRole === 1" class="mt-6 space-y-5 space-x-9 ">
+            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
@@ -33,8 +33,8 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 2" class="mt-6 space-x-5 space-y-3">
-            <router-link to="/admin/profile" class="flex ml-5 text-xl font-semibold text-black hover:text-black hover:no-underline">
+          <div v-if="levelRole === 2" class="mt-6 space-y-5 space-x-9">
+            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black ml-9 hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
@@ -50,8 +50,8 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">สถานะแจ้งซ่อม</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 3"  class="space-y-2 ">
-            <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+          <div v-if="levelRole === 3"  class="mt-6 space-y-5 space-x-9 ">
+            <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9 ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
