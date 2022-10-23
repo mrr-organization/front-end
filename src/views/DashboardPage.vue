@@ -5,15 +5,7 @@
       <img src="../assets/Piechart.svg" class="h-60" />
     </div>
     <div
-      class="
-        mx-auto
-        mt-20
-        overflow-auto
-        rounded-t-lg
-        sm:mt-24
-        max-w-7xl
-        sm:max-w-7xl
-      "
+      class="mx-auto mt-20 overflow-auto rounded-t-lg sm:mt-24 max-w-7xl sm:max-w-7xl"
       style="background-color: #fef1e6"
     >
       <table class="w-full text-xs table-auto sm:text-xl">
