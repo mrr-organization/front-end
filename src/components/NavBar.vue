@@ -10,26 +10,25 @@
           <button><font-awesome-icon icon="bars" size="2xl" class="mt-2 ml-4"/></button>
         </div>
         <div @click="onClick" v-if="statusClick">
-          <button class="mt-2 ml-4 text-xl font-bold uppercase"  ><font-awesome-icon icon="xmark"  size="2xl" /> close  </button>
+          <button class="mt-2 ml-4 text-xl font-bold uppercase"  ><font-awesome-icon icon="xmark"  size="2xl" /> close </button>
         </div>
         
          <!-- onClick = true -->
         <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black">
-         
           <div v-if="levelRole === 1" class="mt-6 space-y-5 space-x-9 ">
             <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
-            <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">การแจ้งเตือน</span>
             </router-link>
-            <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">แดชบอร์ด</span>
             </router-link>
-            <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">จัดการบัญชี</span>
             </router-link>
-            <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
             </router-link>
           </div>
