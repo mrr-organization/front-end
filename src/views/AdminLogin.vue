@@ -6,12 +6,12 @@
       </h1>
     </div>
     <Form @submit="handleLogin" :validation-schema="schema">
-      <div class="flex flex-col mt-10 space-y-4 item-center w-72">
+      <div class="flex flex-col space-y-6 mt-7 item-center w-72">
         <div class="form-group">
           <Field
             name="username"
             type="text"
-            class="form-control ring-1 ring-black"
+            class="p-2 rounded form-control ring-1 ring-black"
             placeholder="Email"
           />
           <ErrorMessage
@@ -23,7 +23,7 @@
           <Field
             name="password"
             type="password"
-            class="form-control ring-1 ring-black"
+            class="p-2 rounded form-control ring-1 ring-black"
             placeholder="Password"
           />
           <ErrorMessage
@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
           <button
-            class="btn btn-block"
+            class="p-2 rounded px-14 btn btn-block"
             style="background-color: #384bb1"
             :disabled="loading"
           >

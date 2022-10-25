@@ -1,78 +1,79 @@
 <template>
-  <div class="flex flex-col items-center justify-center ">
+  <div class="items-center justify-center ">
     <div class="flex items-center justify-center p-4 mt-16">
       <h1 class="text-3xl font-semibold " style="color: #312a21">
         สมัครใช้งาน MMR
       </h1>
     </div>
-    <div class="flex flex-col space-y-8 item-center w-72">
+    <div class="flex mt-10 mx-96">
       <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful">
-        <div class=" form-group">
+        <div v-if="!successful" class="space-y-5">
+        <div class="flex flex-col form-group">
             <Field
               name="username"
               type="username"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Username"
             />
             <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="email"
               type="email"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Email@mail.kmutt.ac.th"
             />
             <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="fname"
               type="fname"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Firstname"
             />
             <ErrorMessage name="fname" class="font-semibold text-red-500 error-feedback" />
           </div>
-                    <div class="form-group">
+                    <div class="flex flex-col form-group">
             <Field
               name="lname"
               type="lname"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Lastname"
             />
             <ErrorMessage name="lname" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="password"
               type="password"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Password"
             />
             <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="comfirmPassword"
               type="password"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Confirm password"
             />
             <ErrorMessage name="comfirmPassword" class="font-semibold text-red-500 error-feedback" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="phone"
               type="text"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Phone number"
             />
             <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
-          </div>
-        
-            <div class="flex flex-row justify-between mt-5 item-center">
+          </div>        
+        </div>
+        <!-- สมัคร / ยกเลิก -->
+        <div class="absolute left-0 right-0 flex flex-row justify-center mt-16 space-x-16 item-center">
               <button
                 class="bg-[#384BB1] px-10 py-1 rounded"
                 :disabled="loading"
@@ -95,8 +96,6 @@
               </button>
                 </router-link>
             </div>
-          
-        </div>
       </Form>
     </div>
     <div

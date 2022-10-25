@@ -1,20 +1,22 @@
 <template>
 <div class="relative">
-    
-    <div class="fixed top-0 left-0 right-0 flex flex-row bg-white">
+    <div class="fixed top-0 left-0 right-0 flex flex-row justify-between bg-white">
     <!-- bars -->
     <div>
       <div v-show="loggedIn">
         <!-- Menu -->
         <!-- onClick = false -->
-        <div @click="onClick" v-if="!statusClick">
-          <button><font-awesome-icon icon="bars"/></button>
+        <div @click="onClick" v-if="!statusClick" >
+          <button><font-awesome-icon icon="bars" size="2xl" class="mt-2 ml-4"/></button>
         </div>
+        <div @click="onClick" v-if="statusClick">
+          <button class="mt-2 ml-4 text-xl font-bold uppercase"  ><font-awesome-icon icon="xmark"  size="2xl" /> close </button>
+        </div>
+        
          <!-- onClick = true -->
-        <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-14">
-          <button ><font-awesome-icon icon="xmark"/> ปิด</button>
-          <div v-if="levelRole === 1">
-            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
+        <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black">
+          <div v-if="levelRole === 1" class="mt-6 space-y-5 space-x-9 ">
+            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
@@ -30,8 +32,8 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 2">
-            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+          <div v-if="levelRole === 2" class="mt-6 space-y-5 space-x-9">
+            <router-link to="/admin/profile" class="flex text-xl font-semibold text-black ml-9 hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
@@ -47,8 +49,8 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">สถานะแจ้งซ่อม</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 3">
-            <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+          <div v-if="levelRole === 3"  class="mt-6 space-y-5 space-x-9 ">
+            <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9 ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
             <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
@@ -69,7 +71,7 @@
     </div>
 
     <router-link to="/" 
-    class="p-2 text-2xl font-semibold uppercase rounded-lg" 
+    class="flex justify-center mt-2 text-2xl font-semibold uppercase item-center" 
     style="color: #384bb1">MRR</router-link>
     <!-- loggedIn = true -->
     <div v-if="loggedIn" class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4">
