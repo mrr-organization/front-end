@@ -14,17 +14,24 @@
               type="username"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Username"
+              v-model="state.username"
             />
-            <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.username.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.username.$errors[0].$message }}
+            </span>
           </div>
           <div class="flex flex-col form-group">
             <Field
               name="email"
               type="email"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Email@mail.kmutt.ac.th"
+              placeholder="Kmutt Email"
+              v-model="state.email"
             />
-            <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
+           <span v-if="v$.email.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.email.$errors[0].$message }}
+            </span>
+            
           </div>
           <div class="flex flex-col form-group">
             <Field
@@ -32,8 +39,11 @@
               type="fname"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Firstname"
+              v-model="state.fname"
             />
-            <ErrorMessage name="fname" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.fname.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.fname.$errors[0].$message }}
+            </span>
           </div>
                     <div class="flex flex-col form-group">
             <Field
@@ -41,8 +51,11 @@
               type="lname"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Lastname"
+              v-model="state.lname"
             />
-            <ErrorMessage name="lname" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.lname.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.lname.$errors[0].$message }}
+            </span>
           </div>
           <div class="flex flex-col form-group">
             <Field
@@ -50,8 +63,11 @@
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Password"
+              v-model="state.password.password"
             />
-            <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.password.password.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.password.password.$errors[0].$message }}
+            </span>
           </div>
           <div class="flex flex-col form-group">
             <Field
@@ -59,8 +75,11 @@
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Confirm password"
+              v-model="state.password.comfirm"
             />
-            <ErrorMessage name="comfirmPassword" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.password.comfirm.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.password.comfirm.$errors[0].$message }}
+            </span>
           </div>
           <div class="flex flex-col form-group">
             <Field
@@ -68,21 +87,24 @@
               type="text"
               class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Phone number"
+              v-model="state.phone"
             />
-            <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
+            <span v-if="v$.phone.$error" class="font-semibold text-red-500 error-feedback" >
+            {{ v$.phone.$errors[0].$message }}
+            </span>
           </div>        
         </div>
         <!-- สมัคร / ยกเลิก -->
         <div class="absolute left-0 right-0 flex flex-row justify-center mt-16 space-x-16 item-center">
-              <button
+              <button @click="submitForm"
                 class="bg-[#384BB1] px-10 py-1 rounded"
-                :disabled="loading"
               >
-                <span
+              <!-- :disabled="loading" -->
+                <!-- <span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
-                ></span>
-                <span class="text-xl font-semibold" style="color: #ffffff"
+                ></span> -->
+                <span  class="text-xl font-semibold" style="color: #ffffff"
                   >สมัคร</span
                 >
               </button>
@@ -110,57 +132,98 @@
 
 <script>
 
-import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
+import { Form, Field } from "vee-validate";
+import useValidate from '@vuelidate/core'
+import {required, email, minLength, sameAs, helpers} from '@vuelidate/validators'
+import {reactive, computed} from 'vue'
+// import * as yup from "yup";
 export default {
   name: "RegisterUser",
-  components: { Form, Field, ErrorMessage },
-  data() {
-    const schema = yup.object().shape({
-      username: yup
-        .string()
-        .required("Username is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(255, "Must be maximum 255 characters!"),
-      email: yup
-        .string()
-        .required("Email is required!")
-        .email("Email is invalid!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),
-      fname: yup
-        .string()
-        .required("Firstname is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),  
-      lname: yup
-        .string()
-        .required("Lastname is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),  
-      password: yup
-        .string()
-        .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
-      comfirmPassword: yup
-        .string()
-        .required("Confirm password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
-      phone: yup
-        .string()
-        .required("Phone number is required!")
-        .min(4, "Must be at least 4 number!")
-        .max(10, "Must be maximum 10 number!"),
-    });
-    return {
-      successful: false,
-      loading: false,
-      message: "",
-      schema,
-    };
+  components: { Form, Field },
+  setup(){
+    const state = reactive ({
+      username: '',
+      email: '',
+      fname: '',
+      lname: '',
+      password: {
+        password: '',
+        comfirm: '',
+      },
+      phone: '',
+    })
+    
+    const mustBekmuttmail = (value) => value.includes ('mail.kmutt.ac.th') 
+ 
+    const rules = computed(() => {
+      return {
+        username: { required } ,
+      email: { required, email, mustBekmuttmail: helpers.withMessage('Must be Kmutt Mail',mustBekmuttmail) },
+      fname: { required },
+      lname: { required },
+      password: {
+        password: { required, minLength:minLength(6) },
+        comfirm: { required, sameAs: sameAs(state.password.password) },
+      },
+      phone: { required,minLength:minLength(9) },
+      }
+    })
+
+    const v$ = useValidate(rules, state)
+
+    return{
+      state,
+      v$,
+    }
   },
+
+ 
+  // data() {
+  //   const schema = yup.object().shape({
+  //     username: yup
+  //       .string()
+  //       .required("Username is required!")
+  //       .min(6, "Must be at least 6 characters!")
+  //       .max(255, "Must be maximum 255 characters!"),
+  //     email: yup
+  //       .string()
+  //       .required("Email is required!")
+  //       .email("Email is invalid!")
+  //       .min(3, "Must be at least 3 characters!")
+  //       .max(255, "Must be maximum 255 characters!"),
+  //     fname: yup
+  //       .string()
+  //       .required("Firstname is required!")
+  //       .min(3, "Must be at least 3 characters!")
+  //       .max(255, "Must be maximum 255 characters!"),  
+  //     lname: yup
+  //       .string()
+  //       .required("Lastname is required!")
+  //       .min(3, "Must be at least 3 characters!")
+  //       .max(255, "Must be maximum 255 characters!"),  
+  //     password: yup
+  //       .string()
+  //       .required("Password is required!")
+  //       .min(6, "Must be at least 6 characters!")
+  //       .max(40, "Must be maximum 40 characters!"),
+  //     comfirmPassword: yup
+  //       .string()
+  //       .required("Confirm password is required!")
+  //       .min(6, "Must be at least 6 characters!")
+  //       .max(40, "Must be maximum 40 characters!"),
+  //     phone: yup
+  //       .string()
+  //       .required("Phone number is required!")
+  //       .min(4, "Must be at least 4 number!")
+  //       .max(10, "Must be maximum 10 number!"),
+  //   });
+  //   return {
+  //     successful: false,
+  //     loading: false,
+  //     message: "",
+  //     schema,
+  //   };
+  // },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
@@ -172,6 +235,14 @@ export default {
     }
   },
   methods: {
+    submitForm() {
+      this.v$.$validate()
+      if(!this.v$.$error){
+        alert('Form successfully subyo')
+      } else {
+      alert('Form failed wa')
+     }
+    },
     handleRegister(user) {
       console.log(user)
       this.message = "";
