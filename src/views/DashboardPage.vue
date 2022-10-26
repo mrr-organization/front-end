@@ -1,11 +1,11 @@
 <template>
   <div class="mt-20">
     <div class="flex flex-row items-center justify-center mt-5">
-      <img src="../assets/Bargraph.svg" class="h-60" />
-      <img src="../assets/Piechart.svg" class="h-60" />
+      <img src="../assets/Bargraph.svg" class="h-24 sm:h-60" />
+      <img src="../assets/Piechart.svg" class="h-24 sm:h-60" />
     </div>
     <div
-      class="mx-auto mt-20 overflow-auto rounded-t-lg sm:mt-24 max-w-7xl sm:max-w-7xl"
+      class="mx-auto mt-20 overflow-auto rounded-t-lg sm:mt-16 max-w-7xl sm:max-w-7xl"
       style="background-color: #fef1e6"
     >
       <table class="w-full text-xs table-auto sm:text-xl">
@@ -13,7 +13,6 @@
           <tr class="bg-white">
             <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
             <th>สถานที่ / พื่นที่</th>
-            <th>ผู้แจ้ง / ผู้ร้องเรียน</th>
             <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
           </tr>
         </thead>
@@ -21,55 +20,46 @@
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwinx</td>
             <td>กำลังดำเนินการ</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>ไม่ผ่านการตรวจสอบ</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>กำลังดำเนินการ</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
           <tr>
             <td>20-8-2000 18:04:02</td>
             <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
             <td>การดำเนินการเสร็จสิ้น</td>
           </tr>
         </tbody>
