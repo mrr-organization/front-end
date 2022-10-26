@@ -19,13 +19,19 @@ class RepairNotificationService {
   getAllRepairNotification() {
     return axios.get(API_URL + 'all')
   }
-
-  getAllRepairNotificationByStatus(status) {
-    return axios.get(API_URL + 'all/' + status)
+  getCountStatus() {
+    return axios.get(API_URL + 'count/status')
+  }
+  getCountYear(year) {
+    return axios.get(API_URL + 'count/' + year)
   }
 
-  getAllRepairNotificationByUsername(username) {
-    return axios.get(API_URL + 'user/' + username, { headers: authHeader() })
+  getAllRepairNotificationByStatus(status, pageNumber) {
+    return axios.get(API_URL + 'all/' + status + "/" + pageNumber + "/6")
+  }
+
+  getAllRepairNotificationByUsername(username, offSet) {
+    return axios.get(API_URL + 'user/' + username +"/" + offSet +"/6", { headers: authHeader() })
   }
 
   updateDepartment(updateDeptData) {

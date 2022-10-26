@@ -1,5 +1,6 @@
 <template>
-  <div class="mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
+   
+    <div class="mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
     <div class="p-6 text-left bg-white mt-14">
       <h2 style="color: #312a21">ติดตามสถานะแจ้งซ่อม</h2>
     </div>
@@ -64,15 +65,23 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+    <VSPagination :totalPages="totalPages" @page-number="getListRepairFromPageNumber">
+    </VSPagination>
 </template>
   
-  <script>
+<script>
 import repairNotificationService from "@/services/repair-notification.service";
+import VSPagination from "../components/VSPagination.vue"
 export default {
+  components: {
+    VSPagination
+  },
   data() {
     return {
       listRepair: [],
+      totalPages: 0,
+      pageNumber: 0
     };
   },
 
@@ -83,12 +92,13 @@ export default {
   },
 
   created() {
-    this.getListRepairNotificationByUsername(this.user.username);
-    console.log(this.listRepair);
-    console.log(this.user);
+    this.getListRepairNotificationByUsername(this.user.username, this.pageNumber);
   },
-  
+
   methods: {
+    getListRepairFromPageNumber(pageNumber){
+      this.getListRepairNotificationByUsername(this.user.username, pageNumber)
+    },
     redirectToEditPage(id){
       this.$router.push({ path: `/user/edit/repair-notification/${id}`})
     },
@@ -142,11 +152,14 @@ export default {
         return "text-[#DDDDDD]";
       }
     },
-    getListRepairNotificationByUsername(username) {
+    getListRepairNotificationByUsername(username, pageNumber) {
       repairNotificationService
-        .getAllRepairNotificationByUsername(username)
+        .getAllRepairNotificationByUsername(username, pageNumber)
         .then((response) => {
-          this.listRepair = response.data.responseData;
+
+          this.listRepair = response.data.responseData.content;
+          this.totalPages = response.data.responseData.totalPages;
+
           console.log(this.listRepair);
         });
     },

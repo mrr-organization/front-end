@@ -19,19 +19,9 @@
                 {{ location.locationName }}
               </option>
             </select>
-            <!-- <datalist id="auto-complete">
-            <option v-for="localtion in location_list" :value="location.locationName" :key="localtion.id">{{localtion.locationName}}</option>
-          </datalist> -->
           </div>
         </div>
       </div>
-      <!-- <div class="max-w-4xl mx-auto mt-3">
-      <div>
-        <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>
-        <textarea v-model="from.location" class="w-full p-4 h-28 ring-1 ring-black"
-          placeholder="ใส่รายละเอียดสถานที่เรื่องร้องเรียน"></textarea>
-      </div>
-    </div> -->
       <div class="max-w-4xl mx-auto mt-3">
         <div>
           <h3 class="text-left" style="color: #312a21">รายละเอียด</h3>
@@ -117,6 +107,7 @@ export default {
       image_list: [],
       preview_list: [],
       repairId: 0,
+      imagesType: "REPAIR",
       from: {
         id: 0,
         location: "",
@@ -129,23 +120,23 @@ export default {
     this.preview;
   },
   methods: {
-    createRepairNotification() {
+    async createRepairNotification() {
       console.log(this.from);
-      repairNotificationService
+      await repairNotificationService
         .createRepairNotification(this.from)
         .then((response) => {
-          this.repairId = response.data.responseData.repairNotificationId;
+          this.repairId = response.data.responseData.repairId;
         })
         .then(() => {
           console.log(this.repairId);
           console.log(this.image_list);
-          this.uploadFile(this.repairId, this.image_list);
+          this.uploadFile(this.repairId, this.image_list, this.imagesType);
         });
     },
-    uploadFile(repairId, image_list) {
+    uploadFile(repairId, image_list, imagesType) {
       console.log(this.repairId);
       console.log(this.image_list);
-      FileStoreService.uploadMultipleFiles(repairId, image_list);
+      FileStoreService.uploadMultipleFiles(repairId, image_list, imagesType);
     },
     getLocationList() {
       LocationService.getAllLocation()

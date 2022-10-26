@@ -16,9 +16,14 @@ const vue = createApp(App)
 // const gAuthOptions = { clientId: '123203089962-pb0mmu5jokm94thbug0q6e0e51gkvt33.apps.googleusercontent.com', scope: 'email', prompt: 'consent', fetch_basic_profile: false }
 // vue.use(GAuth, gAuthOptions)
 
+
 vue.use(store)
 vue.use(router)
 
+import VueChartkick from 'vue-chartkick'
+import 'chartkick/chart.js'
+
+vue.use(VueChartkick)
 vue.use(VueSweetalert2)
 
 vue.component("font-awesome-icon", FontAwesomeIcon)

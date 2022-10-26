@@ -33,8 +33,8 @@ class FileService {
     return axios.get(API_URL + 'repair-image/' + repairId, { headers: authHeader() })
   }
 
-  getFileNameByUID(UID) {
-    return axios.get(API_URL + 'UID/' + UID, { headers: authHeader() })
+  getFileNameByUID(uid) {
+    return axios.get(API_URL + 'UID/' + uid, { headers: authHeader() })
   }
 }
 export default new FileService();
