@@ -8,7 +8,7 @@ const routeOptions = [
   {path: '/user-login', name: 'UserLogin'},
   {path: '/admin-login', name: 'AdminLogin'},
   {path: '/user-register', name: 'UserRegister'},
-  {path: '/admin-register', name: 'AdminRegister'},
+  {path: '/moderator-register', name: 'ModeratorRegister'},
   {path: '/user-service', name: 'UserPage'},
   {path: '/user/profile', name: 'UserProfile'},
   {path: '/user/track-repair', name: 'UserTrackRepair'},
@@ -16,12 +16,14 @@ const routeOptions = [
   {path: '/user/repair-notification', name:'UserRepairNotification'},
   {path: '/user/edit/repair-notification', name:'UserEditRepairNotification'},
   {path: '/admin-service', name: 'AdminPage'},
+  {path: '/moderator-service', name: 'ModeratorPage'},
   {path: '/admin/profile', name: 'AdminProfile'},
   {path: '/admin/repair-list', name:'AdminRepairList'},
   {path: '/admin/repair-list/department', name:'AdminRepairListDepartment'},
   {path: '/admin/manage-member', name: 'AdminManageMember'},
   {path: '/admin/edit/repair-status', name:'AdminEditRepairStatus'},
-  {path: '/notification', name:'NotificationPage'}
+  {path: '/notification', name:'NotificationPage'},
+  {path: '/no-permission', name:'NoPermissionPage'}
 ];
 
 const routes = routeOptions.map(route => {

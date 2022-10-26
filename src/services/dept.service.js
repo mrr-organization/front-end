@@ -1,9 +1,20 @@
 import axios from 'axios';
-import authHeader from './auth-header';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/dept/';
+const API_URL = 'http://localhost:8080/api/department-service/';
 class DepartmentService {
   getAllDepartments() {
-    return axios.get(API_URL + 'departments', { headers: authHeader() });
+    return axios.get(API_URL);
+  }
+  getDepartmentsById(id) {
+    return axios.get(API_URL + 'department-by-id/' + id)
+  }
+  getDepartmentsByName(name) {
+    return axios.get(API_URL + 'department-by-name/' + name)
+  }
+  getDepartmentsByLevel(level) {
+    return axios.get(API_URL + 'department-by-level/' + level)
+  }
+  getDepartmentsByCode(code) {
+    return axios.get(API_URL + 'department-by-code/' + code)
   }
 }
 export default new DepartmentService();

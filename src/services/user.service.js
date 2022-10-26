@@ -1,12 +1,19 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/user/';
+const API_URL = 'http://localhost:8080/api/user-service/';
 class UserService {
-  editUser(username) {
-    return axios.put(API_URL + 'edit-user/' + username, { headers: authHeader() });
+  editUser(user) {
+    return axios.post(API_URL + 'edit-user?username=' + user.username ,
+    {    
+    username : user.username,
+    firstName : user.firstName,
+    lastName:  user.lastName,
+    phone : user.phone,
+    userNo : user.userNo}
+    , { headers: authHeader() });
   }
-  getUserDetailByUserNo(userNo) {
-    return axios.get(API_URL + userNo, { headers: authHeader() });
+  deleteUserByAdmin(username) {
+    return axios.delete(API_URL + 'delete/'+ username, { headers: authHeader() });
   }
 }
 export default new UserService();

@@ -11,9 +11,9 @@
       </div>
       <div class="flex flex-col gap-y-4 ">
         <div class="flex items-center justify-center p-3 sm:p-5 bg-white rounded-full h-36 w-36 lg:w-96 md:h-96 md:w-96 self-center">
-          <router-link to="/adminlogin"><img src="@/assets/Admin.png" class="w-full sm:w-5/6 sm:ml-6 h-32 md:h-auto object-contain" /></router-link>
+          <router-link to="/admin-login"><img src="@/assets/Admin.png" class="w-full sm:w-5/6 sm:ml-6 h-32 md:h-auto object-contain" /></router-link>
         </div>
-        <router-link to="/adminlogin">
+        <router-link to="/admin-login">
           <ButtonCom msg="หน่วยงาน / ผู้ดูแลระบบ" class="p-2"></ButtonCom>
         </router-link>
       </div>

@@ -63,8 +63,7 @@
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">
-          <div id="google-signin-button"></div>
-          <GoogleSignup></GoogleSignup>
+          <GoogleSignup class="w-56 p-3" style="background-color: #faf0ef; color: #312a21" ></GoogleSignup>
           <ButtonCom
             @click="redirectToRegisterPage"
             msg="สมัครใช้งาน"
@@ -83,15 +82,22 @@ import ButtonCom from "@/components/BasicButton.vue";
 import GoogleSignup from "@/components/GoogleSignup.vue";
 
 import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
+
 export default {
-  name: "SignIn",
   components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
   data() {
-    const schema = yup.object().shape({
-      username: yup.string().required("Username is required!"),
-      password: yup.string().required("Password is required!"),
-    });
+    const schema = {
+  username(value) {
+    // validate email value and return messages...
+    if (!value) {return '1' + value}
+    return true;
+  },
+  password(value) {
+    // validate password value and return messages...
+    if (!value) {return '1' + value}
+    return true;
+  },
+};
     return {
       loading: false,
       message: "",
@@ -105,8 +111,10 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/userlogin");
+      this.$router.push("/user-loin");
     }
+  
+
   },
   mounted() {},
   methods: {
@@ -117,7 +125,7 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/mainuser");
+          this.$router.push("/user-service");
         },
         (error) => {
           this.loading = false;
@@ -130,7 +138,7 @@ export default {
         }
       );
     },
-  },
+  }
 };
 </script>
 

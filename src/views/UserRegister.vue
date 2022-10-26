@@ -5,10 +5,11 @@
         สมัครใช้งาน MMR
       </h1>
     </div>
-    <div class="flex mt-10 mx-96">
+    <div class="mt-10 mx-96">
       <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful" class="space-y-5">
-        <div class="flex flex-col form-group">
+        <div v-if="!successful" class="flex flex-row justify-between">
+          <div class="grid grid-rows-7 grid-col-2 gap-4 m-10 w-3/4">
+            <div class="form-group">
             <Field
               name="username"
               type="username"
@@ -20,7 +21,7 @@
             {{ v$.username.$errors[0].$message }}
             </span>
           </div>
-          <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="email"
               type="email"
@@ -33,7 +34,7 @@
             </span>
             
           </div>
-          <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="fname"
               type="fname"
@@ -45,7 +46,7 @@
             {{ v$.fname.$errors[0].$message }}
             </span>
           </div>
-                    <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="lname"
               type="lname"
@@ -57,7 +58,7 @@
             {{ v$.lname.$errors[0].$message }}
             </span>
           </div>
-          <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="password"
               type="password"
@@ -69,7 +70,7 @@
             {{ v$.password.password.$errors[0].$message }}
             </span>
           </div>
-          <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="comfirmPassword"
               type="password"
@@ -81,7 +82,7 @@
             {{ v$.password.comfirm.$errors[0].$message }}
             </span>
           </div>
-          <div class="flex flex-col form-group">
+          <div class="form-group">
             <Field
               name="phone"
               type="text"
@@ -92,7 +93,18 @@
             <span v-if="v$.phone.$error" class="font-semibold text-red-500 error-feedback" >
             {{ v$.phone.$errors[0].$message }}
             </span>
-          </div>        
+          </div>
+          </div>
+       
+          <div class="flex-row  w-3/4 h-72  m-10">
+            <div class="form-group w-3/4 h-3/5 bg-white opacity-50  m-auto">
+              <span class="text-xl">หน่วยงานที่สังกัด</span>
+              
+            </div>
+            <div class="form-group w-3/4 h-3/5 bg-white opacity-50  m-auto mt-9">
+              <span class="text-xl">ภาควิชา / สาขา</span>
+            </div>
+          </div>
         </div>
         <!-- สมัคร / ยกเลิก -->
         <div class="absolute left-0 right-0 flex flex-row justify-center mt-16 space-x-16 item-center">
@@ -108,7 +120,7 @@
                   >สมัคร</span
                 >
               </button>
-              <router-link to="/UserLogin"
+              <router-link to="/user-login"
                 ><button
                 class="bg-[#FC2525] px-10 py-1 rounded"
               >
@@ -136,6 +148,7 @@ import { Form, Field } from "vee-validate";
 import useValidate from '@vuelidate/core'
 import {required, email, minLength, sameAs, helpers} from '@vuelidate/validators'
 import {reactive, computed} from 'vue'
+
 // import * as yup from "yup";
 export default {
   name: "RegisterUser",
@@ -177,57 +190,13 @@ export default {
     }
   },
 
- 
-  // data() {
-  //   const schema = yup.object().shape({
-  //     username: yup
-  //       .string()
-  //       .required("Username is required!")
-  //       .min(6, "Must be at least 6 characters!")
-  //       .max(255, "Must be maximum 255 characters!"),
-  //     email: yup
-  //       .string()
-  //       .required("Email is required!")
-  //       .email("Email is invalid!")
-  //       .min(3, "Must be at least 3 characters!")
-  //       .max(255, "Must be maximum 255 characters!"),
-  //     fname: yup
-  //       .string()
-  //       .required("Firstname is required!")
-  //       .min(3, "Must be at least 3 characters!")
-  //       .max(255, "Must be maximum 255 characters!"),  
-  //     lname: yup
-  //       .string()
-  //       .required("Lastname is required!")
-  //       .min(3, "Must be at least 3 characters!")
-  //       .max(255, "Must be maximum 255 characters!"),  
-  //     password: yup
-  //       .string()
-  //       .required("Password is required!")
-  //       .min(6, "Must be at least 6 characters!")
-  //       .max(40, "Must be maximum 40 characters!"),
-  //     comfirmPassword: yup
-  //       .string()
-  //       .required("Confirm password is required!")
-  //       .min(6, "Must be at least 6 characters!")
-  //       .max(40, "Must be maximum 40 characters!"),
-  //     phone: yup
-  //       .string()
-  //       .required("Phone number is required!")
-  //       .min(4, "Must be at least 4 number!")
-  //       .max(10, "Must be maximum 10 number!"),
-  //   });
-  //   return {
-  //     successful: false,
-  //     loading: false,
-  //     message: "",
-  //     schema,
-  //   };
-  // },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+  },
+  created(){
+
   },
   mounted() {
     if (this.loggedIn) {

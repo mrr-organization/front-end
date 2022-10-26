@@ -64,8 +64,8 @@ export default {
   components: { Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Email is required!"),
-      password: yup.string().required("Password is required!"),
+      username: yup.string().required("username is required!"),
+      password: yup.string().required("password is required!"),
     });
     return {
       loading: false,
@@ -77,10 +77,13 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    user() {
+      return this.$store.state.auth.user;
+    }
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/adminlogin");
+      this.$router.push("/admin-login");
     }
   },
   methods: {
@@ -88,7 +91,15 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/mainadmin");
+          if(this.user.responseData.userType === "ADMIN") {
+            this.$router.push("/admin-service");
+          }
+          if(this.user.responseData.userType === "MODERATOR") {
+            this.$router.push("/moderator-service");
+          }
+          if(this.user.responseData.userType === "STUDENT" || this.$store.state.auth.user.userType === "PERSONNEL") {
+            this.$router.push("/no-permission");
+          }
         },
         (error) => {
           this.loading = false;

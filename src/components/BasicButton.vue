@@ -1,9 +1,6 @@
 <template>
-  <button
-    @click="showAlert"
-    class="font-bold rounded-lg "
-    style="color: #ffffff; background-color: #384bb1"
-  >
+  <button class="font-bold rounded-lg "
+    style="color: #ffffff; background-color: #384bb1">
     {{ msg }}
   </button>
 </template>
@@ -13,14 +10,5 @@ export default {
   props: {
     msg: String,
   },
-  
-  methods: {
-    showAlert() {
-      this.$emit('handleClick')
-    }
-  }
 };
 </script>
-
-<style>
-</style>

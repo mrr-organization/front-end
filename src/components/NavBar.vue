@@ -15,7 +15,7 @@
         
          <!-- onClick = true -->
         <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black">
-          <div v-if="levelRole === 1" class="mt-6 space-y-5 space-x-9 ">
+          <div v-if="user.responseData.userType === menuType[0]" class="mt-6 space-y-5 space-x-9 ">
             <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
@@ -28,11 +28,11 @@
             <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">จัดการบัญชี</span>
             </router-link>
-            <router-link to="/admin/manage-member" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
+            <router-link to="/admin/repair-list" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 2" class="mt-6 space-y-5 space-x-9">
+          <div v-if="user.responseData.userType === menuType[1]" class="mt-6 space-y-5 space-x-9">
             <router-link to="/admin/profile" class="flex text-xl font-semibold text-black ml-9 hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
@@ -49,7 +49,7 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">สถานะแจ้งซ่อม</span>
             </router-link>
           </div>
-          <div v-if="levelRole === 3"  class="mt-6 space-y-5 space-x-9 ">
+          <div v-if="user.responseData.userType === menuType[2] || user.responseData.userType === menuType[3]" class="mt-6 space-y-5 space-x-9">
             <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9 ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
@@ -82,9 +82,9 @@
     </div>
     <!-- loggedIn = false -->
     <div v-else class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4">
-    <router-link to="/about" 
+    <router-link to="/login-service" 
     class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4" 
-    style="color: #ffffff; background-color: #384bb1">เกี่ยวกับ</router-link>
+    style="color: #ffffff; background-color: #384bb1">เข้าสู่ระบบ</router-link>
     </div>
 
   </div>
@@ -96,12 +96,15 @@ export default {
   data() {
     return {
       statusClick: false,
-      levelRole: 3
+      menuType: ["ADMIN","MODERATOR", "STUDENT", "PERSONNEL"]
     }
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
+    },
+    user() {
+      return this.$store.state.auth.user;
     }
   },
   methods: {
@@ -121,6 +124,7 @@ export default {
       )
     },
     onClick (){
+      console.log(this.user)
       if (this.statusClick) {
         this.statusClick = false
       }else {

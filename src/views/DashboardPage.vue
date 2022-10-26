@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-20">
     <div class="flex flex-row items-center justify-center mt-5">
       <img src="../assets/Bargraph.svg" class="h-60" />
       <img src="../assets/Piechart.svg" class="h-60" />
