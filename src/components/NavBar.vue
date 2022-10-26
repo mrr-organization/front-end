@@ -15,13 +15,13 @@
         
          <!-- onClick = true -->
         <div @click="onClick" v-if="statusClick" class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black">
-          <div v-if="user.responseData.userType === menuType[0]" class="mt-6 space-y-5 space-x-9 ">
+          <div v-if="user.userType === menuType[0]" class="mt-6 space-y-5 space-x-9 ">
             <router-link to="/admin/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
-            <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
+            <button @click="handleClickNoti" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">การแจ้งเตือน</span>
-            </router-link>
+            </button>
             <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">แดชบอร์ด</span>
             </router-link>
@@ -32,13 +32,13 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
             </router-link>
           </div>
-          <div v-if="user.responseData.userType === menuType[1]" class="mt-6 space-y-5 space-x-9">
+          <div  v-if="user.userType === menuType[1]" class="mt-6 space-y-5 space-x-9">
             <router-link to="/admin/profile" class="flex text-xl font-semibold text-black ml-9 hover:text-black hover:no-underline">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
-            <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <button  @click="handleClickNoti" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">การแจ้งเตือน</span>
-            </router-link>
+            </button>
             <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">แดชบอร์ด</span>
             </router-link>
@@ -49,13 +49,13 @@
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">สถานะแจ้งซ่อม</span>
             </router-link>
           </div>
-          <div v-if="user.responseData.userType === menuType[2] || user.responseData.userType === menuType[3]" class="mt-6 space-y-5 space-x-9">
+          <div v-if="user.userType === menuType[2] || user.userType === menuType[3]" class="mt-6 space-y-5 space-x-9">
             <router-link to="/user/profile" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ml-9 ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">บัญชี</span>
             </router-link>
-            <router-link to="/notification" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
+            <button @click="handleClickNoti"  class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">การแจ้งเตือน</span>
-            </router-link>
+            </button>
             <router-link to="/dashboard" class="flex text-xl font-semibold text-black hover:text-black hover:no-underline ">
               <img src="../assets/Usernav.svg" /> <span class="self-center ml-4">แดชบอร์ด</span>
             </router-link>
@@ -130,6 +130,9 @@ export default {
       }else {
         this.statusClick = true
       }
+    },
+    handleClickNoti(){
+      this.$router.push('/notification')
     }
   }
 };

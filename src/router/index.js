@@ -14,7 +14,7 @@ const routeOptions = [
   {path: '/user/track-repair', name: 'UserTrackRepair'},
   {path: '/user/repair-list', name: 'UserRepairList'},
   {path: '/user/repair-notification', name:'UserRepairNotification'},
-  {path: '/user/edit/repair-notification', name:'UserEditRepairNotification'},
+  {path: '/user/edit/repair-notification/:id', name:'UserEditRepairNotification'},
   {path: '/admin-service', name: 'AdminPage'},
   {path: '/moderator-service', name: 'ModeratorPage'},
   {path: '/admin/profile', name: 'AdminProfile'},

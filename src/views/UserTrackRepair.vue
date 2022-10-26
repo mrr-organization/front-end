@@ -53,13 +53,12 @@
             v-if="item.status === '' || item.status === 'PENDING'"
             class="w-2/12"
           >
-            <router-link to="/editnotirepair"
-              ><button
+
+              <button @click="redirectToEditPage(item.id)"
                 class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium"
               >
                 แก้ไขข้อมูล
-              </button></router-link
-            >
+              </button>
           </div>
           <div v-else class="w-2/12"></div>
         </div>
@@ -73,15 +72,26 @@ import repairNotificationService from "@/services/repair-notification.service";
 export default {
   data() {
     return {
-      user: JSON.parse(localStorage.getItem("user")),
       listRepair: [],
     };
   },
+
+  computed:{
+    user () {
+      return  this.$store.state.auth.user;
+    }
+  },
+
   created() {
     this.getListRepairNotificationByUsername(this.user.username);
+    console.log(this.listRepair);
     console.log(this.user);
   },
+  
   methods: {
+    redirectToEditPage(id){
+      this.$router.push({ path: `/user/edit/repair-notification/${id}`})
+    },
     clrBgStatus(index, status) {
       if (this.listRepair[index].status === "") {
         return "bg-[#DDDDDD] fill-current text-green-600";
@@ -135,8 +145,8 @@ export default {
     getListRepairNotificationByUsername(username) {
       repairNotificationService
         .getAllRepairNotificationByUsername(username)
-        .then((reponse) => {
-          this.listRepair = reponse.data;
+        .then((response) => {
+          this.listRepair = response.data.responseData;
           console.log(this.listRepair);
         });
     },

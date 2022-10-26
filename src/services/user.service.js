@@ -2,6 +2,9 @@ import axios from 'axios';
 import authHeader from './auth-header';
 const API_URL = 'http://localhost:8080/api/user-service/';
 class UserService {
+  getUserByUID (UID) {
+    return axios.get(API_URL + UID, {headers: authHeader() });
+  }
   editUser(user) {
     return axios.post(API_URL + 'edit-user?username=' + user.username ,
     {    

@@ -113,8 +113,6 @@ export default {
     if (this.loggedIn) {
       this.$router.push("/user-loin");
     }
-  
-
   },
   mounted() {},
   methods: {

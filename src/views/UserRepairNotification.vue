@@ -89,11 +89,13 @@
           class="p-2 mt-6 mb-2 text-black w-28"
           style="background-color: #02b072"
         ></ButtonCom>
+        <router-link to="/user/repair-notification">
         <ButtonCom
           msg="ยกเลิก"
           class="p-2 mt-6 mb-2 text-black w-28"
           style="background-color: #fc2525"
         ></ButtonCom>
+      </router-link>
       </div>
     </form>
   </div>
@@ -132,7 +134,7 @@ export default {
       repairNotificationService
         .createRepairNotification(this.from)
         .then((response) => {
-          this.repairId = response.data.repairNotificationId;
+          this.repairId = response.data.responseData.repairNotificationId;
         })
         .then(() => {
           console.log(this.repairId);
@@ -147,9 +149,9 @@ export default {
     },
     getLocationList() {
       LocationService.getAllLocation()
-        .then((reponse) => {
-          this.location_list = reponse.data;
-          console.log(reponse);
+        .then((response) => {
+          this.location_list = response.data.responseData;
+          console.log(response);
         })
         .catch((e) => {
           console.log(e);

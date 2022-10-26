@@ -3,31 +3,6 @@
     <div class="p-6 -mx-2 text-left bg-white mt-14">
       <h2 style="color: #312a21">แก้ไขข้อมูลแจ้งซ่อม / ร้องเรียนปัญหา</h2>
     </div>
-    <!-- <div class="max-w-4xl mx-auto mt-3">
-      <div>
-        <h3 class="text-left" style="color: #312a21">หน่วยงานที่รับเรื่อง</h3>
-        <div>
-          <input
-            v-model="organize.receiving"
-            class="w-full h-12 p-4 ring-1 ring-black"
-            type="text"
-            list="auto-complete"
-            placeholder="เลือกหน่วยงานที่รับเรื่อง"
-          />
-          <datalist id="auto-complete">
-            <option value="กลุ่มงานไฟฟ้า"></option>
-            <option value="กลุ่มงานเครื่องกล"></option>
-            <option value="กลุ่มงานสถาปนิก"></option>
-            <option value="กลุ่มงานโยธา"></option>
-            <option
-              value="กลุ่มงานระบบสาธารณูปโภค/สาธารณูปการ
-"
-            ></option>
-          </datalist>
-        </div>
-        
-      </div>
-    </div> -->
     <div class="max-w-4xl mx-auto mt-3">
       <div>
         <h3 class="text-left" style="color: #312a21">สถานที่ / บริเวณ</h3>

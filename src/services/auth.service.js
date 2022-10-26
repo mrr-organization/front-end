@@ -10,7 +10,7 @@ class AuthService {
     if (response.data.responseData.accessToken) {
       localStorage.setItem('user', JSON.stringify(response.data.responseData));
     }
-    return response.data;
+    return response.data.responseData;
   }
   logout() {
     localStorage.removeItem('user');

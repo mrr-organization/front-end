@@ -6,8 +6,7 @@
         {{ this.userDetail.username }}
       </div>
     </div>
-    <div
-      class="
+    <div class="
         flex flex-col
         w-full
         max-w-xl
@@ -35,6 +34,7 @@
         <span>เบอร์ติดต่อ: {{ this.userDetail.userPhone }}</span>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -43,19 +43,26 @@ import UserService from "../services/user.service";
 export default {
   data() {
     return {
-      userDetail: {},
-      user: JSON.parse(localStorage.getItem("user")),
+      userDetail: {}, 
     };
   },
+  computed :{
+    user () {
+      return this.$store.state.auth.user;
+    }
+  },
   created() {
-    this.getUserDetail();
+    this.getUserDetail()
   },
   methods: {
-    getUserDetail() {
-      UserService.getUserDetailByUserNo(this.user.userNo).then((response) => {
-        this.userDetail = response.data;
+    async getUserDetail() {
+      console.log(this.userDetail)
+      console.log(this.user)
+      await UserService.getUserByUID(this.user.uid).then((response) => {
+        this.userDetail = response.data.responseData;
+        console.log(this.userDetail)
       });
-    },
+    }
   },
 };
 </script>

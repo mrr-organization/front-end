@@ -91,13 +91,13 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          if(this.user.responseData.userType === "ADMIN") {
+          if(this.user.userType === "ADMIN") {
             this.$router.push("/admin-service");
           }
-          if(this.user.responseData.userType === "MODERATOR") {
+          if(this.user.userType === "MODERATOR") {
             this.$router.push("/moderator-service");
           }
-          if(this.user.responseData.userType === "STUDENT" || this.$store.state.auth.user.userType === "PERSONNEL") {
+          if(this.user.userType === "STUDENT" || this.$store.state.auth.user.userType === "PERSONNEL") {
             this.$router.push("/no-permission");
           }
         },
