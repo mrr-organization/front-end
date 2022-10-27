@@ -57,7 +57,7 @@
                 v-for="(item, index) in preview_list"
                 :key="index"
                 class="flex items-center justify-center mt-8"
-              >
+              > 
                 <img :src="item" class="w-48 h-48 img-fluid" />
                 <p class="mb-0 ml-5">file name: {{ image_list[index].name }}</p>
                 <!-- <p>size: {{ image_list[index].size/1024 }}KB</p> -->
@@ -132,6 +132,7 @@ export default {
     },
   },
   methods: {
+
      createRepairNotification() {
       if (this.successful) {
          repairNotificationService

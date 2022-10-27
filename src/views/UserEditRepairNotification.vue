@@ -51,8 +51,8 @@
               class="flex items-center justify-center mt-8"
             >
               <img :src="item" class="w-48 h-48 img-fluid" />
-              <!-- <p class="mb-0">file name: {{ image_list[index].name }}</p>
-                <p>size: {{ image_list[index].size/1024 }}KB</p> -->
+              <p class="mb-0">file name: {{ image_list[index].name }}</p>
+                <p>size: {{ image_list[index].size/1024 }}KB</p>
             </div>
           </template>
           <ButtonCom
@@ -83,6 +83,7 @@
 <script>
 import 'sweetalert2/dist/sweetalert2.min.css';
 import ButtonCom from "@/components/BasicButton.vue";
+
 export default {
   components: { ButtonCom },
   data() {

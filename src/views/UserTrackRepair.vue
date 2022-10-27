@@ -11,7 +11,9 @@
         class="flex justify-center p-4"
       >
         <div class="flex w-full space-x-5">
+        <button @click="redirectToPreviewPage(item.id)">
           <div class="">รายการแจ้งซ่อมรหัส : {{item.id}}</div>
+        </button>
           <div class="flex justify-around w-full items">
             <div class="flex flex-col items-center w-full">
               <div
@@ -50,6 +52,7 @@
               >
             </div>
           </div>
+
           <div
             v-if="item.status === '' || item.status === 'PENDING'"
             class="w-2/12"
@@ -99,8 +102,12 @@ export default {
     getListRepairFromPageNumber(pageNumber){
       this.getListRepairNotificationByUsername(this.user.username, pageNumber)
     },
+    
     redirectToEditPage(id){
       this.$router.push({ path: `/user/edit/repair-notification/${id}`})
+    },
+    redirectToPreviewPage(id){
+      this.$router.push({ path: `/preview/${id}`})
     },
     clrBgStatus(index, status) {
       if (this.listRepair[index].status === "") {
