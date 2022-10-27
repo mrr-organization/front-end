@@ -1,102 +1,79 @@
 <template>
-  <div class="items-center justify-center">
-    <div class="flex items-center justify-center p-4 mt-16">
-      <h1 class="text-3xl font-semibold" style="color: #312a21">
+    <div class="flex flex-col items-center justify-center max-w-6xl mt-16 sm:max-w-full sm:mt-28">
+      <h1 class="text-3xl font-semibold " style="color: #312a21">
         สมัครใช้งาน MMR
       </h1>
-    </div>
-    <div class="mt-10 mx-96">
+    <div class="flex flex-col justify-center mt-10 sm:flex-row item-center ">
       <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful" class="flex flex-row justify-between">
-          <div class="grid w-3/4 gap-4 m-10 grid-rows-7 grid-col-2">
-            <div class="form-group">
-              <Field
-                name="username"
-                type="username"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="username"
-              />
-              <ErrorMessage
-                name="username"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="email"
-                type="email"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="your email"
-              />
-              <ErrorMessage
-                name="email"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="fname"
-                type="fname"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="first name"
-              />
-              <ErrorMessage
-                name="fname"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="lname"
-                type="lname"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="last name"
-              />
-              <ErrorMessage
-                name="lname"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="password"
-                type="password"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Password"
-              />
-              <ErrorMessage
-                name="password"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="comfirmPassword"
-                type="comfirmPassword"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Confirm password"
-              />
-              <ErrorMessage
-                name="comfirmPassword"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="phone"
-                type="phone"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Phone number"
-              />
-              <ErrorMessage
-                name="phone"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
+        <div v-if="!successful" class="flex flex-col justify-between " >
+          <div class="flex flex-col space-x-8 sm:space-x-72 sm:flex-row ">
+          <div class="flex flex-col items-center justify-center gap-4">
+           <div class="flex flex-col form-group">
+            <Field
+              name="username"
+              type="username"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Username"
+            />
+            <ErrorMessage name="username" class="text-sm font-semibold text-red-500 sm:text-lg error-feedback " />
           </div>
-
-          <div class="w-3/4 m-10 sm:flex-row h-72">
-            <div class="w-3/4 m-auto bg-[#FAF0EF] h-3/5">
+          <div class="flex flex-col form-group">
+            <Field
+              name="email"
+              type="email"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Email@mail.kmutt.ac.th"
+            />
+            <ErrorMessage name="email" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+          <div class="flex flex-col form-group">
+            <Field
+              name="fname"
+              type="fname"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Firstname"
+            />
+            <ErrorMessage name="fname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+            <div class="flex flex-col form-group">
+            <Field
+              name="lname"
+              type="lname"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Lastname"
+            />
+            <ErrorMessage name="lname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+          <div class="flex flex-col form-group">
+            <Field
+              name="password"
+              type="password"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Password"
+            />
+            <ErrorMessage name="password" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+          <div class="flex flex-col form-group">
+            <Field
+              name="comfirmPassword"
+              type="password"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Confirm password"
+            />
+            <ErrorMessage name="comfirmPassword" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+          <div class="flex flex-col form-group">
+            <Field
+              name="phone"
+              type="text"
+              class="p-2 rounded form-control ring-1 ring-black"
+              placeholder="Phone number"
+            />
+            <ErrorMessage name="phone" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
+          </div>
+        </div>
+          <div class="flex flex-col justify-center w-full mt-12 sm:mt-2">
+            <div class="w-64 p-3 bg-[#FAF0EF]  h-32 rounded">
               <input
                 class="text-xl "
                 type="checkbox"
@@ -106,9 +83,9 @@
               />
               <label for="dept" class="ml-2 font-bold">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
-                <div class="form-group ">
-                <Field name="deptId" class=" ring-1 ring-black" as="select">
-                  <option value=""  disabled>Select a department</option>
+                <div class=" form-group -1">
+                <Field class="rounded form-control ring-1 ring-black" v-model="deptId" name="deptId" as="select">
+                  <option value="" disabled>Select a department</option>
                   <option
                     v-for="item in deptRegisList"
                     :key="item.deptId"
@@ -120,7 +97,7 @@
               </div>
               </div>
             </div>
-            <div class="w-3/4 m-auto bg-[#FAF0EF] form-group h-3/5 mt-9">
+            <div class="w-64 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded">
               <div>
                 <input
                   class="text-xl"
@@ -131,8 +108,8 @@
                 />
                 <label for="faculty" class="ml-2 font-bold">คณะ</label>
                 <div v-show="triggerFaculty">
-                  <div class="form-group">
-                  <Field v-model="facultyId" class="ring-1 ring-black" name="facultyId" as="select">
+                  <div class=" form-group">
+                  <Field class="rounded form-control ring-1 ring-black" v-model="facultyId" name="facultyId" as="select">
                     <option value="" disabled>Select a faculty</option>
                     <option
                       v-for="item in facultyRegisList"
@@ -146,9 +123,9 @@
                 </div>
               </div>
               <div v-show="triggerFaculty && facultyId != 0">
-                <label for="major">ภาควิชา / สาขา</label>
+                <label for="major ml-2 font-bold">ภาควิชา / สาขา</label>
                 <div class="form-group">
-                  <Field  name="majorId" as="select">
+                  <Field  class="rounded form-control ring-1 ring-black" name="majorId" as="select">
                     <option value="" disabled>Select a major</option>
                     <option
                       v-for="item in majorFilter"
@@ -163,9 +140,8 @@
             </div>
           </div>
         </div>
-        <!-- สมัคร / ยกเลิก -->
-        <div class="flex flex-row justify-center mt-5 space-x-14 item-center">  
-          <button
+            <div class="flex flex-row justify-center mt-16 space-x-12 item-center">
+              <button
                 class="bg-[#384BB1] px-10 py-1 rounded"
                 :disabled="loading"
               >
@@ -177,16 +153,20 @@
                   >สมัคร</span
                 >
               </button>
-          <router-link to="/user-login"
-            ><button class="bg-[#FC2525] px-10 py-1 rounded">
-              <span class="text-xl font-semibold" style="color: #ffffff"
-                >ยกเลิก</span
+              <router-link to="/user-login"
+                ><button
+                class="bg-[#FC2525] px-10 py-1 rounded"
               >
-            </button>
-          </router-link>
+                <span class="text-xl font-semibold" style="color: #ffffff"
+                  >ยกเลิก</span
+                >
+              </button>
+                </router-link>
+            </div>
         </div>
       </Form>
     </div>
+  </div>
     <div
       v-if="message"
       class="alert"
@@ -194,7 +174,7 @@
     >
       {{ message }}
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -202,90 +182,56 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import MajorService from "@/services/major.service";
 import FacultyService from "@/services/faculty.service";
 import DepartmentService from "@/services/dept.service";
+import * as yup from "yup";
 export default {
   name: "RegisterUser",
   components: { Form, Field, ErrorMessage },
   data() {
-    const schema = {
-      username(value) {
-        // validate email value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      password(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      email(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      fname(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      lname(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      comfirmPassword(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      phone(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      deptId(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      facultyId(value) {
-
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      majorId(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-    };
+    const schema = yup.object().shape({
+      username: yup
+        .string()
+        .required("Username is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(255, "Must be maximum 255 characters!"),
+      email: yup
+        .string()
+        .required("Email is required!")
+        .email("Email is invalid!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),
+      fname: yup
+        .string()
+        .required("Firstname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
+      lname: yup
+        .string()
+        .required("Lastname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
+      password: yup
+        .string()
+        .required("Password is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(40, "Must be maximum 40 characters!"),
+      comfirmPassword: yup
+        .string()
+        .required("ConfirmPassword is required!")
+        .min(6, "Must be at least 6 characters!")
+        .oneOf([yup.ref('password')], 'Passwords do not match'),
+      phone: yup
+        .string()
+        .required("Phone number is required!")
+        .min(4, "Must be at least 4 number!")
+        .max(10, "Must be maximum 10 number!"),
+    });
     return {
       successful: false,
       facultyId: 0,
+      deptId: 0,
       loading: false,
       triggerDept: false,
       triggerFaculty: false,
-
       message: "",
       schema,
       deptRegisList: [],
@@ -301,11 +247,22 @@ export default {
       return this.majorRegisList.filter(item => {
         return item.facultyId == this.facultyId;
       })
+    },
+    user() {
+      return this.$store.state.auth.user;
     }
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/user-register");
+      if (this.user.userType === 'ADMIN'){
+        this.$router.push("/admin-service");
+      }
+      if (this.user.userType === 'MODERATOR'){
+        this.$router.push("/moderator-service");
+      }
+      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+        this.$router.push("/user-service");
+      }
     }
     this.getFaculty();
     this.getDepartment();
@@ -345,8 +302,14 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/register", user).then(
         (data) => {
-          this.message = data.message;
-          this.successful = true;
+          console.log(data)
+          this.message = data.responseData.message;
+          if (data.responseCode == "200") {
+            this.successful = true;
+            this.$router.push("/user-login");
+          }
+          console.log(this.message)
+          console.log(this.successful)
           this.loading = false;
         },
         (error) => {
