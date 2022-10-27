@@ -83,7 +83,15 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/admin-login");
+      if (this.user.userType === 'ADMIN'){
+        this.$router.push("/admin-service");
+      }
+      if (this.user.userType === 'MODERATOR'){
+        this.$router.push("/moderator-service");
+      }
+      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+        this.$router.push("/user-service");
+      }
     }
   },
   methods: {

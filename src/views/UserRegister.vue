@@ -97,6 +97,7 @@
 
           <div class="flex-row w-3/4 h-72 m-10">
             <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto">
+              <div class="form-group">
               <input
                 class="text-xl"
                 type="checkbox"
@@ -106,21 +107,21 @@
               />
               <label for="dept">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
-                <div class="form-group">
-                <Field name="deptId" as="select">
-                  <option value="" disabled>Select a department</option>
-                  <option
-                    v-for="item in deptRegisList"
-                    :key="item.deptId"
-                    :value="item.deptId"
-                  >
-                    {{ item.deptName }}
-                  </option>
-                </Field>
-              </div>
+                  <Field name="deptId" as="select">
+                    <option value="" disabled>Select a department</option>
+                    <option
+                      v-for="item in deptRegisList"
+                      :key="item.deptId"
+                      :value="item.deptId"
+                    >
+                      {{ item.deptName }}
+                    </option>
+                  </Field>
               </div>
             </div>
-            <div class="form-group w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
+            </div>
+            <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
+              <div class="form-group">
               <div>
                 <input
                   class="text-xl"
@@ -131,24 +132,21 @@
                 />
                 <label for="faculty">คณะ</label>
                 <div v-show="triggerFaculty">
-                  <div class="form-group">
-                  <Field v-model="facultyId" name="facultyId" as="select">
-                    <option value="" disabled>Select a faculty</option>
-                    <option
-                      v-for="item in facultyRegisList"
-                      :key="item.facultyId"
-                      :value="item.facultyId"
-                    >
-                      {{ item.facultyName }}
-                    </option>
-                  </Field>
-                </div>
+                    <Field v-model="facultyId" name="facultyId" as="select">
+                      <option value="" disabled>Select a faculty</option>
+                      <option
+                        v-for="item in facultyRegisList"
+                        :key="item.facultyId"
+                        :value="item.facultyId"
+                      >
+                        {{ item.facultyName }}
+                      </option>
+                    </Field>
                 </div>
               </div>
               <div v-show="triggerFaculty && facultyId != 0">
                 <label for="major">ภาควิชา / สาขา</label>
-                <div class="form-group">
-                  <Field  name="majorId" as="select">
+                  <Field name="majorId" as="select">
                     <option value="" disabled>Select a major</option>
                     <option
                       v-for="item in majorFilter"
@@ -158,26 +156,23 @@
                       {{ item.majorName }}
                     </option>
                   </Field>
-                </div>
+
               </div>
+            </div>
             </div>
           </div>
         </div>
         <!-- สมัคร / ยกเลิก -->
         <div class="flex flex-row justify-between mt-5 item-center">
-              
-          <button
-                class="bg-[#384BB1] px-10 py-1 rounded"
-                :disabled="loading"
-              >
-                <span
-                  v-show="loading"
-                  class="spinner-border spinner-border-sm"
-                ></span>
-                <span class="text-xl font-semibold" style="color: #ffffff"
-                  >สมัคร</span
-                >
-              </button>
+          <button type="submit" class="bg-[#384BB1] px-10 py-1 rounded" :disabled="loading">
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span class="text-xl font-semibold" style="color: #ffffff"
+              >สมัคร</span
+            >
+          </button>
           <router-link to="/user-login"
             ><button class="bg-[#FC2525] px-10 py-1 rounded">
               <span class="text-xl font-semibold" style="color: #ffffff"
@@ -203,83 +198,65 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import MajorService from "@/services/major.service";
 import FacultyService from "@/services/faculty.service";
 import DepartmentService from "@/services/dept.service";
+import * as yup from "yup";
 export default {
   name: "RegisterUser",
   components: { Form, Field, ErrorMessage },
   data() {
-    const schema = {
-      username(value) {
-        // validate email value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      password(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      email(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      fname(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      lname(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      comfirmPassword(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      phone(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      deptId(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      facultyId(value) {
+    const schema = yup.object().shape({
+      username: yup
+        .string()
+        .required("Username is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(255, "Must be maximum 255 characters!"),
+      email: yup
+        .string()
+        .required("Email is required!")
+        .email("Email is invalid!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),
+      fname: yup
+        .string()
+        .required("Firstname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
+      lname: yup
+        .string()
+        .required("Lastname is required!")
+        .min(3, "Must be at least 3 characters!")
+        .max(255, "Must be maximum 255 characters!"),  
+      password: yup
+        .string()
+        .required("Password is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(40, "Must be maximum 40 characters!"),
+      comfirmPassword: yup
+        .string()
+        .required("Confirm password is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(40, "Must be maximum 40 characters!"),
+      phone: yup
+        .string()
+        .required("Phone number is required!")
+        .min(4, "Must be at least 4 number!")
+        .max(10, "Must be maximum 10 number!"),
+      deptId : yup
+        .string()
+        .required("Phone number is required!")
+        .min(4, "Must be at least 4 number!")
+        .max(10, "Must be maximum 10 number!"),
+      facultyId : yup
+        .string()
+        .required("Phone number is required!")
+        .min(4, "Must be at least 4 number!")
+        .max(10, "Must be maximum 10 number!"),
+      majorId : yup
+        .string()
+        .required("Phone number is required!")
+        .min(4, "Must be at least 4 number!")
+        .max(10, "Must be maximum 10 number!"),
+    });
 
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-      majorId(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "need";
-        }
-        return true;
-      },
-    };
     return {
       facultyId: 0,
       loading: false,
@@ -297,11 +274,11 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-    majorFilter(){
-      return this.majorRegisList.filter(item => {
+    majorFilter() {
+      return this.majorRegisList.filter((item) => {
         return item.facultyId == this.facultyId;
-      })
-    }
+      });
+    },
   },
   created() {
     if (this.loggedIn) {
@@ -328,22 +305,25 @@ export default {
       });
     },
     handleRegister(user) {
-      if (this.triggerFaculty){
-        user.userType = 'STUDENT'
-        user.deptId = 0
-        console.log(user.deptId)
+      if (this.triggerFaculty) {
+        user.userType = "STUDENT";
+        user.deptId = 0;
+        console.log(user.deptId);
       }
-      if (this.triggerDept){
-        user.facultyId = 0
-        user.majorId = 0
-        user.userType = 'PERSONNEL'
-        console.log(user.facultyId)
+      if (this.triggerDept) {
+        user.facultyId = 0;
+        user.majorId = 0;
+        user.userType = "PERSONNEL";
+        console.log(user.facultyId);
       }
       console.log(user);
       this.message = "";
       this.successful = false;
       this.loading = true;
       this.$store.dispatch("auth/register", user).then(
+        () => {
+          this.$router.push("/user-loin");
+        },
         (data) => {
           this.message = data.message;
           this.successful = true;
