@@ -1,7 +1,7 @@
 <template>
   <div class="px-2 mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
     <form @submit.prevent="createRepairNotification">
-      <div class="p-6 -mx-2 text-left bg-white mt-14">
+      <div class="p-6 -mx-2 text-xl font-bold text-left bg-white mt-14">
         <h2 style="color: #312a21">แจ้งซ่อม / ร้องเรียนปัญหา</h2>
       </div>
       <div class="max-w-4xl mx-auto mt-3">
@@ -12,7 +12,7 @@
             placeholder="เลือกหน่วยงานที่รับเรื่อง" /> -->
             <select
               name="location"
-              class="form-control w-full h-12 p-4 ring-1 ring-black"
+              class="w-full h-12 p-4 form-control ring-1 ring-black"
               v-model="from.location"
             >
               <option v-for="location in location_list" :key="location.id">
@@ -37,7 +37,7 @@
           <h3 class="text-left" style="color: #312a21">รูปภาพประกอบ</h3>
           <label
             for="files"
-            class="self-end btn"
+            class="self-end p-1 rounded btn "
             style="background-color: #f9d5a7; color: #312a21"
             >เลือกรูปภาพ</label
           >

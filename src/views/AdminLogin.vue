@@ -7,7 +7,7 @@
     </div>
     <Form @submit="handleLogin" :validation-schema="schema">
       <div class="flex flex-col space-y-6 mt-7 item-center w-72">
-        <div class="form-group">
+        <div class="flex flex-col form-group">
           <Field
             name="username"
             type="text"
@@ -19,7 +19,7 @@
             class="font-semibold text-red-500 error-feedback"
           />
         </div>
-        <div class="form-group">
+        <div class="flex flex-col form-group">
           <Field
             name="password"
             type="password"

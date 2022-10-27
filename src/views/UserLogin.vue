@@ -1,13 +1,13 @@
 <template>
   <div class="flex items-center justify-center min-h-screen">
-    <div class="flex w-full mb-10 mx-96 h-96 flex-col sm:flex-row gap-3">
+    <div class="flex flex-col w-full gap-3 mb-10 mx-96 h-96 sm:flex-row">
       <!-- basic login-->
-      <div class="flex  flex-col items-center justify-center">
+      <div class="flex flex-col items-center justify-center">
         <div class="text-3xl font-bold" style="color: #312a21">
           ยินดีต้อนรับสู่ MRR
         </div>
         <Form @submit="handleLogin" :validation-schema="schema">
-          <div class="flex  flex-col mt-10 space-y-5 item-center w-60">
+          <div class="flex flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">
               <Field
                 name="username"
@@ -83,28 +83,25 @@
 <script>
 import ButtonCom from "@/components/BasicButton.vue";
 import GoogleSignup from "@/components/GoogleSignup.vue";
-
+import * as yup from "yup";
 import { Form, Field, ErrorMessage } from "vee-validate";
 
 export default {
   components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
   data() {
-    const schema = {
-      username(value) {
-        // validate email value and return messages...
-        if (!value) {
-          return "1" + value;
-        }
-        return true;
-      },
-      password(value) {
-        // validate password value and return messages...
-        if (!value) {
-          return "1" + value;
-        }
-        return true;
-      },
-    };
+    const schema =yup.object().shape({
+      username: yup
+        .string()
+        .required("Username is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(255, "Must be maximum 255 characters!"),
+      password: yup
+      .string()
+        .required("Password is required!")
+        .min(6, "Must be at least 6 characters!")
+        .max(40, "Must be maximum 40 characters!"),
+      
+    });
     return {
       loading: false,
       message: "",
