@@ -1,5 +1,6 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8080/api/auth/';
+// const API_URL = 'http://localhost:8080/api/auth/';
+const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/auth/';
 class AuthService {
   async login(user) {
     const response = await axios

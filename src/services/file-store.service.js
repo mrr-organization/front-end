@@ -1,6 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'http://localhost:8080/api/file-service/';
+// const API_URL = 'http://localhost:8080/api/file-service/';
+const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/file-service/';
 class FileService {
   uploadMultipleFiles(id, files, imageType) {
     let fromData = new FormData();

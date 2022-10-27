@@ -1,6 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'http://localhost:8080/api/user-service/';
+// const API_URL = 'http://localhost:8080/api/user-service/';
+const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/user-service/';
 class UserService {
   getUserByUID (uid) {
     return axios.get(API_URL + uid, {headers: authHeader() });
