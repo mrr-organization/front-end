@@ -1,13 +1,13 @@
 <template>
   <div class="flex items-center justify-center min-h-screen">
-    <div class="flex w-full mb-10 mx-96 h-96">
+    <div class="flex w-full mb-10 mx-96 h-96 flex-col sm:flex-row gap-3">
       <!-- basic login-->
-      <div class="flex flex-col items-center justify-center">
+      <div class="flex  flex-col items-center justify-center">
         <div class="text-3xl font-bold" style="color: #312a21">
           ยินดีต้อนรับสู่ MRR
         </div>
         <Form @submit="handleLogin" :validation-schema="schema">
-          <div class="flex flex-col mt-10 space-y-5 item-center w-60">
+          <div class="flex  flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">
               <Field
                 name="username"
@@ -56,7 +56,11 @@
         </Form>
       </div>
       <!-- or div-->
-      <div class="w-0.5 mx-auto bg-black h-96"></div>
+      <div class=" w-72 inline-flex sm:w-0.5 sm:mx-auto bg-black h-96">
+        <div class="h-0.5">
+
+        </div>
+      </div>
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">

@@ -12,7 +12,7 @@
             placeholder="เลือกหน่วยงานที่รับเรื่อง" /> -->
             <select
               name="location"
-              class="form-control"
+              class="form-control w-full h-12 p-4 ring-1 ring-black"
               v-model="from.location"
             >
               <option v-for="location in location_list" :key="location.id">
