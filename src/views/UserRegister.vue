@@ -315,19 +315,16 @@ export default {
     async getFaculty() {
       await FacultyService.getAllFaculty().then((response) => {
         this.facultyRegisList = response.data.responseData;
-        console.log(this.facultyRegisList);
       });
     },
     async getMajor() {
       await MajorService.getAllMajor().then((response) => {
         this.majorRegisList = response.data.responseData;
-        console.log(this.majorRegisList);
       });
     },
     getDepartment() {
       DepartmentService.getAllDepartments().then((response) => {
         this.deptRegisList = response.data.responseData;
-        console.log(this.deptRegisList);
       });
     },
     handleRegister(user) {

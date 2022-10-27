@@ -7,17 +7,17 @@
         </div>
         <div class="  sm:w-[350px] flex flex-col ml-5 ">
         <router-link to="/login-service">
-            <ButtonCom msg="เข้าสู่ระบบ" class="px-2 py-2 font-mono text-xl sm:m-10 sm:w-56 sm:p-4" 
+            <ButtonCom msg="เข้าสู่ระบบ" class="px-2 py-2 font-mono text-xl  sm:w-56 sm:p-4" 
             style="background-color: #faf0ef; color: #312a21">
             </ButtonCom>
         </router-link>
         <router-link to="/dashboard">
-            <ButtonCom msg="แดชบอร์ด" class="px-2 py-2 m-5 font-mono text-xl sm:m-10 sm:w-56 sm:p-4" 
+            <ButtonCom msg="แดชบอร์ด" class="px-2 py-2 m-5 font-mono text-xl  sm:w-56 sm:p-4" 
             style="background-color: #faf0ef; color: #312a21">
             </ButtonCom>
         </router-link>
         <router-link to="/about">
-            <ButtonCom msg="เกี่ยวกับ" class="px-4 py-2 font-mono text-xl sm:m-10 sm:w-56 sm:p-4" 
+            <ButtonCom msg="เกี่ยวกับ" class="px-4 py-2 font-mono text-xl  sm:w-56 sm:p-4" 
             style="background-color: #faf0ef; color: #312a21">
             </ButtonCom>
         </router-link>

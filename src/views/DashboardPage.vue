@@ -1,27 +1,29 @@
 <template>
-  <div class="mt-20 ">
-    <div class="flex flex-row items-center justify-center mt-5 gap-10 w-full">
+  <div class="mt-10 sm:mt-20 max-w-7xl mx-auto p-1 ">
+    <div class="flex flex-row items-center justify-center mt-5 gap-10 w-full flex-wrap overflow-auto">
      <div class="">
-      <column-chart class="bg-white rounded-xl" :data=this.countYearData width="900px" height="288px" :colors="['#0000ff', '#ff0000']" xtitle="เดือน" ytitle="จำนวนเรื่องร้องเรียน" ></column-chart>
+      <column-chart class="bg-white rounded-xl h-96 " :data=this.countYearData  width="380px" height="288px" :colors="['#0000ff', '#ff0000']" xtitle="เดือน" ytitle="จำนวนเรื่องร้องเรียน" ></column-chart>
      </div>
      <div class="">
-      <pie-chart class="bg-white rounded-xl " :data=this.countStatusData width="494px" height="300px"></pie-chart>
+      <pie-chart class="bg-white rounded-xl  h-96" :data=this.countStatusData width="400px"  height="300px"></pie-chart>
     </div>
     </div>
     
     <div >
-    <div class=" mt-10 ml-80 w-1/5 h-20 bg-white rounded-lg flex items-center justify-center">
-      <p class="p-2">Status:</p>
+    <div class="flex justify-end ">
+    <div class=" mt-6 sm:mt-10 h-12 sm:h-20 p-1 rounded-lg inline-flex items-center justify-center "  style="background-color: #fef1e6">
+      <p class="font-bold text-sm sm:text-base">Status:</p>
       <select @change="getNewRepair" class="border-2" name="status" v-model="status">
         <option v-for="(item, index) in allStatus" :key="index" :value=item>
                 {{item}}
         </option>
       </select>
     </div>
-    <div class="mx-auto overflow-auto rounded-t-lg sm:mt-16 max-w-7xl sm:max-w-7xl"
+  </div>
+    <div class="mx-auto overflow-auto rounded-t-lg mt-3 sm:mt-10 max-w-7xl sm:max-w-7xl"
       style="background-color: #fef1e6">
       
-      <table class="w-full text-xs table-auto sm:text-xl">
+      <table class="w-full text-sm table-auto sm:text-xl">
         <thead>
           <tr class="bg-white">
             <th>เรื่องร้องเรียนที่</th>
@@ -43,9 +45,9 @@
     </div>
     </div>
   </div>
-  <VSPagination :totalPages="totalPages" @page-number="getListRepairNotificationByStatus">
-    </VSPagination>
-</template>
+  <VSPagination :totalPages="totalPages" @page-number="getListRepairNotificationByStatus ">
+    </VSPagination >
+</template >
     
   <script >
 import repairNotificationService from "@/services/repair-notification.service";
@@ -115,4 +117,5 @@ td {
 thead > tr > th {
   @apply whitespace-nowrap px-3;
 }
+
 </style>
