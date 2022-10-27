@@ -1,7 +1,7 @@
 <template>
-  <div class="items-center justify-center ">
+  <div class="items-center justify-center">
     <div class="flex items-center justify-center p-4 mt-16">
-      <h1 class="text-3xl font-semibold " style="color: #312a21">
+      <h1 class="text-3xl font-semibold" style="color: #312a21">
         สมัครใช้งาน MMR
       </h1>
     </div>
@@ -10,126 +10,182 @@
         <div v-if="!successful" class="flex flex-row justify-between">
           <div class="grid grid-rows-7 grid-col-2 gap-4 m-10 w-3/4">
             <div class="form-group">
-            <Field
-              name="username"
-              type="username"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Username"
-              v-model="state.username"
-            />
-            <span v-if="v$.username.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.username.$errors[0].$message }}
-            </span>
-          </div>
-          <div class="form-group">
-            <Field
-              name="email"
-              type="email"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Kmutt Email"
-              v-model="state.email"
-            />
-           <span v-if="v$.email.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.email.$errors[0].$message }}
-            </span>
-            
-          </div>
-          <div class="form-group">
-            <Field
-              name="fname"
-              type="fname"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Firstname"
-              v-model="state.fname"
-            />
-            <span v-if="v$.fname.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.fname.$errors[0].$message }}
-            </span>
-          </div>
-          <div class="form-group">
-            <Field
-              name="lname"
-              type="lname"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Lastname"
-              v-model="state.lname"
-            />
-            <span v-if="v$.lname.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.lname.$errors[0].$message }}
-            </span>
-          </div>
-          <div class="form-group">
-            <Field
-              name="password"
-              type="password"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Password"
-              v-model="state.password.password"
-            />
-            <span v-if="v$.password.password.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.password.password.$errors[0].$message }}
-            </span>
-          </div>
-          <div class="form-group">
-            <Field
-              name="comfirmPassword"
-              type="password"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Confirm password"
-              v-model="state.password.comfirm"
-            />
-            <span v-if="v$.password.comfirm.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.password.comfirm.$errors[0].$message }}
-            </span>
-          </div>
-          <div class="form-group">
-            <Field
-              name="phone"
-              type="text"
-              class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Phone number"
-              v-model="state.phone"
-            />
-            <span v-if="v$.phone.$error" class="font-semibold text-red-500 error-feedback" >
-            {{ v$.phone.$errors[0].$message }}
-            </span>
-          </div>
-          </div>
-       
-          <div class="flex-row  w-3/4 h-72  m-10">
-            <div class="form-group w-3/4 h-3/5 bg-white opacity-50  m-auto">
-              <span class="text-xl">หน่วยงานที่สังกัด</span>
-              
+              <Field
+                name="username"
+                type="username"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="username"
+              />
+              <ErrorMessage
+                name="username"
+                class="font-semibold text-red-500 error-feedback"
+              />
             </div>
-            <div class="form-group w-3/4 h-3/5 bg-white opacity-50  m-auto mt-9">
-              <span class="text-xl">ภาควิชา / สาขา</span>
+            <div class="form-group">
+              <Field
+                name="email"
+                type="email"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="your email"
+              />
+              <ErrorMessage
+                name="email"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="fname"
+                type="fname"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="first name"
+              />
+              <ErrorMessage
+                name="fname"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="lname"
+                type="lname"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="last name"
+              />
+              <ErrorMessage
+                name="lname"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="password"
+                type="password"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="Password"
+              />
+              <ErrorMessage
+                name="password"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="comfirmPassword"
+                type="comfirmPassword"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="Confirm password"
+              />
+              <ErrorMessage
+                name="comfirmPassword"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+            <div class="form-group">
+              <Field
+                name="phone"
+                type="phone"
+                class="p-2 rounded form-control ring-1 ring-black"
+                placeholder="Phone number"
+              />
+              <ErrorMessage
+                name="phone"
+                class="font-semibold text-red-500 error-feedback"
+              />
+            </div>
+          </div>
+
+          <div class="flex-row w-3/4 h-72 m-10">
+            <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto">
+              <input
+                class="text-xl"
+                type="checkbox"
+                id="dept"
+                v-model="triggerDept"
+                :disabled="triggerFaculty"
+              />
+              <label for="dept">หน่วยงานที่สังกัด</label>
+              <div v-show="triggerDept">
+                <div class="form-group">
+                <Field name="deptId" as="select">
+                  <option value="" disabled>Select a department</option>
+                  <option
+                    v-for="item in deptRegisList"
+                    :key="item.deptId"
+                    :value="item.deptId"
+                  >
+                    {{ item.deptName }}
+                  </option>
+                </Field>
+              </div>
+              </div>
+            </div>
+            <div class="form-group w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
+              <div>
+                <input
+                  class="text-xl"
+                  type="checkbox"
+                  id="faculty"
+                  v-model="triggerFaculty"
+                  :disabled="triggerDept"
+                />
+                <label for="faculty">คณะ</label>
+                <div v-show="triggerFaculty">
+                  <div class="form-group">
+                  <Field v-model="facultyId" name="facultyId" as="select">
+                    <option value="" disabled>Select a faculty</option>
+                    <option
+                      v-for="item in facultyRegisList"
+                      :key="item.facultyId"
+                      :value="item.facultyId"
+                    >
+                      {{ item.facultyName }}
+                    </option>
+                  </Field>
+                </div>
+                </div>
+              </div>
+              <div v-show="triggerFaculty && facultyId != 0">
+                <label for="major">ภาควิชา / สาขา</label>
+                <div class="form-group">
+                  <Field  name="majorId" as="select">
+                    <option value="" disabled>Select a major</option>
+                    <option
+                      v-for="item in majorFilter"
+                      :key="item.majorId"
+                      :value="item.majorId"
+                    >
+                      {{ item.majorName }}
+                    </option>
+                  </Field>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <!-- สมัคร / ยกเลิก -->
-        <div class="absolute left-0 right-0 flex flex-row justify-center mt-16 space-x-16 item-center">
-              <button @click="submitForm"
+        <div class="flex flex-row justify-between mt-5 item-center">
+              
+          <button
                 class="bg-[#384BB1] px-10 py-1 rounded"
+                :disabled="loading"
               >
-              <!-- :disabled="loading" -->
-                <!-- <span
+                <span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
-                ></span> -->
-                <span  class="text-xl font-semibold" style="color: #ffffff"
+                ></span>
+                <span class="text-xl font-semibold" style="color: #ffffff"
                   >สมัคร</span
                 >
               </button>
-              <router-link to="/user-login"
-                ><button
-                class="bg-[#FC2525] px-10 py-1 rounded"
+          <router-link to="/user-login"
+            ><button class="bg-[#FC2525] px-10 py-1 rounded">
+              <span class="text-xl font-semibold" style="color: #ffffff"
+                >ยกเลิก</span
               >
-                <span class="text-xl font-semibold" style="color: #ffffff"
-                  >ยกเลิก</span
-                >
-              </button>
-                </router-link>
-            </div>
+            </button>
+          </router-link>
+        </div>
       </Form>
     </div>
     <div
@@ -143,77 +199,150 @@
 </template>
 
 <script>
-
-import { Form, Field } from "vee-validate";
-import useValidate from '@vuelidate/core'
-import {required, email, minLength, sameAs, helpers} from '@vuelidate/validators'
-import {reactive, computed} from 'vue'
-
-// import * as yup from "yup";
+import { Form, Field, ErrorMessage } from "vee-validate";
+import MajorService from "@/services/major.service";
+import FacultyService from "@/services/faculty.service";
+import DepartmentService from "@/services/dept.service";
 export default {
   name: "RegisterUser",
-  components: { Form, Field },
-  setup(){
-    const state = reactive ({
-      username: '',
-      email: '',
-      fname: '',
-      lname: '',
-      password: {
-        password: '',
-        comfirm: '',
+  components: { Form, Field, ErrorMessage },
+  data() {
+    const schema = {
+      username(value) {
+        // validate email value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
       },
-      phone: '',
-    })
-    
-    const mustBekmuttmail = (value) => value.includes ('mail.kmutt.ac.th') 
- 
-    const rules = computed(() => {
-      return {
-        username: { required } ,
-      email: { required, email, mustBekmuttmail: helpers.withMessage('Must be Kmutt Mail',mustBekmuttmail) },
-      fname: { required },
-      lname: { required },
-      password: {
-        password: { required, minLength:minLength(6) },
-        comfirm: { required, sameAs: sameAs(state.password.password) },
+      password(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
       },
-      phone: { required,minLength:minLength(9) },
-      }
-    })
+      email(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      fname(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      lname(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      comfirmPassword(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      phone(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      deptId(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      facultyId(value) {
 
-    const v$ = useValidate(rules, state)
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+      majorId(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "need";
+        }
+        return true;
+      },
+    };
+    return {
+      facultyId: 0,
+      loading: false,
+      triggerDept: false,
+      triggerFaculty: false,
 
-    return{
-      state,
-      v$,
-    }
+      message: "",
+      schema,
+      deptRegisList: [],
+      facultyRegisList: [],
+      majorRegisList: [],
+    };
   },
-
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-  },
-  created(){
-
-  },
-  mounted() {
-    if (this.loggedIn) {
-      this.$router.push("/register");
+    majorFilter(){
+      return this.majorRegisList.filter(item => {
+        return item.facultyId == this.facultyId;
+      })
     }
   },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/user-register");
+    }
+    this.getFaculty();
+    this.getDepartment();
+    this.getMajor();
+  },
   methods: {
-    submitForm() {
-      this.v$.$validate()
-      if(!this.v$.$error){
-        alert('Form successfully subyo')
-      } else {
-      alert('Form failed wa')
-     }
+    async getFaculty() {
+      await FacultyService.getAllFaculty().then((response) => {
+        this.facultyRegisList = response.data.responseData;
+        console.log(this.facultyRegisList);
+      });
+    },
+    async getMajor() {
+      await MajorService.getAllMajor().then((response) => {
+        this.majorRegisList = response.data.responseData;
+        console.log(this.majorRegisList);
+      });
+    },
+    getDepartment() {
+      DepartmentService.getAllDepartments().then((response) => {
+        this.deptRegisList = response.data.responseData;
+        console.log(this.deptRegisList);
+      });
     },
     handleRegister(user) {
-      console.log(user)
+      if (this.triggerFaculty){
+        user.userType = 'STUDENT'
+        user.deptId = 0
+        console.log(user.deptId)
+      }
+      if (this.triggerDept){
+        user.facultyId = 0
+        user.majorId = 0
+        user.userType = 'PERSONNEL'
+        console.log(user.facultyId)
+      }
+      console.log(user);
       this.message = "";
       this.successful = false;
       this.loading = true;
@@ -239,5 +368,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

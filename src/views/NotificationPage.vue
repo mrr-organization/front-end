@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="flex justify-end mt-2 max-w-screen-2xl">
-        <button @click="deleteAllNotification" class="p-1 text-lg font-medium text-white uppercase bg-red-500 rounded-lg "  ><font-awesome-icon icon="xmark"  size="xl" /> ลบแจ้งเตือนทั้งหมด  </button>
+        <button @click="deleteAllNotification" v-show="!listNotification" class="p-1 text-lg font-medium text-white uppercase bg-red-500 rounded-lg "  ><font-awesome-icon icon="xmark"  size="xl" /> ลบแจ้งเตือนทั้งหมด  </button>
     </div>
     <VSPagination :totalPages="totalPages" @page-number="getListNotiFromPageNumber">
     </VSPagination>

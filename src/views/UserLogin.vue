@@ -56,14 +56,14 @@
         </Form>
       </div>
       <!-- or div-->
-      <div
-        class="w-0.5 mx-auto bg-black h-96"
-      >
-      </div>
+      <div class="w-0.5 mx-auto bg-black h-96"></div>
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">
-          <GoogleSignup class="w-56 p-3" style="background-color: #faf0ef; color: #312a21" ></GoogleSignup>
+          <GoogleSignup
+            class="w-56 p-3"
+            style="background-color: #faf0ef; color: #312a21"
+          ></GoogleSignup>
           <ButtonCom
             @click="redirectToRegisterPage"
             msg="สมัครใช้งาน"
@@ -76,7 +76,6 @@
   </div>
 </template>
 
-
 <script>
 import ButtonCom from "@/components/BasicButton.vue";
 import GoogleSignup from "@/components/GoogleSignup.vue";
@@ -87,17 +86,21 @@ export default {
   components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
   data() {
     const schema = {
-  username(value) {
-    // validate email value and return messages...
-    if (!value) {return '1' + value}
-    return true;
-  },
-  password(value) {
-    // validate password value and return messages...
-    if (!value) {return '1' + value}
-    return true;
-  },
-};
+      username(value) {
+        // validate email value and return messages...
+        if (!value) {
+          return "1" + value;
+        }
+        return true;
+      },
+      password(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "1" + value;
+        }
+        return true;
+      },
+    };
     return {
       loading: false,
       message: "",
@@ -136,9 +139,8 @@ export default {
         }
       );
     },
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
