@@ -1,89 +1,39 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
-    path: '/userlogin',
-    name: 'userlogin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserLogin.vue')
-  },
-  {
-    path: '/adminlogin',
-    name: 'adminlogin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminLogin.vue')
-  },
-  {
-    path: '/register',
-    name: 'registeruser',
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserRegister.vue')
-  },
-  {
-    path: '/mainuser',
-    name: 'mainuser',
-    component: () => import(/* webpackChunkName: "about" */ '../views/MainUser.vue')
-  },
-  {
-    path: '/mainadmin',
-    name: 'mainadmin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/MainAdmin.vue')
-  },
-  {
-    path: '/notirepair',
-    name: 'notify',
-    component: () => import(/* webpackChunkName: "about" */ '../views/NotifyRepairuser.vue')
-  },
-  {
-    path: '/editnotirepair',
-    name: 'editnotirepair',
-    component: () => import(/* webpackChunkName: "about" */ '../views/EditNotifyrepair.vue')
-  },
-  {
-    path: '/trackMrr',
-    name: 'trackMrr',
-    component: () => import(/* webpackChunkName: "about" */ '../views/TrackMrr.vue')
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProfileUser.vue')
-  },
-  {
-    path: '/listrepairadmin',
-    name: 'listrepairadmin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ListRepairAdmin.vue')
-  },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: () => import(/* webpackChunkName: "about" */ '../views/DashBoard.vue')
-  },
-  {
-    path: '/repairinfo',
-    name: 'repairinfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/RepairInfo.vue')
-  },
-  {
-    path: '/statusrepairadmin',
-    name: 'statusrepairadmin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/StatusRepairAdmin.vue')
-  },
-]
+const routeOptions = [
+  {path: '/', name: 'HomePage'},
+  {path: '/about', name: 'AboutPage'},
+  {path: '/dashboard', name: 'DashboardPage'},
+  {path: '/login-service', name: 'AuthPage'},
+  {path: '/user-login', name: 'UserLogin'},
+  {path: '/admin-login', name: 'AdminLogin'},
+  {path: '/user-register', name: 'UserRegister'},
+  {path: '/moderator-register', name: 'ModeratorRegister'},
+  {path: '/user-service', name: 'UserPage'},
+  {path: '/user/profile', name: 'UserProfile'},
+  {path: '/user/track-repair', name: 'UserTrackRepair'},
+  {path: '/user/repair-list', name: 'UserRepairList'},
+  {path: '/user/repair-notification', name:'UserRepairNotification'},
+  {path: '/user/edit/repair-notification/:id', name:'UserEditRepairNotification'},
+  {path: '/admin-service', name: 'AdminPage'},
+  {path: '/moderator-service', name: 'ModeratorPage'},
+  {path: '/admin/profile', name: 'AdminProfile'},
+  {path: '/admin/repair-list', name:'AdminRepairList'},
+  {path: '/admin/repair-list/department', name:'AdminRepairListDepartment'},
+  {path: '/admin/manage-member', name: 'AdminManageMember'},
+  {path: '/admin/edit/repair-status', name:'AdminEditRepairStatus'},
+  {path: '/notification', name:'NotificationPage'},
+  {path: '/no-permission', name:'NoPermissionPage'}
+];
+
+const routes = routeOptions.map(route => {
+  return { ...route,
+    component: () =>
+      import(`../views/${route.name}.vue`)
+  }});
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

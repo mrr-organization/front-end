@@ -1,43 +1,50 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen ">
-    <div class="flex flex-col w-full mx-10 mb-10 h-96">
-      <div
-        class="flex flex-col items-center justify-center "
-      >
-        <div class="text-2xl font-bold" style="color: #312a21">ยินดีต้อนรับสู่ MRR</div>
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="flex w-full mb-10 mx-96 h-96 flex-col sm:flex-row gap-3">
+      <!-- basic login-->
+      <div class="flex  flex-col items-center justify-center">
+        <div class="text-3xl font-bold" style="color: #312a21">
+          ยินดีต้อนรับสู่ MRR
+        </div>
         <Form @submit="handleLogin" :validation-schema="schema">
-          <div class="flex flex-col mt-10 space-y-5 item-center w-60">
+          <div class="flex  flex-col mt-10 space-y-5 item-center w-60">
             <div class="form-group">
               <Field
                 name="username"
                 type="text"
-                class="form-control ring-1 ring-black"
+                class="p-2 rounded form-control ring-1 ring-black"
                 placeholder="username"
               />
-              <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
+              <ErrorMessage
+                name="username"
+                class="font-semibold text-red-500 error-feedback"
+              />
             </div>
             <div class="form-group">
               <Field
                 name="password"
                 type="password"
-                class="form-control ring-1 ring-black"
+                class="p-2 rounded form-control ring-1 ring-black"
                 placeholder="Password"
               />
-              <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
+              <ErrorMessage
+                name="password"
+                class="font-semibold text-red-500 error-feedback"
+              />
             </div>
             <div class="form-group">
               <button
-                class="btn btn-block"
-                style="background-color: #384BB1"
+                class="p-2 px-16 rounded btn btn-block"
+                style="background-color: #384bb1"
                 :disabled="loading"
               >
                 <span
                   v-show="loading"
                   class="spinner-border spinner-border-sm"
                 ></span>
-                <span class="text-xl font-semibold" style="color: #FFFFFF"
-                  > เข้าสู่ระบบ </span
-                >
+                <span class="text-xl font-semibold" style="color: #ffffff">
+                  เข้าสู่ระบบ
+                </span>
               </button>
             </div>
             <div class="form-group">
@@ -48,40 +55,56 @@
           </div>
         </Form>
       </div>
-       <div
-            class="flex items-center justify-center mx-auto font-semibold w-60"
-            style="color: #312a21"
-          >
-            <span class="w-1/2 h-0.5 bg-black mx-2" />
-            <div class="px-2">or</div>
-            <span class="w-1/2 h-0.5 bg-black mx-2" />
-          </div>
-      <div class="flex flex-col items-center justify-center ">
+      <!-- or div-->
+      <div class=" w-72 inline-flex sm:w-0.5 sm:mx-auto bg-black h-96">
+        <div class="h-0.5">
+
+        </div>
+      </div>
+      <!-- another login-->
+      <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">
-          <ButtonCom msg="ลงชื่อเข้าใช้ด้วย Google" class="p-3" style="background-color: #FAF0EF ; color :#312a21 "></ButtonCom>
-         
-          <router-link to="/register"
-            ><ButtonCom msg="สมัครใช้งาน" class="w-56 p-3" style="background-color: #FAF0EF ; color :#312a21 "></ButtonCom
-          ></router-link>
+          <GoogleSignup
+            class="w-56 p-3"
+            style="background-color: #faf0ef; color: #312a21"
+          ></GoogleSignup>
+          <ButtonCom
+            @click="redirectToRegisterPage"
+            msg="สมัครใช้งาน"
+            class="w-56 p-3"
+            style="background-color: #faf0ef; color: #312a21"
+          ></ButtonCom>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
-import ButtonCom from "@/components/ButtonCom.vue";
+import ButtonCom from "@/components/BasicButton.vue";
+import GoogleSignup from "@/components/GoogleSignup.vue";
+
 import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
+
 export default {
-  name: "SignIn",
-  components: { ButtonCom, Form, Field, ErrorMessage },
+  components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
   data() {
-    const schema = yup.object().shape({
-      username: yup.string().required("Username is required!"),
-      password: yup.string().required("Password is required!"),
-    });
+    const schema = {
+      username(value) {
+        // validate email value and return messages...
+        if (!value) {
+          return "1" + value;
+        }
+        return true;
+      },
+      password(value) {
+        // validate password value and return messages...
+        if (!value) {
+          return "1" + value;
+        }
+        return true;
+      },
+    };
     return {
       loading: false,
       message: "",
@@ -92,18 +115,33 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    user() {
+      return this.$store.state.auth.user;
+    }
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/userlogin");
+      if (this.user.userType === 'ADMIN'){
+        this.$router.push("/admin-service");
+      }
+      if (this.user.userType === 'MODERATOR'){
+        this.$router.push("/moderator-service");
+      }
+      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+        this.$router.push("/user-service");
+      }
     }
   },
+  mounted() {},
   methods: {
+    redirectToRegisterPage() {
+      this.$router.push("/user-register");
+    },
     handleLogin(user) {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/mainuser");
+          this.$router.push("/user-service");
         },
         (error) => {
           this.loading = false;
@@ -120,5 +158,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
