@@ -1,89 +1,90 @@
 <template>
-  <div class="flex flex-col items-center justify-center ">
-    <div class="flex items-center justify-center p-4 mt-16">
+    <div class="flex flex-col items-center justify-center max-w-6xl mt-16 sm:max-w-full sm:mt-28">
       <h1 class="text-3xl font-semibold " style="color: #312a21">
         สมัครใช้งาน MMR
       </h1>
-    </div>
-    <div class="flex flex-col space-y-8 item-center w-72">
+    <div class="flex flex-col justify-center mt-10 sm:flex-row item-center ">
       <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful">
-        <div class=" form-group">
+        <div v-if="!successful" class="flex flex-col justify-between " >
+          <div class="flex flex-col space-x-8 sm:space-x-72 sm:flex-row ">
+          <div class="flex flex-col items-center justify-center gap-4">
+           <div class="flex flex-col form-group">
             <Field
               name="username"
               type="username"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Username"
             />
-            <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="username" class="text-sm font-semibold text-red-500 sm:text-lg error-feedback " />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="email"
               type="email"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Email@mail.kmutt.ac.th"
             />
-            <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="email" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="fname"
               type="fname"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Firstname"
             />
-            <ErrorMessage name="fname" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="fname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-                    <div class="form-group">
+            <div class="flex flex-col form-group">
             <Field
               name="lname"
               type="lname"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Lastname"
             />
-            <ErrorMessage name="lname" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="lname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="password"
               type="password"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Password"
             />
-            <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="password" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="comfirmPassword"
               type="password"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Confirm password"
             />
-            <ErrorMessage name="comfirmPassword" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="comfirmPassword" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-          <div class="form-group">
+          <div class="flex flex-col form-group">
             <Field
               name="phone"
               type="text"
-              class="form-control ring-1 ring-black"
+              class="p-2 rounded form-control ring-1 ring-black"
               placeholder="Phone number"
             />
-            <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
+            <ErrorMessage name="phone" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
-          <div class="flex-row w-3/4 h-72 m-10">
-            <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto">
+        </div>
+          <div class="flex flex-col justify-center w-full mt-12 sm:mt-2">
+            <div class="w-64 p-3 bg-[#FAF0EF]  h-32 rounded">
               <input
-                class="text-xl"
+                class="text-xl "
                 type="checkbox"
                 id="dept"
                 v-model="triggerDept"
                 :disabled="triggerFaculty"
               />
-              <label for="dept">หน่วยงานที่สังกัด</label>
+              <label for="dept" class="ml-2 font-bold">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
-                <div class="form-group">
-                <Field class="form-control" v-model="deptId" name="deptId" as="select">
+                <div class=" form-group -1">
+                <Field class="rounded form-control ring-1 ring-black" v-model="deptId" name="deptId" as="select">
                   <option value="" disabled>Select a department</option>
                   <option
                     v-for="item in deptRegisList"
@@ -96,7 +97,7 @@
               </div>
               </div>
             </div>
-            <div class="form-group w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
+            <div class="w-64 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded">
               <div>
                 <input
                   class="text-xl"
@@ -105,10 +106,10 @@
                   v-model="triggerFaculty"
                   :disabled="triggerDept"
                 />
-                <label for="faculty">คณะ</label>
+                <label for="faculty" class="ml-2 font-bold">คณะ</label>
                 <div v-show="triggerFaculty">
-                  <div class="form-group">
-                  <Field class="form-control" v-model="facultyId" name="facultyId" as="select">
+                  <div class=" form-group">
+                  <Field class="rounded form-control ring-1 ring-black" v-model="facultyId" name="facultyId" as="select">
                     <option value="" disabled>Select a faculty</option>
                     <option
                       v-for="item in facultyRegisList"
@@ -122,9 +123,9 @@
                 </div>
               </div>
               <div v-show="triggerFaculty && facultyId != 0">
-                <label for="major">ภาควิชา / สาขา</label>
+                <label for="major ml-2 font-bold">ภาควิชา / สาขา</label>
                 <div class="form-group">
-                  <Field  class="form-control" name="majorId" as="select">
+                  <Field  class="rounded form-control ring-1 ring-black" name="majorId" as="select">
                     <option value="" disabled>Select a major</option>
                     <option
                       v-for="item in majorFilter"
@@ -138,7 +139,8 @@
               </div>
             </div>
           </div>
-            <div class="flex flex-row justify-between mt-5 item-center">
+        </div>
+            <div class="flex flex-row justify-center mt-16 space-x-12 item-center">
               <button
                 class="bg-[#384BB1] px-10 py-1 rounded"
                 :disabled="loading"
@@ -161,10 +163,10 @@
               </button>
                 </router-link>
             </div>
-          
         </div>
       </Form>
     </div>
+  </div>
     <div
       v-if="message"
       class="alert"
@@ -172,7 +174,7 @@
     >
       {{ message }}
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -214,9 +216,9 @@ export default {
         .max(40, "Must be maximum 40 characters!"),
       comfirmPassword: yup
         .string()
-        .required("Confirm password is required!")
+        .required("ConfirmPassword is required!")
         .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
+        .oneOf([yup.ref('password')], 'Passwords do not match'),
       phone: yup
         .string()
         .required("Phone number is required!")
