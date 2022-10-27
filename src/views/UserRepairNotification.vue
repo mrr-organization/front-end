@@ -74,18 +74,18 @@
       </div>
       <div class="flex justify-center space-x-24">
         <ButtonCom
-          @handleClick="showAlert"
+          @click="showAlert"
           msg="ยืนยัน"
           class="p-2 mt-6 mb-2 text-black w-28"
           style="background-color: #02b072"
         ></ButtonCom>
-        <router-link to="/user/repair-notification">
-        <ButtonCom
-          msg="ยกเลิก"
-          class="p-2 mt-6 mb-2 text-black w-28"
-          style="background-color: #fc2525"
-        ></ButtonCom>
-      </router-link>
+        <router-link to="/user-service">
+          <ButtonCom
+            msg="ยกเลิก"
+            class="p-2 mt-6 mb-2 text-black w-28"
+            style="background-color: #fc2525"
+          ></ButtonCom>
+        </router-link>
       </div>
     </form>
   </div>
@@ -117,27 +117,40 @@ export default {
   },
   created() {
     this.getLocationList();
-    this.preview;
+  },
+  computed: {
+    successful() {
+      if (
+        this.image_list.length != 0 &&
+        this.from.detail != "" &&
+        this.from.location != ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   methods: {
-    async createRepairNotification() {
-      console.log(this.from);
-      await repairNotificationService
-        .createRepairNotification(this.from)
-        .then((response) => {
-          this.repairId = response.data.responseData.repairId;
-        })
-        .then(() => {
-          console.log(this.repairId);
-          console.log(this.image_list);
-          this.uploadFile(this.repairId, this.image_list, this.imagesType);
-        });
+     createRepairNotification() {
+      if (this.successful) {
+         repairNotificationService
+          .createRepairNotification(this.from)
+          .then((response) => {
+            this.repairId = response.data.responseData.repairId;
+          })
+          .then(() => {
+            this.uploadFile(this.repairId, this.image_list, this.imagesType);
+          })
+          .then(() => {
+            this.$router.push("/user/track-repair")
+          });
+      }
     },
-    uploadFile(repairId, image_list, imagesType) {
-      console.log(this.repairId);
-      console.log(this.image_list);
-      FileStoreService.uploadMultipleFiles(repairId, image_list, imagesType);
+     uploadFile(repairId, image_list, imagesType) {
+       FileStoreService.uploadMultipleFiles(repairId, image_list, imagesType);
     },
+
     getLocationList() {
       LocationService.getAllLocation()
         .then((response) => {
@@ -148,6 +161,7 @@ export default {
           console.log(e);
         });
     },
+
     previewMultiImage: function (event) {
       var input = event.target;
       var count = input.files.length;
@@ -164,27 +178,41 @@ export default {
         }
       }
     },
+
     reset: function () {
       this.image = null;
       this.preview = null;
       this.image_list = [];
       this.preview_list = [];
     },
+
     showAlert() {
-      this.$swal({
-        background: "#FF9817",
-        color: "#fff",
-        title: "ส่งข้อมูลเสร็จสิ้น",
-        icon: "success",
-        iconColor: "#fff",
-        confirmButtonText: "ปิด",
-        confirmButtonColor: "#17A87B",
-        allowEnterKey: true,
-      });
+      if (this.successful) {
+        this.$swal({
+          background: "#FF9817",
+          color: "#fff",
+          title: "ส่งข้อมูลเสร็จสิ้น",
+          icon: "success",
+          iconColor: "#fff",
+          confirmButtonText: "ปิด",
+          confirmButtonColor: "#17A87B",
+          allowEnterKey: true,
+        });
+      } else {
+        this.$swal({
+          background: "#FF9817",
+          color: "#fff",
+          title: "กรอกข้อมูลไม่ครบถ้วน",
+          icon: "error",
+          iconColor: "#ff2000",
+          confirmButtonText: "ปิด",
+          confirmButtonColor: "#ff2000",
+          allowEnterKey: true,
+        });
+      }
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

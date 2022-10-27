@@ -11,7 +11,7 @@
         class="flex justify-center p-4"
       >
         <div class="flex w-full space-x-5">
-          <div class="">เรื่องแจ้งซ่อม สามารถ คลิก Preview ดูข้อมูลได้</div>
+          <div class="">รายการแจ้งซ่อมรหัส : {{item.id}}</div>
           <div class="flex justify-around w-full items">
             <div class="flex flex-col items-center w-full">
               <div
@@ -156,11 +156,8 @@ export default {
       repairNotificationService
         .getAllRepairNotificationByUsername(username, pageNumber)
         .then((response) => {
-
           this.listRepair = response.data.responseData.content;
           this.totalPages = response.data.responseData.totalPages;
-
-          console.log(this.listRepair);
         });
     },
   },

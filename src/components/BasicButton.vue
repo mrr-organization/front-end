@@ -1,6 +1,8 @@
 <template>
-  <button class="font-bold rounded-lg "
-    style="color: #ffffff; background-color: #384bb1">
+  <button
+    class="font-bold rounded-lg"
+    style="color: #ffffff; background-color: #384bb1"
+  >
     {{ msg }}
   </button>
 </template>
