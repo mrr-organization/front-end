@@ -8,7 +8,7 @@
     <div class="mt-10 mx-96">
       <Form @submit="handleRegister" :validation-schema="schema">
         <div v-if="!successful" class="flex flex-row justify-between">
-          <div class="grid grid-rows-7 grid-col-2 gap-4 m-10 w-3/4">
+          <div class="grid w-3/4 gap-4 m-10 grid-rows-7 grid-col-2">
             <div class="form-group">
               <Field
                 name="username"
@@ -95,20 +95,20 @@
             </div>
           </div>
 
-          <div class="flex-row w-3/4 h-72 m-10">
-            <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto">
+          <div class="w-3/4 m-10 sm:flex-row h-72">
+            <div class="w-3/4 m-auto bg-[#FAF0EF] h-3/5">
               <input
-                class="text-xl"
+                class="text-xl "
                 type="checkbox"
                 id="dept"
                 v-model="triggerDept"
                 :disabled="triggerFaculty"
               />
-              <label for="dept">หน่วยงานที่สังกัด</label>
+              <label for="dept" class="ml-2 font-bold">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
-                <div class="form-group">
-                <Field name="deptId" as="select">
-                  <option value="" disabled>Select a department</option>
+                <div class="form-group ">
+                <Field name="deptId" class=" ring-1 ring-black" as="select">
+                  <option value=""  disabled>Select a department</option>
                   <option
                     v-for="item in deptRegisList"
                     :key="item.deptId"
@@ -120,7 +120,7 @@
               </div>
               </div>
             </div>
-            <div class="form-group w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
+            <div class="w-3/4 m-auto bg-[#FAF0EF] form-group h-3/5 mt-9">
               <div>
                 <input
                   class="text-xl"
@@ -129,10 +129,10 @@
                   v-model="triggerFaculty"
                   :disabled="triggerDept"
                 />
-                <label for="faculty">คณะ</label>
+                <label for="faculty" class="ml-2 font-bold">คณะ</label>
                 <div v-show="triggerFaculty">
                   <div class="form-group">
-                  <Field v-model="facultyId" name="facultyId" as="select">
+                  <Field v-model="facultyId" class="ring-1 ring-black" name="facultyId" as="select">
                     <option value="" disabled>Select a faculty</option>
                     <option
                       v-for="item in facultyRegisList"
@@ -164,8 +164,7 @@
           </div>
         </div>
         <!-- สมัคร / ยกเลิก -->
-        <div class="flex flex-row justify-between mt-5 item-center">
-              
+        <div class="flex flex-row justify-center mt-5 space-x-14 item-center">  
           <button
                 class="bg-[#384BB1] px-10 py-1 rounded"
                 :disabled="loading"
@@ -281,6 +280,7 @@ export default {
       },
     };
     return {
+      successful: false,
       facultyId: 0,
       loading: false,
       triggerDept: false,
