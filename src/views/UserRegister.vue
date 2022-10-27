@@ -1,103 +1,78 @@
 <template>
-  <div class="items-center justify-center">
+  <div class="flex flex-col items-center justify-center ">
     <div class="flex items-center justify-center p-4 mt-16">
-      <h1 class="text-3xl font-semibold" style="color: #312a21">
+      <h1 class="text-3xl font-semibold " style="color: #312a21">
         สมัครใช้งาน MMR
       </h1>
     </div>
-    <div class="mt-10 mx-96">
+    <div class="flex flex-col space-y-8 item-center w-72">
       <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful" class="flex flex-row justify-between">
-          <div class="grid grid-rows-7 grid-col-2 gap-4 m-10 w-3/4">
-            <div class="form-group">
-              <Field
-                name="username"
-                type="username"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="username"
-              />
-              <ErrorMessage
-                name="username"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="email"
-                type="email"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="your email"
-              />
-              <ErrorMessage
-                name="email"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="fname"
-                type="fname"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="first name"
-              />
-              <ErrorMessage
-                name="fname"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="lname"
-                type="lname"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="last name"
-              />
-              <ErrorMessage
-                name="lname"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="password"
-                type="password"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Password"
-              />
-              <ErrorMessage
-                name="password"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="comfirmPassword"
-                type="comfirmPassword"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Confirm password"
-              />
-              <ErrorMessage
-                name="comfirmPassword"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
-            <div class="form-group">
-              <Field
-                name="phone"
-                type="phone"
-                class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Phone number"
-              />
-              <ErrorMessage
-                name="phone"
-                class="font-semibold text-red-500 error-feedback"
-              />
-            </div>
+        <div v-if="!successful">
+        <div class=" form-group">
+            <Field
+              name="username"
+              type="username"
+              class="form-control ring-1 ring-black"
+              placeholder="Username"
+            />
+            <ErrorMessage name="username" class="font-semibold text-red-500 error-feedback" />
           </div>
-
+          <div class="form-group">
+            <Field
+              name="email"
+              type="email"
+              class="form-control ring-1 ring-black"
+              placeholder="Email@mail.kmutt.ac.th"
+            />
+            <ErrorMessage name="email" class="font-semibold text-red-500 error-feedback" />
+          </div>
+          <div class="form-group">
+            <Field
+              name="fname"
+              type="fname"
+              class="form-control ring-1 ring-black"
+              placeholder="Firstname"
+            />
+            <ErrorMessage name="fname" class="font-semibold text-red-500 error-feedback" />
+          </div>
+                    <div class="form-group">
+            <Field
+              name="lname"
+              type="lname"
+              class="form-control ring-1 ring-black"
+              placeholder="Lastname"
+            />
+            <ErrorMessage name="lname" class="font-semibold text-red-500 error-feedback" />
+          </div>
+          <div class="form-group">
+            <Field
+              name="password"
+              type="password"
+              class="form-control ring-1 ring-black"
+              placeholder="Password"
+            />
+            <ErrorMessage name="password" class="font-semibold text-red-500 error-feedback" />
+          </div>
+          <div class="form-group">
+            <Field
+              name="comfirmPassword"
+              type="password"
+              class="form-control ring-1 ring-black"
+              placeholder="Confirm password"
+            />
+            <ErrorMessage name="comfirmPassword" class="font-semibold text-red-500 error-feedback" />
+          </div>
+          <div class="form-group">
+            <Field
+              name="phone"
+              type="text"
+              class="form-control ring-1 ring-black"
+              placeholder="Phone number"
+            />
+            <ErrorMessage name="phone" class="font-semibold text-red-500 error-feedback" />
+          </div>
           <div class="flex-row w-3/4 h-72 m-10">
             <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto">
-              <div class="form-group">
               <input
                 class="text-xl"
                 type="checkbox"
@@ -107,21 +82,21 @@
               />
               <label for="dept">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
-                  <Field name="deptId" as="select">
-                    <option value="" disabled>Select a department</option>
-                    <option
-                      v-for="item in deptRegisList"
-                      :key="item.deptId"
-                      :value="item.deptId"
-                    >
-                      {{ item.deptName }}
-                    </option>
-                  </Field>
+                <div class="form-group">
+                <Field class="form-control" v-model="deptId" name="deptId" as="select">
+                  <option value="" disabled>Select a department</option>
+                  <option
+                    v-for="item in deptRegisList"
+                    :key="item.deptId"
+                    :value="item.deptId"
+                  >
+                    {{ item.deptName }}
+                  </option>
+                </Field>
+              </div>
               </div>
             </div>
-            </div>
-            <div class="w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
-              <div class="form-group">
+            <div class="form-group w-3/4 h-3/5 bg-white opacity-50 m-auto mt-9">
               <div>
                 <input
                   class="text-xl"
@@ -132,21 +107,24 @@
                 />
                 <label for="faculty">คณะ</label>
                 <div v-show="triggerFaculty">
-                    <Field v-model="facultyId" name="facultyId" as="select">
-                      <option value="" disabled>Select a faculty</option>
-                      <option
-                        v-for="item in facultyRegisList"
-                        :key="item.facultyId"
-                        :value="item.facultyId"
-                      >
-                        {{ item.facultyName }}
-                      </option>
-                    </Field>
+                  <div class="form-group">
+                  <Field class="form-control" v-model="facultyId" name="facultyId" as="select">
+                    <option value="" disabled>Select a faculty</option>
+                    <option
+                      v-for="item in facultyRegisList"
+                      :key="item.facultyId"
+                      :value="item.facultyId"
+                    >
+                      {{ item.facultyName }}
+                    </option>
+                  </Field>
+                </div>
                 </div>
               </div>
               <div v-show="triggerFaculty && facultyId != 0">
                 <label for="major">ภาควิชา / สาขา</label>
-                  <Field name="majorId" as="select">
+                <div class="form-group">
+                  <Field  class="form-control" name="majorId" as="select">
                     <option value="" disabled>Select a major</option>
                     <option
                       v-for="item in majorFilter"
@@ -156,30 +134,34 @@
                       {{ item.majorName }}
                     </option>
                   </Field>
-
+                </div>
               </div>
             </div>
-            </div>
           </div>
-        </div>
-        <!-- สมัคร / ยกเลิก -->
-        <div class="flex flex-row justify-between mt-5 item-center">
-          <button type="submit" class="bg-[#384BB1] px-10 py-1 rounded" :disabled="loading">
-            <span
-              v-show="loading"
-              class="spinner-border spinner-border-sm"
-            ></span>
-            <span class="text-xl font-semibold" style="color: #ffffff"
-              >สมัคร</span
-            >
-          </button>
-          <router-link to="/user-login"
-            ><button class="bg-[#FC2525] px-10 py-1 rounded">
-              <span class="text-xl font-semibold" style="color: #ffffff"
-                >ยกเลิก</span
+            <div class="flex flex-row justify-between mt-5 item-center">
+              <button
+                class="bg-[#384BB1] px-10 py-1 rounded"
+                :disabled="loading"
               >
-            </button>
-          </router-link>
+                <span
+                  v-show="loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                <span class="text-xl font-semibold" style="color: #ffffff"
+                  >สมัคร</span
+                >
+              </button>
+              <router-link to="/user-login"
+                ><button
+                class="bg-[#FC2525] px-10 py-1 rounded"
+              >
+                <span class="text-xl font-semibold" style="color: #ffffff"
+                  >ยกเลิก</span
+                >
+              </button>
+                </router-link>
+            </div>
+          
         </div>
       </Form>
     </div>
@@ -240,29 +222,14 @@ export default {
         .required("Phone number is required!")
         .min(4, "Must be at least 4 number!")
         .max(10, "Must be maximum 10 number!"),
-      deptId : yup
-        .string()
-        .required("Phone number is required!")
-        .min(4, "Must be at least 4 number!")
-        .max(10, "Must be maximum 10 number!"),
-      facultyId : yup
-        .string()
-        .required("Phone number is required!")
-        .min(4, "Must be at least 4 number!")
-        .max(10, "Must be maximum 10 number!"),
-      majorId : yup
-        .string()
-        .required("Phone number is required!")
-        .min(4, "Must be at least 4 number!")
-        .max(10, "Must be maximum 10 number!"),
     });
-
     return {
+      successful: false,
       facultyId: 0,
+      deptId: 0,
       loading: false,
       triggerDept: false,
       triggerFaculty: false,
-
       message: "",
       schema,
       deptRegisList: [],
@@ -274,15 +241,26 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-    majorFilter() {
-      return this.majorRegisList.filter((item) => {
+    majorFilter(){
+      return this.majorRegisList.filter(item => {
         return item.facultyId == this.facultyId;
-      });
+      })
     },
+    user() {
+      return this.$store.state.auth.user;
+    }
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/user-register");
+      if (this.user.userType === 'ADMIN'){
+        this.$router.push("/admin-service");
+      }
+      if (this.user.userType === 'MODERATOR'){
+        this.$router.push("/moderator-service");
+      }
+      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+        this.$router.push("/user-service");
+      }
     }
     this.getFaculty();
     this.getDepartment();
@@ -305,28 +283,31 @@ export default {
       });
     },
     handleRegister(user) {
-      if (this.triggerFaculty) {
-        user.userType = "STUDENT";
-        user.deptId = 0;
-        console.log(user.deptId);
+      if (this.triggerFaculty){
+        user.userType = 'STUDENT'
+        user.deptId = 0
+        console.log(user.deptId)
       }
-      if (this.triggerDept) {
-        user.facultyId = 0;
-        user.majorId = 0;
-        user.userType = "PERSONNEL";
-        console.log(user.facultyId);
+      if (this.triggerDept){
+        user.facultyId = 0
+        user.majorId = 0
+        user.userType = 'PERSONNEL'
+        console.log(user.facultyId)
       }
       console.log(user);
       this.message = "";
       this.successful = false;
       this.loading = true;
       this.$store.dispatch("auth/register", user).then(
-        () => {
-          this.$router.push("/user-loin");
-        },
         (data) => {
-          this.message = data.message;
-          this.successful = true;
+          console.log(data)
+          this.message = data.responseData.message;
+          if (data.responseCode == "200") {
+            this.successful = true;
+            this.$router.push("/user-login");
+          }
+          console.log(this.message)
+          console.log(this.successful)
           this.loading = false;
         },
         (error) => {
