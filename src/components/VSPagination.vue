@@ -8,7 +8,7 @@
         Previous
       </button>
       <span v-for="(item, index) in totalPages" :key="index">
-        <button class="pagination-button" @click="currentPage(index)">
+        <button class="pagination-button hover:bg-[#FAF0EF] hover:transition-all" @click="currentPage(index)">
           {{ index + 1 }}
         </button>
       </span>
