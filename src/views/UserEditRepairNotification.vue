@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="updateRepairNotification">
-  <div class="px-2 mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
-    <div class="p-6 -mx-2 text-left bg-white mt-14">
+  <div class="px-2 mx-auto mt-16 max-w-7xl" style="background-color: #fef1e6">
+    <div class="p-6 -mx-2 text-2xl font-bold text-left bg-white mt-14">
       <h2 style="color: #312a21">แก้ไขข้อมูลแจ้งซ่อม / ร้องเรียนปัญหา</h2>
     </div>
     <div class="max-w-4xl mx-auto mt-3">
@@ -66,7 +66,7 @@
           </template>
           <template v-if="!preview_list.length">
             <div v-for="item in repairData.fileStoreResponses" :key="item.fileName" class="grid grid-cols-1 gap-2">
-            <img :src="url+item.fileName" class="w-60 h-60 m-auto mt-5"/>
+            <img :src="url+item.fileName" class="m-auto mt-5 w-60 h-60"/>
             <p class="mb-0">file name: {{item.fileName }}</p>
           </div>
           </template>
