@@ -1,97 +1,145 @@
 <template>
-  <div class="mt-10 sm:mt-20 max-w-7xl mx-auto p-1 ">
-    <div class="flex flex-row items-center justify-center mt-5 gap-10 w-full flex-wrap overflow-auto">
-     <div class="">
-      <column-chart class="bg-white rounded-xl h-96 " :data=this.countYearData  width="380px" height="288px" :colors="['#0000ff', '#ff0000']" xtitle="เดือน" ytitle="จำนวนเรื่องร้องเรียน" ></column-chart>
-     </div>
-     <div class="">
-      <pie-chart class="bg-white rounded-xl  h-96" :data=this.countStatusData width="400px"  height="300px"></pie-chart>
+  <div class="p-1 mx-auto mt-10 sm:mt-20 max-w-7xl">
+    <div
+      class="flex flex-row flex-wrap items-center justify-center w-full gap-10 mt-5 overflow-auto"
+    >
+      <div class="">
+        <column-chart
+          class="bg-white rounded-xl h-96"
+          :data="this.countYearData"
+          width="380px"
+          height="288px"
+          :colors="['#0000ff', '#ff0000']"
+          xtitle="เดือน"
+          ytitle="จำนวนเรื่องร้องเรียน"
+        ></column-chart>
+      </div>
+      <div class="">
+        <pie-chart
+          class="bg-white rounded-xl h-96"
+          :data="this.countStatusData"
+          width="400px"
+          height="300px"
+        ></pie-chart>
+      </div>
     </div>
-    </div>
-    
-    <div >
-    <div class="flex justify-end ">
-    <div class=" mt-6 sm:mt-10 h-12 sm:h-20 p-1 rounded-lg inline-flex items-center justify-center "  style="background-color: #fef1e6">
-      <p class="font-bold text-sm sm:text-base">Status:</p>
-      <select @change="getNewRepair" class="border-2" name="status" v-model="status">
-        <option v-for="(item, index) in allStatus" :key="index" :value=item>
-                {{item}}
-        </option>
-      </select>
-    </div>
-  </div>
-    <div class="mx-auto overflow-auto rounded-t-lg mt-3 sm:mt-10 max-w-7xl sm:max-w-7xl"
-      style="background-color: #fef1e6">
+
+    <div>
+      <div class="flex justify-end">
+        <div
+          class="inline-flex items-center justify-center h-12 p-1 mt-6 rounded-lg sm:mt-10 sm:h-20"
+          style="background-color: #fef1e6"
+        >
+          <p class="text-sm font-bold sm:text-base">Status:</p>
+          <select
+            @change="getNewRepair"
+            class="border-2"
+            name="status"
+            v-model="status"
+          >
+            <option
+              v-for="(item, index) in allStatus"
+              :key="index"
+              :value="item"
+            >
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
       
-      <table class="w-full text-sm table-auto sm:text-xl">
-        <thead>
-          <tr class="bg-white">
-            <th>เรื่องร้องเรียนที่</th>
-            <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
-            <th>สถานที่ / พื่นที่</th>
-            <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
-          </tr>
-        </thead>
-        <tbody v-for="(item) in listRepair"
-        :key="item.id">
-          <tr>
-            <td>{{item.id}}</td>
-            <td>{{item.createDate}}</td>
-            <td>{{item.location}}</td>
-            <td>{{item.status}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <div
+          class="mx-auto mt-3 overflow-auto rounded-t-lg sm:mt-10 max-w-7xl sm:max-w-7xl"
+          style="background-color: #fef1e6"
+        >
+          <table class="w-full text-sm table-auto sm:text-xl">
+            <thead>
+              <tr class="bg-white">
+                <th>เรื่องร้องเรียนที่</th>
+                <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
+                <th>สถานที่ / พื่นที่</th>
+                <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in listRepair" :key="item.id">
+                <tr>
+                <td ><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)" >{{ item.createDate }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)">{{ item.location }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)" class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] w-44">{{ item.status }}</button></td>
+              </tr>
+              
+            </tbody>
+
+          </table>
+        </div>
+
     </div>
   </div>
-  <VSPagination :totalPages="totalPages" @page-number="getListRepairNotificationByStatus ">
-    </VSPagination >
-</template >
-    
-  <script >
+  <VSPagination
+    :totalPages="totalPages"
+    @page-number="getListRepairNotificationByStatus"
+  >
+  </VSPagination>
+</template>
+
+<script>
 import repairNotificationService from "@/services/repair-notification.service";
-import VSPagination from '@/components/VSPagination.vue';
+import VSPagination from "@/components/VSPagination.vue";
 export default {
   components: {
-    VSPagination
+    VSPagination,
   },
-  data(){
-
+  data() {
     return {
+      repairId: Number,
       listRepair: [],
-      allStatus:['PENDING','IN PROGRESS', 'REJECT', 'COMPLETED'],
+      allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
       status: "",
       totalPages: 0,
       pageNumber: 0,
       year: 2022,
       countYearData: {},
-      countStatusData: {}
-    }
+      countStatusData: {},
+    };
   },
-
   created() {
     this.status = this.allStatus[3];
-    this.getAllRepairNotificationByStatus(this.status , this.pageNumber);
+    this.getAllRepairNotificationByStatus(this.status, this.pageNumber);
     this.getCountStatus();
     this.getCountYear();
   },
-
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+    user() {
+      return this.$store.state.auth.user;
+    },
+  },
   methods: {
-    getCountStatus (){
+    redirectToPreviewPage(id){
+      if (this.loggedIn){
+        this.$router.push({ path: `/preview/${id}`})
+      }
+      if (!this.loggedIn) {
+        this.$router.push("/user-login")
+      }
+    },
+    getCountStatus() {
       repairNotificationService.getCountStatus().then((response) => {
         this.countStatusData = response.data.responseData;
-    });
+      });
     },
-    getCountYear (){
+    getCountYear() {
       repairNotificationService.getCountYear(this.year).then((response) => {
         this.countYearData = response.data.responseData;
-    });
+      });
     },
-    getNewRepair(){
+    getNewRepair() {
       this.getAllRepairNotificationByStatus(this.status, 0);
     },
-    getListRepairNotificationByStatus(pageNumber){
+    getListRepairNotificationByStatus(pageNumber) {
       this.pageNumber = pageNumber;
       this.getAllRepairNotificationByStatus(this.status, pageNumber);
     },
@@ -99,23 +147,19 @@ export default {
       repairNotificationService
         .getAllRepairNotificationByStatus(status, pageNumber)
         .then((response) => {
-
           this.listRepair = response.data.responseData.content;
           this.totalPages = response.data.responseData.totalPages;
-
         });
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
-    
-    <style scoped>
+
+<style scoped>
 td {
   @apply px-1 py-3 sm:px-2 lg:p-4;
 }
 thead > tr > th {
   @apply whitespace-nowrap px-3;
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
    
     <div class="mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
-    <div class="p-6 text-left bg-white mt-14">
+    <div class="p-6 text-2xl font-black text-left bg-white mt-14">
       <h2 style="color: #312a21">ติดตามสถานะแจ้งซ่อม</h2>
     </div>
     <div class="min-h-[500px]">
@@ -11,7 +11,9 @@
         class="flex justify-center p-4"
       >
         <div class="flex w-full space-x-5">
+        <button @click="redirectToPreviewPage(item.id)">
           <div class="">รายการแจ้งซ่อมรหัส : {{item.id}}</div>
+        </button>
           <div class="flex justify-around w-full items">
             <div class="flex flex-col items-center w-full">
               <div
@@ -61,6 +63,17 @@
                 แก้ไขข้อมูล
               </button>
           </div>
+          <div
+            v-else-if="item.status === 'COMPLETED'"
+            class="w-2/12"
+          >
+
+              <button @click="redirectToRenewPage(item.id)"
+                class="bg-[#0000ff] text-white rounded-lg p-2 font-medium"
+              >
+                ส่งเรื่องอีกครั้ง
+              </button>
+          </div>
           <div v-else class="w-2/12"></div>
         </div>
       </div>
@@ -96,11 +109,18 @@ export default {
   },
 
   methods: {
+    redirectToRenewPage(id){
+      this.$router.push({ path: `/user/renew/repair-notification/${id}`})
+    },
     getListRepairFromPageNumber(pageNumber){
       this.getListRepairNotificationByUsername(this.user.username, pageNumber)
     },
+    
     redirectToEditPage(id){
       this.$router.push({ path: `/user/edit/repair-notification/${id}`})
+    },
+    redirectToPreviewPage(id){
+      this.$router.push({ path: `/preview/${id}`})
     },
     clrBgStatus(index, status) {
       if (this.listRepair[index].status === "") {
@@ -163,6 +183,3 @@ export default {
   },
 };
 </script>
-  
-  <style>
-</style>

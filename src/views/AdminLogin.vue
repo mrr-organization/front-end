@@ -7,7 +7,7 @@
     </div>
     <Form @submit="handleLogin" :validation-schema="schema">
       <div class="flex flex-col space-y-6 mt-7 item-center w-72">
-        <div class="form-group">
+        <div class="flex flex-col form-group">
           <Field
             name="username"
             type="text"
@@ -19,7 +19,7 @@
             class="font-semibold text-red-500 error-feedback"
           />
         </div>
-        <div class="form-group">
+        <div class="flex flex-col form-group">
           <Field
             name="password"
             type="password"
@@ -79,17 +79,20 @@ export default {
     },
     user() {
       return this.$store.state.auth.user;
-    }
+    },
   },
   created() {
     if (this.loggedIn) {
-      if (this.user.userType === 'ADMIN'){
+      if (this.user.userType === "ADMIN") {
         this.$router.push("/admin-service");
       }
-      if (this.user.userType === 'MODERATOR'){
+      if (this.user.userType === "MODERATOR") {
         this.$router.push("/moderator-service");
       }
-      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+      if (
+        this.user.userType === "STUDENT" ||
+        this.user.userType === "PERSONNEL"
+      ) {
         this.$router.push("/user-service");
       }
     }
@@ -99,14 +102,29 @@ export default {
       this.loading = true;
       this.$store.dispatch("auth/login", user).then(
         () => {
-          if(this.user.userType === "ADMIN") {
+          if (this.user.userType === "ADMIN") {
             this.$router.push("/admin-service");
           }
-          if(this.user.userType === "MODERATOR") {
+          if (this.user.userType === "MODERATOR") {
             this.$router.push("/moderator-service");
           }
-          if(this.user.userType === "STUDENT" || this.$store.state.auth.user.userType === "PERSONNEL") {
-            this.$router.push("/no-permission");
+          if (
+            this.user.userType === "STUDENT" ||
+            this.$store.state.auth.user.userType === "PERSONNEL"
+          ) {
+            this.$store.dispatch("auth/logout").then(
+              () => {
+                this.$router.push("/");
+              },
+              (error) => {
+                this.message =
+                  (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+              }
+            );
           }
         },
         (error) => {
@@ -124,5 +142,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

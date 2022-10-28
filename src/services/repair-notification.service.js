@@ -3,6 +3,9 @@ import authHeader from './auth-header';
 // const API_URL = 'http://localhost:8080/api/repair-notification/';
 const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/repair-notification/';
 class RepairNotificationService {
+  getRepairNotificationById (id){
+    return axios.get(API_URL + id)
+  }
   createRepairNotification(from) {
     return axios.post(API_URL + 'create-repair', {
       id: from.id,

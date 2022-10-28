@@ -40,28 +40,28 @@
                 @click="handleClickNoti"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/ring.svg" />
                 <span class="self-center ml-4">การแจ้งเตือน</span>
               </button>
               <router-link
                 to="/dashboard"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/dashboard.svg" />
                 <span class="self-center ml-4">แดชบอร์ด</span>
               </router-link>
               <router-link
                 to="/admin/manage-member"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/manageacc.svg" />
                 <span class="self-center ml-4">จัดการบัญชี</span>
               </router-link>
               <router-link
                 to="/admin/repair-list"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/statusrepair.svg" />
                 <span class="self-center ml-4">อัพเดทหน่วยงาน</span>
               </router-link>
             </div>
@@ -80,28 +80,28 @@
                 @click="handleClickNoti"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/ring.svg" />
                 <span class="self-center ml-4">การแจ้งเตือน</span>
               </button>
               <router-link
                 to="/dashboard"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/dashboard.svg" />
                 <span class="self-center ml-4">แดชบอร์ด</span>
               </router-link>
               <router-link
                 to="/admin/repair-list/department"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/notirepair.svg" />
                 <span class="self-center ml-4">รายการแจ้งซ่อม</span>
               </router-link>
               <router-link
                 to="/admin/edit/repair-status"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/statusrepair.svg" />
                 <span class="self-center ml-4">สถานะแจ้งซ่อม</span>
               </router-link>
             </div>
@@ -109,7 +109,7 @@
               v-if="
                 user.userType === menuType[2] || user.userType === menuType[3]
               "
-              class="mt-6 space-y-5 space-x-9"
+              class="mt-6 space-y-8 space-x-9"
             >
               <router-link
                 to="/user/profile"
@@ -122,28 +122,28 @@
                 @click="handleClickNoti"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/ring.svg" />
                 <span class="self-center ml-4">การแจ้งเตือน</span>
               </button>
               <router-link
                 to="/dashboard"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/dashboard.svg" />
                 <span class="self-center ml-4">แดชบอร์ด</span>
               </router-link>
               <router-link
                 to="/user/repair-notification"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/notirepair.svg" />
                 <span class="self-center ml-4">แจ้งซ่อม</span>
               </router-link>
               <router-link
                 to="/user/track-repair"
                 class="flex text-xl font-semibold text-black hover:text-black hover:no-underline"
               >
-                <img src="../assets/Usernav.svg" />
+                <img src="../assets/track.svg" />
                 <span class="self-center ml-4">ติดตามสถานะ</span>
               </router-link>
             </div>

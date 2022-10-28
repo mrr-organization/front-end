@@ -73,7 +73,7 @@
           </div>
         </div>
           <div class="flex flex-col justify-center w-full mt-12 sm:mt-2">
-            <div class="w-64 p-3 bg-[#FAF0EF]  h-32 rounded">
+            <div class="w-80 p-3 bg-[#FAF0EF]  h-32 rounded">
               <input
                 class="text-xl "
                 type="checkbox"
@@ -97,7 +97,7 @@
               </div>
               </div>
             </div>
-            <div class="w-64 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded">
+            <div class="w-80 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded">
               <div>
                 <input
                   class="text-xl"
