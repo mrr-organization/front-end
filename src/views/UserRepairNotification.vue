@@ -132,7 +132,6 @@ export default {
     },
   },
   methods: {
-
      createRepairNotification() {
       if (this.successful) {
          repairNotificationService
