@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-10 sm:mt-20 max-w-7xl mx-auto p-1">
+  <div class="p-1 mx-auto mt-10 sm:mt-20 max-w-7xl">
     <div
-      class="flex flex-row items-center justify-center mt-5 gap-10 w-full flex-wrap overflow-auto"
+      class="flex flex-row flex-wrap items-center justify-center w-full gap-10 mt-5 overflow-auto"
     >
       <div class="">
         <column-chart
@@ -27,10 +27,10 @@
     <div>
       <div class="flex justify-end">
         <div
-          class="mt-6 sm:mt-10 h-12 sm:h-20 p-1 rounded-lg inline-flex items-center justify-center"
+          class="inline-flex items-center justify-center h-12 p-1 mt-6 rounded-lg sm:mt-10 sm:h-20"
           style="background-color: #fef1e6"
         >
-          <p class="font-bold text-sm sm:text-base">Status:</p>
+          <p class="text-sm font-bold sm:text-base">Status:</p>
           <select
             @change="getNewRepair"
             class="border-2"
@@ -49,7 +49,7 @@
       </div>
       
         <div
-          class="mx-auto overflow-auto rounded-t-lg mt-3 sm:mt-10 max-w-7xl sm:max-w-7xl"
+          class="mx-auto mt-3 overflow-auto rounded-t-lg sm:mt-10 max-w-7xl sm:max-w-7xl"
           style="background-color: #fef1e6"
         >
           <table class="w-full text-sm table-auto sm:text-xl">
@@ -62,17 +62,15 @@
               </tr>
             </thead>
             <tbody v-for="item in listRepair" :key="item.id">
-              
-              <tr>
-               
-                <button @click="redirectToPreviewPage(item.id)" class=""><td>{{ item.id }}</td></button>
-                <td>{{ item.createDate }}</td>
-                <td>{{ item.location }}</td>
-                <button @click="redirectToPreviewPage(item.id)" class=""><td>{{ item.status }}</td></button>
-
+                <tr>
+                <td ><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)" >{{ item.createDate }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)">{{ item.location }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)" class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] w-44">{{ item.status }}</button></td>
               </tr>
               
             </tbody>
+
           </table>
         </div>
 

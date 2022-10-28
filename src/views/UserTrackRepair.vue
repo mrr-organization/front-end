@@ -1,7 +1,7 @@
 <template>
    
     <div class="mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
-    <div class="p-6 text-left bg-white mt-14">
+    <div class="p-6 text-2xl font-black text-left bg-white mt-14">
       <h2 style="color: #312a21">ติดตามสถานะแจ้งซ่อม</h2>
     </div>
     <div class="min-h-[500px]">
