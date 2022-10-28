@@ -23,7 +23,8 @@ const routeOptions = [
   {path: '/admin/manage-member', name: 'AdminManageMember'},
   {path: '/admin/edit/repair-status', name:'AdminEditRepairStatus'},
   {path: '/notification', name:'NotificationPage'},
-  {path: '/preview/:id', name:'PreviewRepair'}
+  {path: '/preview/:id', name:'PreviewRepair'},
+  {path: '/user/renew/repair-notification/:id', name:'RenewRepairNotification'}
 ];
 
 const routes = routeOptions.map(route => {

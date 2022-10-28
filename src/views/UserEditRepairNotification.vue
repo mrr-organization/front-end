@@ -64,9 +64,9 @@
               <p>size: {{ image_list[index].size / 1024 }}KB</p>
             </div>
           </template>
-          <template v-if="!preview_list.length">
+          <template v-else>
             <div v-for="item in repairData.fileStoreResponses" :key="item.fileName" class="grid grid-cols-1 gap-2">
-            <img :src="url+item.fileName" class="w-60 h-60 m-auto mt-5"/>
+            <img :src="url+item.fileName" class="m-auto mt-5 w-60 h-60"/>
             <p class="mb-0">file name: {{item.fileName }}</p>
           </div>
           </template>
@@ -113,6 +113,7 @@ export default {
       repairData: {},
       preview: null,
       image: null,
+      imagesType: "REPAIR",
       location_list: [],
       preview_list: [],
       image_list: [],
@@ -161,9 +162,8 @@ export default {
           this.repairId = response.data.responseData.repairId;
         })
         .then(() => {
-          if (this.preview_list.length && this.image_list.length) {
+            console.log(this.repairId, this.image_list, this.imagesType)
             this.uploadFile(this.repairId, this.image_list, this.imagesType);
-          }
         })
         .then(() => {
           this.$router.push("/user/track-repair");
@@ -206,5 +206,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

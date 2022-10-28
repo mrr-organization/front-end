@@ -52,7 +52,6 @@
               >
             </div>
           </div>
-
           <div
             v-if="item.status === '' || item.status === 'PENDING'"
             class="w-2/12"
@@ -62,6 +61,17 @@
                 class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium"
               >
                 แก้ไขข้อมูล
+              </button>
+          </div>
+          <div
+            v-else-if="item.status === 'COMPLETED'"
+            class="w-2/12"
+          >
+
+              <button @click="redirectToRenewPage(item.id)"
+                class="bg-[#0000ff] text-white rounded-lg p-2 font-medium"
+              >
+                ส่งเรื่องอีกครั้ง
               </button>
           </div>
           <div v-else class="w-2/12"></div>
@@ -99,6 +109,9 @@ export default {
   },
 
   methods: {
+    redirectToRenewPage(id){
+      this.$router.push({ path: `/user/renew/repair-notification/${id}`})
+    },
     getListRepairFromPageNumber(pageNumber){
       this.getListRepairNotificationByUsername(this.user.username, pageNumber)
     },
@@ -170,6 +183,3 @@ export default {
   },
 };
 </script>
-  
-  <style>
-</style>

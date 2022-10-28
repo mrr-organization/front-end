@@ -140,6 +140,7 @@ export default {
             this.repairId = response.data.responseData.repairId;
           })
           .then(() => {
+            console.log(this.repairId, this.image_list, this.imagesType)
             this.uploadFile(this.repairId, this.image_list, this.imagesType);
           })
           .then(() => {
