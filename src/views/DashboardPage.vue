@@ -3,7 +3,7 @@
     <div
       class="flex flex-row flex-wrap items-center justify-center w-full gap-10 mt-5 overflow-auto"
     >
-      <div class="">
+      <div>
         <column-chart
           class="bg-white rounded-xl h-96"
           :data="this.countYearData"
@@ -14,7 +14,7 @@
           ytitle="จำนวนเรื่องร้องเรียน"
         ></column-chart>
       </div>
-      <div class="">
+      <div>
         <pie-chart
           class="bg-white rounded-xl h-96"
           :data="this.countStatusData"
@@ -63,7 +63,7 @@
             </thead>
             <tbody v-for="item in listRepair" :key="item.id">
                 <tr>
-                <td ><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
                 <td><button @click="redirectToPreviewPage(item.id)" >{{ item.createDate }}</button></td>
                 <td><button @click="redirectToPreviewPage(item.id)">{{ item.location }}</button></td>
                 <td><button @click="redirectToPreviewPage(item.id)" class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] w-44">{{ item.status }}</button></td>
@@ -88,7 +88,7 @@ import repairNotificationService from "@/services/repair-notification.service";
 import VSPagination from "@/components/VSPagination.vue";
 export default {
   components: {
-    VSPagination,
+    VSPagination
   },
   data() {
     return {
