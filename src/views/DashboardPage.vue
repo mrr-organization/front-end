@@ -40,9 +40,9 @@
             <option
               v-for="(item, index) in allStatus"
               :key="index"
-              :value="item"
+              :value="item.statusName"
             >
-              {{ item }}
+              {{ item.statusName }}
             </option>
           </select>
         </div>
@@ -66,7 +66,7 @@
                 <td><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
                 <td><button @click="redirectToPreviewPage(item.id)" >{{ item.createDate }}</button></td>
                 <td><button @click="redirectToPreviewPage(item.id)">{{ item.location }}</button></td>
-                <td><button @click="redirectToPreviewPage(item.id)" class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] w-44">{{ item.status }}</button></td>
+                <td><button @click="redirectToPreviewPage(item.id)" class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF] w-44" :class="filterStatusColor(item.status)">{{ item.status }}</button></td>
               </tr>
               
             </tbody>
@@ -94,7 +94,25 @@ export default {
     return {
       repairId: Number,
       listRepair: [],
-      allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
+      // allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
+      allStatus: [
+        {
+          statusName: "PENDING",
+          bg: "bg-[#3366CC]"
+        },
+        {
+          statusName: "IN PROGRESS",
+          bg: "bg-[#DC3912]"
+        },
+        {
+          statusName: "REJECT",
+          bg: "bg-[#FF9900]"
+        },
+        {
+          statusName: "COMPLETED",
+          bg: "bg-[#109618]"
+        },
+      ],
       status: "",
       totalPages: 0,
       pageNumber: 0,
@@ -104,7 +122,7 @@ export default {
     };
   },
   created() {
-    this.status = this.allStatus[3];
+    this.status = this.allStatus[3].statusName;
     this.getAllRepairNotificationByStatus(this.status, this.pageNumber);
     this.getCountStatus();
     this.getCountYear();
@@ -151,6 +169,13 @@ export default {
           this.totalPages = response.data.responseData.totalPages;
         });
     },
+    filterStatusColor(status) {
+      for(let i in this.allStatus) {
+        if(this.allStatus[i].statusName == status) {
+          return this.allStatus[i].bg
+        }
+      }
+    }
   },
 };
 </script>

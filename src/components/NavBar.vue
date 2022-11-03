@@ -1,16 +1,16 @@
 <template>
   <div class="relative">
     <div
-      class="fixed top-0 left-0 right-0 flex flex-row justify-between bg-white"
+      class="fixed top-0 left-0 right-0 flex flex-row bg-white"
     >
       <!-- bars -->
-      <div>
+      <div class="w-1/3 flex justify-start">
         <div v-show="loggedIn">
           <!-- Menu -->
           <!-- onClick = false -->
           <div @click="onClick" v-if="!statusClick">
-            <button>
-              <font-awesome-icon icon="bars" size="2xl" class="mt-2 ml-4" />
+            <button >
+              <font-awesome-icon icon="bars" size="2xl" class="mt-2 ml-4 pb-2"/>
             </button>
           </div>
           <div @click="onClick" v-if="statusClick">
@@ -150,16 +150,19 @@
           </div>
         </div>
       </div>
-
-      <button
+      <div class="w-1/3 flex justify-center">
+        <button
         @click="redirectToHomePage"
-        class="flex justify-center mt-2 text-2xl font-semibold uppercase item-center"
+        class="flex justify-center text-2xl font-semibold uppercase items-center"
         style="color: #384bb1"
       >
         MRR
       </button>
+      </div>
+
       <!-- loggedIn = true -->
-      <div
+      <div class="w-1/3 flex justify-end items-center">
+        <div
         v-if="loggedIn"
         class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
       >
@@ -169,7 +172,7 @@
           style="background-color: #384bb1"
         >
           <span
-            class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
+            class="p-1 my-1 mt-1 text-base font-semibold rounded sm:p-2 right-4"
             style="color: #ffffff; background-color: #384bb1"
             >ออกจากระบบ</span
           >
@@ -178,7 +181,7 @@
       <!-- loggedIn = false -->
       <div
         v-else
-        class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
+        class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4 items-center"
       >
         <router-link
           to="/login-service"
@@ -187,6 +190,8 @@
           >เข้าสู่ระบบ</router-link
         >
       </div>
+      </div>
+      
     </div>
   </div>
 </template>
