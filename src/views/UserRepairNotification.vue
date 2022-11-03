@@ -37,7 +37,7 @@
           <h3 class="text-left" style="color: #312a21">รูปภาพประกอบ</h3>
           <label
             for="files"
-            class="self-end p-1 rounded btn "
+            class="self-end p-2 font-semibold rounded cursor-pointer btn "
             style="background-color: #f9d5a7; color: #312a21"
             >เลือกรูปภาพ</label
           >

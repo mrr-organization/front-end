@@ -14,7 +14,7 @@
       </div>
       <div class="flex p-0.5 px-1 py-1 sm:px-3 my-3 mt-5 mr-2 sm:mt-2 bg-white rounded-full button ">
         <button
-          class="p-0.5 m-0.5 sm:p-1 sm:m-2  rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none text-xs sm:text-sm font-semibold transition "
+          class="p-0.5 m-0.5 sm:p-1 sm:m-2  rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none texst-xs sm:text-sm font-semibold transition "
         >
           <p>USER</p>
         </button>
