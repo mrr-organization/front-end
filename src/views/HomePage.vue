@@ -1,10 +1,7 @@
 <template>
-    <!-- <div class="flex justify-center mt-10">
-        <img src="../assets/MRRBG.png" class="w-96 h-96" />
-    </div> -->
-    <div class="flex flex-col justify-center space-y-5 sm:space-x-20 sm:flex-row sm:mt-2 ">
+    <div class="flex flex-col justify-center space-y-5 sm:space-x-20 sm:flex-row ">
         <div class=" sm:m-14 sm:w-[550px] sm:space-y-6 sm:text-left  ">
-            <img src="../assets/MRRBG.png" class="mt-6 sm:h-64 sm:w-96 h-72 w-96 sm:mt-24" />
+            <img src="../assets/MRRBG.png" class="mt-6 sm:h-96 sm:w-[90%] h-72 w-96 " />
             <h1 class="mb-5 text-3xl font-bold text-black sm:text-4xl">ความเป็นมา MRR</h1>
             <p class="font-semibold text-[#312a21] sm:text-lg" >MOD Rong Rean is for being a medium for agencies.
             of King Mongkut's University of Technology, Thonburi responsible learned about the problems that people in the area of King Mongkut's University of Technology met To reduce the accident rate for people in the area of King Mongkut's University of Technology safe. </p>

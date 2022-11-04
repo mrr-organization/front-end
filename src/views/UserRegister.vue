@@ -7,7 +7,7 @@
       <Form @submit="handleRegister" :validation-schema="schema">
         <div v-if="!successful" class="flex flex-col justify-between " >
           <div class="flex flex-col space-x-8 sm:space-x-72 sm:flex-row ">
-          <div class="flex flex-col items-center justify-center gap-4">
+          <div class="flex flex-col items-center justify-center gap-4 ">
            <div class="flex flex-col form-group">
             <Field
               name="username"
@@ -84,7 +84,7 @@
               <label for="dept" class="ml-2 font-bold">หน่วยงานที่สังกัด</label>
               <div v-show="triggerDept">
                 <div class=" form-group -1">
-                <Field class="rounded form-control ring-1 ring-black" v-model="deptId" name="deptId" as="select">
+                <Field class="w-64 rounded-sm form-control ring-1 ring-black" v-model="deptId" name="deptId" as="select">
                   <option value="" disabled>Select a department</option>
                   <option
                     v-for="item in deptRegisList"
@@ -97,7 +97,7 @@
               </div>
               </div>
             </div>
-            <div class="w-80 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded">
+            <div class="w-80 p-3 bg-[#FAF0EF] form-group h-32 mt-9 rounded ">
               <div>
                 <input
                   class="text-xl"
@@ -109,7 +109,7 @@
                 <label for="faculty" class="ml-2 font-bold">คณะ</label>
                 <div v-show="triggerFaculty">
                   <div class=" form-group">
-                  <Field class="rounded form-control ring-1 ring-black" v-model="facultyId" name="facultyId" as="select">
+                  <Field class="rounded-sm form-control ring-1 ring-black" v-model="facultyId" name="facultyId" as="select">
                     <option value="" disabled>Select a faculty</option>
                     <option
                       v-for="item in facultyRegisList"
@@ -123,9 +123,9 @@
                 </div>
               </div>
               <div v-show="triggerFaculty && facultyId != 0">
-                <label for="major ml-2 font-bold">ภาควิชา / สาขา</label>
+                <label for="major" class="ml-2 font-bold">ภาควิชา / สาขา</label>
                 <div class="form-group">
-                  <Field  class="rounded form-control ring-1 ring-black" name="majorId" as="select">
+                  <Field  class="w-64 rounded-sm form-control ring-1 ring-black" name="majorId" as="select">
                     <option value="" disabled>Select a major</option>
                     <option
                       v-for="item in majorFilter"

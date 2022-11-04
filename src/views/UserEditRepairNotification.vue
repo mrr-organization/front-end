@@ -51,7 +51,7 @@
           @change="previewMultiImage"
           class="self-end"
         />
-        <div class="p-2 mt-3 rounded ring-1 ring-black">
+        <div class="p-2 mt-3 font-semibold rounded ring-2 ring-black">
           <p style="color: #312a21">ตัวอย่างรูปภาพ:</p>
           <template v-if="preview_list.length">
             <div
@@ -66,7 +66,7 @@
           </template>
           <template v-else>
             <div v-for="item in repairData.fileStoreResponses" :key="item.fileName" class="grid grid-cols-1 gap-2">
-            <img :src="url+item.fileName" class="m-auto mt-5 w-60 h-60"/>
+            <img :src="url+item.fileName" class="m-auto mt-5 w-60 h-60 sm:w-80 sm:h-80"/>
             <p class="mb-0">file name: {{item.fileName }}</p>
           </div>
           </template>
