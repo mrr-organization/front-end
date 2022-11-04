@@ -1,14 +1,6 @@
 <template>
   <div
-    class="
-      mx-auto
-      mt-20
-      overflow-auto
-      rounded-t-lg
-      sm:mt-24
-      max-w-7xl
-      sm:max-w-7xl
-    "
+    class="mx-auto mt-20 overflow-auto rounded-t-lg sm:mt-24 max-w-7xl sm:max-w-7xl"
     style="background-color: #fef1e6"
   >
     <table class="w-full text-xs table-auto sm:text-xl text-[#312A21]">
@@ -108,44 +100,22 @@
   </div>
   <div class="mt-2">
     <button
-      class="
-        inline-flex
-        items-center
-        p-2
-        text-sm
-        font-medium
-        text-[#312A21]
-        bg-[#F9D5A7]
-        rounded-lg
-        hover:bg-[#fef1e6]
-      "
+      class="inline-flex items-center p-2 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg hover:bg-[#fef1e6]"
     >
       Previous
     </button>
 
     <button
-      class="
-        inline-flex
-        items-center
-        p-2
-        ml-3
-        text-sm
-        font-medium
-        text-[#312A21]
-        bg-[#F9D5A7]
-        rounded-lg
-        hover:bg-[#fef1e6]
-      "
+      class="inline-flex items-center p-2 ml-3 text-sm font-medium text-[#312A21] bg-[#F9D5A7] rounded-lg hover:bg-[#fef1e6]"
     >
       Next
     </button>
   </div>
 </template>
-    
-  <script >
-</script>
-    
-    <style scoped>
+
+<script></script>
+
+<style scoped>
 td {
   @apply px-1 py-3 sm:px-2 lg:p-4;
 }

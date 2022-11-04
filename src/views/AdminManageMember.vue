@@ -53,7 +53,7 @@
               <button><p>2022-10-2 18:20:30</p></button>
             </td>
             <td class="count-register-date border border-slate-300">
-              <button><time>{{timeToWords('2022-11-1 18:20:30')}}</time></button>
+              <button>{{timeToWords('2022-11-1 18:20:30')}}</button>
             </td>
           </tr>
         </tbody>
@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      search: "",
+      search: '',
     };
   },
   methods: {

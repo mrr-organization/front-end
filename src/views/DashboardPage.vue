@@ -77,6 +77,7 @@
     </div>
   </div>
   <VSPagination
+    v-if="totalPages = 0"
     :totalPages="totalPages"
     @page-number="getListRepairNotificationByStatus"
   >
@@ -93,12 +94,12 @@ export default {
   data() {
     return {
       repairId: Number,
-      listRepair: [],
-      allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
+      year: Number,
       status: "",
       totalPages: 0,
       pageNumber: 0,
-      year: 2022,
+      listRepair: [],
+      allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
       countYearData: {},
       countStatusData: {},
     };
