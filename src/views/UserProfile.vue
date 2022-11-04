@@ -1,32 +1,18 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-screen">
+  <div class="flex flex-col items-center justify-center h-screen ">
     <div class="flex flex-col justify-around w-full mt-14 sm:mb-16 item-center">
       <img src="@/assets/Profile.svg" class="h-36 sm:h-40" />
       <div class="flex flex-col mt-3 text-2xl font-semibold sm:mt-5">
         {{ this.userDetail.username }}
       </div>
     </div>
-    <div class="
-        flex flex-col
-        w-full
-        max-w-xl
-        h-auto
-        mx-auto
-        text-xl
-        gap-3
-        font-semibold
-        bg-white
-        p-3
-        p16
-        rounded-2xl
-        overflow-auto
-      "
+    <div class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white  p16 rounded-2xl"
     >
-      <div class="inline-flex flex-row flex-wrap gap-3 justify-between">
+      <div class="inline-flex flex-row flex-wrap justify-between gap-3">
         <span>ชื่อ - นามสกุล: {{ this.userDetail.userFullName }}</span>
         <span>อีเมล์: {{ this.userDetail.userEmail }}</span>
       </div>
-      <div class="inline-flex flex-row flex-wrap gap-3 justify-between">
+      <div class="inline-flex flex-row flex-wrap justify-between gap-3">
         <span v-if="this.userDetail.userId !== null"
           >รหัสสมาชิก: {{ this.userDetail.userId }}
         </span>

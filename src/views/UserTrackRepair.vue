@@ -14,7 +14,7 @@
         <button @click="redirectToPreviewPage(item.id)">
           <div class="">รายการแจ้งซ่อมรหัส : {{item.id}}</div>
         </button>
-          <div class="flex justify-around w-full items">
+          <div class="flex justify-around w-full font-semibold items">
             <div class="flex flex-col items-center w-full">
               <div
                 :class="`w-10 h-10 ${clrBgStatus(index, 'wait')} rounded-full`"
@@ -58,7 +58,7 @@
           >
 
               <button @click="redirectToEditPage(item.id)"
-                class="bg-[#FFB33F] text-white rounded-lg p-2 font-medium"
+                class="bg-[#FFB33F] text-[#FFFFFF] font-semibold rounded-lg sm:p-2 p-1  hover:bg-[#FF9817] hover:transition-all"
               >
                 แก้ไขข้อมูล
               </button>
@@ -69,7 +69,7 @@
           >
 
               <button @click="redirectToRenewPage(item.id)"
-                class="bg-[#0000ff] text-white rounded-lg p-2 font-medium"
+                class="bg-[#384BB1] text-[#FFFFFF] rounded-lg  font-medium sm:p-2 p-1  hover:bg-[#0000ff] hover:transition-all"
               >
                 ส่งเรื่องอีกครั้ง
               </button>
