@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="totalPages > 0">
     <div class="pagination-row">
       <button
         class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold "

@@ -1,12 +1,13 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-screen ">
+  <div class="flex flex-col items-center justify-center h-screen">
     <div class="flex flex-col justify-around w-full mt-14 sm:mb-16 item-center">
       <img src="@/assets/Profile.svg" class="h-36 sm:h-40" />
       <div class="flex flex-col mt-3 text-2xl font-semibold sm:mt-5">
         {{ this.userDetail.username }}
       </div>
     </div>
-    <div class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white  p16 rounded-2xl"
+    <div
+      class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white p16 rounded-2xl"
     >
       <div class="inline-flex flex-row flex-wrap justify-between gap-3">
         <span>ชื่อ - นามสกุล: {{ this.userDetail.userFullName }}</span>
@@ -20,7 +21,18 @@
         <span>เบอร์ติดต่อ: {{ this.userDetail.userPhone }}</span>
       </div>
     </div>
-
+    <div>
+      <button
+      class="p-1 mt-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+    >
+      edit picture
+    </button>
+    <button
+      class="p-1 mt-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+    >
+      edit data
+    </button>
+    </div>
   </div>
 </template>
 
@@ -29,26 +41,26 @@ import UserService from "../services/user.service";
 export default {
   data() {
     return {
-      userDetail: {}, 
+      userDetail: {},
     };
   },
-  computed :{
-    user () {
+  computed: {
+    user() {
       return this.$store.state.auth.user;
-    }
+    },
   },
   created() {
-    this.getUserDetail()
+    this.getUserDetail();
   },
   methods: {
     async getUserDetail() {
-      console.log(this.userDetail)
-      console.log(this.user)
+      console.log(this.userDetail);
+      console.log(this.user);
       await UserService.getUserByUID(this.user.uid).then((response) => {
         this.userDetail = response.data.responseData;
-        console.log(this.userDetail)
+        console.log(this.userDetail);
       });
-    }
+    },
   },
 };
 </script>

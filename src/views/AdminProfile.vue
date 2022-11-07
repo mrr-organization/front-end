@@ -34,7 +34,18 @@
         <span>เบอร์ติดต่อ: {{ this.userDetail.userPhone }}</span>
       </div>
     </div>
-
+    <div>
+      <button
+      class="p-1 mt-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+    >
+      edit picture
+    </button>
+    <button
+      class="p-1 mt-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+    >
+      edit data
+    </button>
+    </div>
   </div>
 </template>
 

@@ -87,43 +87,20 @@
         </tbody>
       </table>
     </div>
-    <div class="mt-2">
-      <button
-        class="
-          inline-flex
-          items-center
-          p-2
-          text-sm
-          font-medium
-          text-[#312A21]
-          bg-[#F9D5A7]
-          rounded-lg
-          hover:bg-[#fef1e6]
-        "
-      >
-        Previous
-      </button>
-  
-      <button
-        class="
-          inline-flex
-          items-center
-          p-2
-          ml-3
-          text-sm
-          font-medium
-          text-[#312A21]
-          bg-[#F9D5A7]
-          rounded-lg
-          hover:bg-[#fef1e6]
-        "
-      >
-        Next
-      </button>
-    </div>
+    <VSPagination
+      :totalPages="totalPages"
+      @page-number="getListRepairNotificationByStatus"
+    >
+  </VSPagination>
   </template>
       
-    <script >
+  <script >
+  import VSPagination from "@/components/VSPagination.vue";
+export default {
+  components: {
+    VSPagination,
+  },
+}
   </script>
       
       <style scoped>

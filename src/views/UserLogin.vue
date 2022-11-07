@@ -93,12 +93,10 @@ export default {
       username: yup
         .string()
         .required("Username is required!")
-        .min(6, "Must be at least 6 characters!")
         .max(255, "Must be maximum 255 characters!"),
       password: yup
       .string()
         .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
         .max(40, "Must be maximum 40 characters!"),
       
     });

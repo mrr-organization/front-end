@@ -47,37 +47,53 @@
           </select>
         </div>
       </div>
-      
-        <div
-          class="mx-auto mt-3 overflow-auto rounded-t-lg sm:mt-10 max-w-7xl sm:max-w-7xl"
-          style="background-color: #fef1e6"
-        >
-          <table class="w-full text-sm table-auto sm:text-xl">
-            <thead>
-              <tr class="bg-white">
-                <th>เรื่องร้องเรียนที่</th>
-                <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
-                <th>สถานที่ / พื่นที่</th>
-                <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
-              </tr>
-            </thead>
-            <tbody v-for="item in listRepair" :key="item.id">
-                <tr>
-                <td><button @click="redirectToPreviewPage(item.id)">{{ item.id }}</button></td>
-                <td><button @click="redirectToPreviewPage(item.id)" >{{ item.createDate }}</button></td>
-                <td><button @click="redirectToPreviewPage(item.id)">{{ item.location }}</button></td>
-                <td><button @click="redirectToPreviewPage(item.id)" class=" p-2 sm:p-1 font-bold rounded-lg hover:bg-[#FFFFFF] sm:w-44" :class="filterStatusColor(item.status)">{{ item.status }}</button></td>
-              </tr>
-              
-            </tbody>
 
-          </table>
-        </div>
-
+      <div
+        class="mx-auto mt-3 overflow-auto rounded-t-lg sm:mt-10 max-w-7xl sm:max-w-7xl"
+        style="background-color: #fef1e6"
+      >
+        <table class="w-full text-sm table-auto sm:text-xl">
+          <thead>
+            <tr class="bg-white">
+              <th>เรื่องร้องเรียนที่</th>
+              <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
+              <th>สถานที่ / พื่นที่</th>
+              <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
+            </tr>
+          </thead>
+          <tbody v-for="item in listRepair" :key="item.id">
+            <tr>
+              <td>
+                <button @click="redirectToPreviewPage(item.id)">
+                  {{ item.id }}
+                </button>
+              </td>
+              <td>
+                <button @click="redirectToPreviewPage(item.id)">
+                  {{ item.createDate }}
+                </button>
+              </td>
+              <td>
+                <button @click="redirectToPreviewPage(item.id)">
+                  {{ item.location }}
+                </button>
+              </td>
+              <td>
+                <button
+                  @click="redirectToPreviewPage(item.id)"
+                  class="p-2 sm:p-1 font-bold rounded-lg hover:bg-[#FFFFFF] sm:w-44"
+                  :class="filterStatusColor(item.status)"
+                >
+                  {{ item.status }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <VSPagination
-    v-if="totalPages = 0"
     :totalPages="totalPages"
     @page-number="getListRepairNotificationByStatus"
   >
@@ -89,7 +105,7 @@ import repairNotificationService from "@/services/repair-notification.service";
 import VSPagination from "@/components/VSPagination.vue";
 export default {
   components: {
-    VSPagination
+    VSPagination,
   },
   data() {
     return {
@@ -99,26 +115,24 @@ export default {
       allStatus: [
         {
           statusName: "PENDING",
-          bg: "bg-[#3366CC]"
+          bg: "bg-[#3366CC]",
         },
         {
           statusName: "IN PROGRESS",
-          bg: "bg-[#DC3912]"
+          bg: "bg-[#DC3912]",
         },
         {
           statusName: "REJECT",
-          bg: "bg-[#FF9900]"
+          bg: "bg-[#FF9900]",
         },
         {
           statusName: "COMPLETED",
-          bg: "bg-[#109618]"
+          bg: "bg-[#109618]",
         },
       ],
       status: "",
       totalPages: 0,
       pageNumber: 0,
-      listRepair: [],
-      allStatus: ["PENDING", "IN PROGRESS", "REJECT", "COMPLETED"],
       countYearData: {},
       countStatusData: {},
     };
@@ -138,12 +152,12 @@ export default {
     },
   },
   methods: {
-    redirectToPreviewPage(id){
-      if (this.loggedIn){
-        this.$router.push({ path: `/preview/${id}`})
+    redirectToPreviewPage(id) {
+      if (this.loggedIn) {
+        this.$router.push({ path: `/preview/${id}` });
       }
       if (!this.loggedIn) {
-        this.$router.push("/user-login")
+        this.$router.push("/user-login");
       }
     },
     getCountStatus() {
@@ -172,12 +186,12 @@ export default {
         });
     },
     filterStatusColor(status) {
-      for(let i in this.allStatus) {
-        if(this.allStatus[i].statusName == status) {
-          return this.allStatus[i].bg
+      for (let i in this.allStatus) {
+        if (this.allStatus[i].statusName == status) {
+          return this.allStatus[i].bg;
         }
       }
-    }
+    },
   },
 };
 </script>
