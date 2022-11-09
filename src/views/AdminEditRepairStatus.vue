@@ -9,7 +9,7 @@
           <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
           <th>สถานที่ / พื่นที่</th>
           <th>ผู้แจ้ง / ผู้ร้องเรียน</th>
-          <th >สถานะการแจ้งซ่อม / ร้องเรียน</th>
+          <th>สถานะการแจ้งซ่อม / ร้องเรียน</th>
           <th class="rounded-t-lg">อัพเดทสถานะ</th>
         </tr>
       </thead>
@@ -24,8 +24,10 @@
             </button>
           </td>
           <td>
-            <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+            <button
+              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
+            >
+              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
           </td>
         </tr>
@@ -39,8 +41,10 @@
             </button>
           </td>
           <td>
-            <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+            <button
+              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
+            >
+              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
           </td>
         </tr>
@@ -54,8 +58,10 @@
             </button>
           </td>
           <td>
-            <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+            <button
+              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
+            >
+              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
           </td>
         </tr>
@@ -65,8 +71,10 @@
           <td>Mr. abc edwin</td>
           <td>ไม่ผ่านการตรวจสอบ</td>
           <td>
-            <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+            <button
+              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
+            >
+              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
           </td>
         </tr>
@@ -76,14 +84,13 @@
           <td>Mr. abc edwin</td>
           <td>ไม่ผ่านการตรวจสอบ</td>
           <td>
-            <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02b072] hover:transition-all">
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+            <button
+              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02b072] hover:transition-all"
+            >
+              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
           </td>
         </tr>
-        
-          
-          
       </tbody>
     </table>
   </div>
@@ -91,19 +98,19 @@
     :totalPages="1"
     @page-number="getListRepairNotificationByStatus"
   >
-</VSPagination>
+  </VSPagination>
 </template>
-    
-<script >
+
+<script>
 import VSPagination from "@/components/VSPagination.vue";
 export default {
-components: {
-  VSPagination,
-},
-}
+  components: {
+    VSPagination,
+  },
+};
 </script>
-    
-    <style scoped>
+
+<style scoped>
 td {
   @apply px-1 py-3 sm:px-2 lg:p-4;
 }

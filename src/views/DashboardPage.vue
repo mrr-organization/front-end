@@ -135,6 +135,7 @@ export default {
       pageNumber: 0,
       countYearData: {},
       countStatusData: {},
+      year : 2022
     };
   },
   created() {
