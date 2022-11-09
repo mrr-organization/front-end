@@ -28,7 +28,7 @@
     <div class="mt-5 bg-[#FAF0EF] rounded overflow-auto">
       <div class="list-content">
         <table
-          class="w-full text-xs border border-collapse border-slate-400 sm:text-xl text-[#312A21] table-auto xl:table-fixed"
+          class="w-full text-xs border border-collapse border-slate-400 sm:text-xl text-[#312A21] table-fixed "
         >
           <thead>
             <tr class="bg-white">
@@ -42,22 +42,22 @@
           </thead>
           <tbody>
             <tr>
-              <td class="border username border-slate-300">
+              <td class="break-all border username border-slate-300">
                 <button><p>bazukaaa</p></button>
               </td>
-              <td class="border full-name border-slate-300">
+              <td class="break-all border full-name border-slate-300">
                 <button><p>poramet mongkhonmasoo</p></button>
               </td>
-              <td class="border email border-slate-300">
+              <td class="break-all border email border-slate-300">
                 <button><p>email.er@mail.kmutt.ac.th</p></button>
               </td>
-              <td class="border register-date border-slate-300">
+              <td class="break-all border register-date border-slate-300">
                 <button><p>2022-10-2 18:20:30</p></button>
               </td>
-              <td class="count-register-date border border-slate-300">
+              <td class="break-all border count-register-date border-slate-300">
                 <button>{{ timeToWords("2022-11-1 18:20:30") }}</button>
               </td>
-              <td class="count-register-date border border-slate-300">
+              <td class="border count-register-date border-slate-300">
                 <button
                   class="p-1 bg-[#FF0000] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
                 >
@@ -75,7 +75,7 @@
     >
     </VSPagination>
     <button
-      class="p-1 mt-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+      class="flex ml-auto mt-2 max-w-screen-2xl p-1  bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
     >
       Add moderator
     </button>
