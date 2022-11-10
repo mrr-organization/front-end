@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-7xl">
-    <div class=" mt-20 overflow-auto rounded sm:mt-24 " style="background-color: #fef1e6">
+    <div class="mt-20 overflow-auto rounded  sm:mt-24" style="background-color: #fef1e6">
       <table class="w-full text-xs table-auto sm:text-xl">
         <thead>
           <tr class="bg-white">
@@ -27,7 +27,7 @@
     </div>
 
   </div>
-  <div class="flex justify-end mt-2 mx-auto max-w-7xl">
+  <div class="flex justify-end mx-auto mt-2 max-w-7xl">
     <button @click="deleteAllNotification" v-show="!listNotification"
       class="sm:p-1 p-0.5 sm:text-lg text-sm font-medium text-white uppercase bg-red-500 rounded-lg  ">
       <font-awesome-icon icon="xmark" size="xl" /> ลบแจ้งเตือนทั้งหมด

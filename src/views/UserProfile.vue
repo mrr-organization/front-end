@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center h-screen">
     <div class="flex flex-col justify-around w-full mt-14 sm:mb-14 item-center ">
       <img v-if="!this.imageURL" src="@/assets/Profile.svg" class="h-36 sm:h-40" />
-      <img v-else :src="this.imageURL" class="sm:h-48 w-48 h-48 object-cover rounded-full  img-fluid m-auto" />
+      <img v-else :src="this.imageURL" class="object-cover w-48 h-48 m-auto rounded-full sm:h-48 img-fluid" />
       <div class="flex flex-col mt-3 text-2xl font-semibold sm:mt-5">
         {{ this.userDetail.username }}
       </div>
