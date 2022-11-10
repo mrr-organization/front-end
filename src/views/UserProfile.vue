@@ -27,7 +27,7 @@
         for="files"
         class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300 cursor-pointer"
         
-        >edit picture</label
+        >edit pictures</label
       >
       <input
         type="file"
