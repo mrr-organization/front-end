@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen">
-    <div class="flex flex-col justify-around w-full mt-14 sm:mb-16 item-center">
+    <div class="flex flex-col justify-around w-full mt-14 sm:mb-14 item-center ">
       <img v-if="!this.imageURL" src="@/assets/Profile.svg" class="h-36 sm:h-40" />
-      <img v-else :src="imageURL" class="sm:h-40 w-48 h-48 img-fluid m-auto" />
+      <img v-else :src="this.imageURL" class="sm:h-48 w-48 h-48 object-cover rounded-full  img-fluid m-auto" />
       <div class="flex flex-col mt-3 text-2xl font-semibold sm:mt-5">
         {{ this.userDetail.username }}
       </div>
     </div>
     <div
-      class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white p16 rounded-2xl"
+      class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white rounded-2xl"
     >
       <div class="inline-flex flex-row flex-wrap justify-between gap-3">
         <span>ชื่อ - นามสกุล: {{ this.userDetail.userFullName }}</span>
@@ -25,8 +25,8 @@
     <div class="space-x-5">
       <label
         for="files"
-        class="p-1 mt-1 bg-[#FFFFFF] rounded hover:bg-[#02B072] hover:transition-all border border-slate-300"
-        style="background-color: #f9d5a7; color: #312a21"
+        class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300 cursor-pointer"
+        
         >edit picture</label
       >
       <input
@@ -38,7 +38,7 @@
         class="self-end"
       />
       <button @click="alertDisplay"
-        class="p-1 mt-1 bg-[#FFFFFF] rounded hover:bg-[#02B072] hover:transition-all border border-slate-300"
+        class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
       >
         edit data
       </button>
@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       userDetail: {},
-      imageURL: '',
+      imageURL: 'https://www.k-mutt-mrr-service.systems/be-path/api/file-service/bk95A5Xes_REPAIR_2.jpg',
       imagesType: "PROFILE",
       text : ''
     };
