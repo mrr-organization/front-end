@@ -99,8 +99,8 @@ export default {
     timeToWords(time, lang) {
       lang = lang || {
         postfixes: {
-          "<": " ago",
-          ">": " from now",
+          "<": "",
+          ">": "from now",
         },
         1000: {
           singular: "a few moments",

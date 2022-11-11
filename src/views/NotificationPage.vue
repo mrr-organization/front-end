@@ -28,7 +28,7 @@
 
   </div>
   <div class="flex justify-end mx-auto mt-2 max-w-7xl">
-    <button @click="deleteAllNotification" v-show="!listNotification"
+    <button @click="deleteAllNotification" v-if="listNotification.length"
       class="sm:p-1 p-0.5 sm:text-lg text-sm font-medium text-white uppercase bg-red-500 rounded-lg  ">
       <font-awesome-icon icon="xmark" size="xl" /> ลบแจ้งเตือนทั้งหมด
     </button>

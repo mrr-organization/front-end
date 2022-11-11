@@ -57,7 +57,7 @@
             <tr class="bg-white">
               <th>เรื่องร้องเรียนที่</th>
               <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่ร้องเรียน</th>
-              <th>วันที่ร้องเรียนล่าสุด</th>
+              <th>วันที่อัพเดท</th>
               <th>สถานที่ / พื่นที่</th>
               <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
             </tr>
@@ -77,7 +77,7 @@
               <!-- วันที่ร้องเรียนล่าสุด -->
               <td>
                 <button @click="redirectToPreviewPage(item.id)">
-                  {{ item.createDate }}
+                  {{ item.updateDate }}
                 </button>
               </td>
               <td>

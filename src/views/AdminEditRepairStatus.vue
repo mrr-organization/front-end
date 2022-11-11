@@ -13,79 +13,22 @@
           <th class="rounded-t-lg">อัพเดทสถานะ</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="item in listRepair" :key="item.id">
         <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor</td>
-          <td>Mr. abc edwinx</td>
+          <td>{{ item.createDate }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.createBy }}</td>
           <td>
-            <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
-              กำลังดำเนินการ
+            <button 
+            @click="redirectToPreviewPage(item.id)"
+            class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
+              {{ item.status }}
             </button>
           </td>
           <td>
             <button
+            @click="updateStatus(item.id)"
               class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
-            >
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor</td>
-          <td>Mr. abc edwin</td>
-          <td>
-            <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
-              กำลังดำเนินการ
-            </button>
-          </td>
-          <td>
-            <button
-              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
-            >
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor</td>
-          <td>Mr. abc edwin</td>
-          <td>
-            <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
-              กำลังดำเนินการ
-            </button>
-          </td>
-          <td>
-            <button
-              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
-            >
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor</td>
-          <td>Mr. abc edwin</td>
-          <td>ไม่ผ่านการตรวจสอบ</td>
-          <td>
-            <button
-              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all"
-            >
-              <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>20-8-2000 18:04:02</td>
-          <td>Lorem ipsum dolor</td>
-          <td>Mr. abc edwin</td>
-          <td>ไม่ผ่านการตรวจสอบ</td>
-          <td>
-            <button
-              class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02b072] hover:transition-all"
             >
               <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7" />
             </button>
@@ -95,17 +38,73 @@
     </table>
   </div>
   <VSPagination
-    :totalPages="1"
-    @page-number="getListRepairNotificationByStatus"
+    :totalPages="totalPages"
+    @page-number="getListRepairNotificationByDepartment"
   >
   </VSPagination>
 </template>
 
 <script>
 import VSPagination from "@/components/VSPagination.vue";
+import repairNotificationService from "@/services/repair-notification.service";
+
 export default {
   components: {
     VSPagination,
+  },
+  data() {
+    return {
+      listRepair: [],
+      totalPages: 0,
+      pageNumber: 0,
+    };
+  },
+  created() {
+    this.getAllRepairNotification(this.user.deptId, this.pageNumber)
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+    user() {
+      return this.$store.state.auth.user;
+    },
+  },
+  methods: {
+    redirectToPreviewPage(id) {
+      if (this.loggedIn) {
+        this.$router.push({ path: `/preview/${id}` });
+      }
+      if (!this.loggedIn) {
+        this.$router.push("/user-login");
+      }
+    },
+    getListRepairNotificationByDepartment(pageNumber) {
+      this.pageNumber = pageNumber;
+      this.getAllRepairNotification(this.user.deptId, pageNumber);
+    },
+    getAllRepairNotification(deptId, pageNumber) {
+      repairNotificationService
+        .getAllRepairNotificationByDepartment(deptId, pageNumber)
+        .then((response) => {
+          this.listRepair = response.data.responseData.content;
+          this.totalPages = response.data.responseData.totalPages;
+        });
+    },
+    updateStatus(repairId) {
+      if (repairId) {
+        repairNotificationService.updateStatusComplete(repairId);
+        this.$swal
+          .fire({
+            icon: "success",
+            title: "Update Status",
+            text: "successful!",
+          })
+          .then(function () {
+            window.location.reload();
+          });
+      }
+    },
   },
 };
 </script>

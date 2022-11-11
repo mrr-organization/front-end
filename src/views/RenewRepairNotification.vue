@@ -109,7 +109,8 @@
     components: { ButtonCom },
     data() {
       return {
-        url: "https://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
+        // url: "https://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
+        url: "http://localhost:8080/api/file-service/",
         repairData: {},
         preview: null,
         image: null,
