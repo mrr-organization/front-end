@@ -3,10 +3,11 @@
     <div class="flex justify-between filter-bar">
       <div class="mt-2 search">
         <input
-          class="block p-2 py-2 pr-3 m-2 text-sm border rounded-full shadow-sm pl-7 w-36 sm:w-full placeholder:italic placeholder:text-slate-400 border-slate-300 sm:pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm icon backgroud"
+        @change="findByUsername"  
+        class="block p-2 py-2 pr-3 m-2 text-sm border rounded-full shadow-sm pl-7 w-36 sm:w-full placeholder:italic placeholder:text-slate-400 border-slate-300 sm:pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm icon backgroud"
           type="text"
           v-model="search"
-          placeholder="search anything..."
+          placeholder="search username..."
         />
       </div>
       <div
@@ -69,16 +70,17 @@
         </table>
       </div>
     </div>
-    <VSPagination
-      :totalPages="totalPages"
-      @page-number="getListRepairNotificationByStatus"
-    >
-    </VSPagination>
     <button
       class="flex ml-auto mt-2 max-w-screen-2xl p-1  bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
     >
       Add moderator
     </button>
+    <VSPagination
+      :totalPages="1"
+      @page-number="getListRepairNotificationByStatus"
+    >
+    </VSPagination>
+
   </div>
 </template>
 
