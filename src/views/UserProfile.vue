@@ -30,31 +30,18 @@
         <span>เบอร์ติดต่อ: {{ this.userDetail.userPhone }}</span>
       </div>
     </div>
-    <div class="space-x-5">
-      <!-- <label for="username">Username</label>
-        for="files"
-        class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300 cursor-pointer"
-        >edit pictures</label
-      >
-      <input
-        type="file"
-        style="visibility: hidden"
-        id="files"
-        accept="image/*"
-        @change="editImage" 
-        class="self-end"
-      /> -->`
+    <div class="mt-5 space-x-8">
       <button
         @click="editImage"
-        class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
+        class="p-2 px-5 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
       >
-        edit picture
+      <img src="@/assets/EditImage.svg" class="w-6 sm:w-7"/>
       </button>
       <button
         @click="alertDisplay"
-        class="p-1 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
+        class="p-2 px-5 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
       >
-        edit data
+      <img src="@/assets/EditData.svg" class="w-6 sm:w-6"/>
       </button>
     </div>
   </div>
