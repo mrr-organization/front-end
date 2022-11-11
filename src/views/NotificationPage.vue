@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-7xl">
-    <div class="mt-20 overflow-auto rounded  sm:mt-24" style="background-color: #fef1e6">
+    <div class="mt-20 overflow-auto rounded sm:mt-24" style="background-color: #fef1e6">
       <table class="w-full text-xs table-auto sm:text-xl">
         <thead>
           <tr class="bg-white">

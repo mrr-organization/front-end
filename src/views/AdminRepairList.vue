@@ -10,6 +10,7 @@
             <th>สถานที่ / พื่นที่</th>
             <th>ผู้แจ้ง / ผู้ร้องเรียน</th>
             <th >สถานะการแจ้งซ่อม / ร้องเรียน</th>
+            <th >เพิ่มหน่วยงาน</th>
             <th class="rounded-t-lg">อัพเดทสถานะ</th>
           </tr>
         </thead>
@@ -25,17 +26,7 @@
             </td>
             <td>
               <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
-                <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>20-8-2000 18:04:02</td>
-            <td>Lorem ipsum dolor</td>
-            <td>Mr. abc edwin</td>
-            <td>
-              <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
-                กำลังดำเนินการ
+                <img src="@/assets/ModeratorAdd.svg" class="w-5 sm:w-7"/>
               </button>
             </td>
             <td>
@@ -51,6 +42,31 @@
             <td>
               <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
                 กำลังดำเนินการ
+              </button>
+            </td>
+            <td>
+              <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
+                <img src="@/assets/ModeratorAdd.svg" class="w-5 sm:w-7"/>
+              </button>
+            </td>
+            <td>
+              <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
+                <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>20-8-2000 18:04:02</td>
+            <td>Lorem ipsum dolor</td>
+            <td>Mr. abc edwin</td>
+            <td>
+              <button class="p-2 bg-[#FFB33F] rounded-lg hover:bg-[#FFFFFF]">
+                กำลังดำเนินการ
+              </button>
+            </td>
+            <td>
+              <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
+                <img src="@/assets/ModeratorAdd.svg" class="w-5 sm:w-7"/>
               </button>
             </td>
             <td>
@@ -64,6 +80,11 @@
             <td>Lorem ipsum dolor</td>
             <td>Mr. abc edwin</td>
             <td>ไม่ผ่านการตรวจสอบ</td>
+            <td>
+              <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
+                <img src="@/assets/ModeratorAdd.svg" class="w-5 sm:w-7"/>
+              </button>
+            </td>
             <td>
               <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
                 <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
@@ -77,6 +98,11 @@
             <td>ไม่ผ่านการตรวจสอบ</td>
             <td>
               <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02b072] hover:transition-all">
+                <img src="@/assets/ModeratorAdd.svg" class="w-5 sm:w-7"/>
+              </button>
+            </td>
+            <td>
+              <button class="p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all">
                 <img src="@/assets/UpdateRole.svg" class="w-5 sm:w-7"/>
               </button>
             </td>
