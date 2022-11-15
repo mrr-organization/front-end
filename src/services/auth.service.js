@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './auth-header';
 // const API_URL = 'http://localhost:8080/api/auth/';
 const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/auth/';
 class AuthService {
@@ -31,6 +32,20 @@ class AuthService {
       deptId: user.deptId,
       roles: ["user"]
     });
+  }
+
+  registerModerator(moderator) {
+    return axios.post(API_URL + 'sign-up/moderator', {
+      username: moderator.username,
+      firstName: moderator.fname,
+      lastName: moderator.lname,
+      email: moderator.email,
+      password: moderator.password,
+      phone: moderator.phone,
+      deptId: moderator.deptId,
+      userType: 'MODERATOR',
+      roles: ["moderator"]
+    }, { headers: authHeader() });
   }
 }
 export default new AuthService();

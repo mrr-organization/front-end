@@ -109,15 +109,6 @@ export default {
         reader.readAsDataURL(file);
       }
     },
-    // editImage: function (event) {
-
-    //   var input = event.target;
-    //   if (input.files) {
-    //     this.image = input.files;
-    //     console.log(this.image);
-    //     this.uploadFile(this.user.uid, this.image, this.imagesType);
-    //   }
-    // },
     async uploadFile(uid, image, imagesType) {
       await FileStoreService.uploadMultipleFile(uid, image, imagesType);
     },

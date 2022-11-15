@@ -3,8 +3,8 @@
     <div class="flex justify-between filter-bar">
       <div class="mt-2 search">
         <input
-        @change="findByUsername"  
-        class="block p-2 py-2 pr-3 m-2 text-sm border rounded-full shadow-sm pl-7 w-36 sm:w-full placeholder:italic placeholder:text-slate-400 border-slate-300 sm:pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm icon backgroud"
+          @change="findByUsername"
+          class="block p-2 py-2 pr-3 m-2 text-sm border rounded-full shadow-sm pl-7 w-36 sm:w-full placeholder:italic placeholder:text-slate-400 border-slate-300 sm:pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm icon backgroud"
           type="text"
           v-model="search"
           placeholder="search username..."
@@ -14,12 +14,14 @@
         class="flex p-0.5 px-1 py-1 sm:px-3 my-3 mt-5 mr-2 sm:mt-2 bg-white rounded-full button"
       >
         <button
+          @click="showUser"
           class="p-0.5 m-0.5 sm:p-1 sm:m-2 rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none texst-xs sm:text-sm font-semibold transition"
         >
           <p>USER</p>
         </button>
         <div class="border border-black"></div>
         <button
+          @click="showModerator"
           class="p-0.5 m-0.5 sm:p-1 sm:m-2 rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none text-xs sm:text-sm font-semibold transition"
         >
           <p>MODERATOR</p>
@@ -29,37 +31,46 @@
     <div class="mt-5 bg-[#FAF0EF] rounded overflow-auto">
       <div class="list-content">
         <table
-          class="w-full text-xs border border-collapse border-slate-400 sm:text-xl text-[#312A21] table-fixed "
+          class="w-full text-xs border border-collapse border-slate-400 sm:text-xl text-[#312A21] table-fixed"
         >
           <thead>
             <tr class="bg-white">
               <th class="border border-slate-300">username</th>
               <th class="border border-slate-300">ชื่อ</th>
-              <th class="border border-slate-300">eamil</th>
+              <th class="border border-slate-300">email</th>
               <th class="border border-slate-300">วันที่สมัคร</th>
               <th class="border border-slate-300">จำนวนวันที่เป็นสมาชิก</th>
               <th class="border border-slate-300">ลบผู้ใช้งาน</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody v-for="item in listUser" :key="item.id">
             <tr>
               <td class="break-all border username border-slate-300">
-                <button><p>bazukaaa</p></button>
+                <button>
+                  <p>{{ item.username }}</p>
+                </button>
               </td>
               <td class="break-all border full-name border-slate-300">
-                <button><p>poramet mongkhonmasoo</p></button>
+                <button>
+                  <p>{{ item.userFullName }}</p>
+                </button>
               </td>
-              <td class="break-all border email border-slate-300">
-                <button><p>email.er@mail.kmutt.ac.th</p></button>
+              <td class="break-normal  border email border-slate-300">
+                <button>
+                  <p class="truncate w-40">{{ item.userEmail }}</p>
+                </button>
               </td>
               <td class="break-all border register-date border-slate-300">
-                <button><p>2022-10-2 18:20:30</p></button>
+                <button>
+                  <p>{{ item.createDate }}</p>
+                </button>
               </td>
               <td class="break-all border count-register-date border-slate-300">
-                <button>{{ timeToWords("2022-11-1 18:20:30") }}</button>
+                <button>{{ timeToWords(item.createDate) }}</button>
               </td>
               <td class="border count-register-date border-slate-300">
                 <button
+                  @click="deleteUser(item.username)"
                   class="p-1 bg-[#FF0000] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
                 >
                   delete
@@ -71,21 +82,21 @@
       </div>
     </div>
     <button
-      class="flex ml-auto mt-2 max-w-screen-2xl p-1  bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
+      @click="alertDisplay"
+      class="flex ml-auto mt-2 max-w-screen-2xl p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
     >
       Add moderator
     </button>
-    <VSPagination
-      :totalPages="1"
-      @page-number="getListRepairNotificationByStatus"
-    >
+    <VSPagination :totalPages="totalPages" @page-number="getListUserPage">
     </VSPagination>
-
   </div>
 </template>
 
 <script>
 import VSPagination from "@/components/VSPagination.vue";
+import AuthService from "@/services/auth.service";
+import UserService from "@/services/user.service";
+
 export default {
   components: {
     VSPagination,
@@ -93,9 +104,78 @@ export default {
   data() {
     return {
       search: "",
+      type: "USER",
+      totalPages: 0,
+      pageNumber: 0,
+      listUser: [],
+      moderator: {
+        username: "",
+        fname: "",
+        lname: "",
+        email: "",
+        password: "",
+        phone: "",
+        deptId: "",
+      },
     };
   },
+  created() {
+    this.getListUser(this.userType, this.pageNumber);
+  },
+  computed: {
+    userType() {
+      return this.type;
+    },
+  },
   methods: {
+    deleteUser(username) {
+      this.$swal
+        .fire({
+          title: "Are you sure?",
+          text: `You won't delete ${username}`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$swal.fire(
+              "Deleted!",
+              `${username} has been deleted.`,
+              "success"
+            ).then(function () {
+              window.location.reload();
+            });
+          }
+        });
+    },
+    showUser() {
+      this.type = "USER";
+      this.search = "";
+      this.getListUser(this.userType, this.pageNumber);
+    },
+    showModerator() {
+      this.type = "MODERATOR";
+      this.search = "";
+      this.getListUser(this.userType, this.pageNumber);
+    },
+    registerModerator(moderator) {
+      AuthService.registerModerator(moderator);
+    },
+    getListUserPage(pageNumber) {
+      this.pageNumber = pageNumber;
+      this.getListUser(this.userType, pageNumber);
+    },
+    getListUser(userType, pageNumber) {
+      UserService.getListUserByUserTypeForAdmin(userType, pageNumber).then(
+        (response) => {
+          this.listUser = response.data.responseData.content;
+          this.totalPages = response.data.responseData.totalPages;
+        }
+      );
+    },
     timeToWords(time, lang) {
       lang = lang || {
         postfixes: {
@@ -145,6 +225,69 @@ export default {
           lang[timespan][n > 1 ? "plural" : "singular"].replace("#", n) +
           postfix
         );
+      }
+    },
+    findByUsername() {
+      UserService.findUserByUsername(this.search, this.userType, 0).then(
+        (response) => {
+          this.listUser = response.data.responseData.content;
+          this.totalPages = response.data.responseData.totalPages;
+        }
+      );
+    },
+    async alertDisplay() {
+      const { value: formValues } = await this.$swal.fire({
+        title: "Add moderator",
+        html:
+          "<div>" +
+          '<label for="swal-input1">Username</label>' +
+          `<input id="swal-input1" class="swal2-input" placeholder="Username">` +
+          '<label for="swal-input2">First name</label>' +
+          '<input id="swal-input2" class="swal2-input" placeholder="First name">' +
+          '<label for="swal-input3">Last name</label>' +
+          '<input id="swal-input3" class="swal2-input" placeholder="Last name">' +
+          '<label for="swal-input4">Email</label>' +
+          '<input id="swal-input4" class="swal2-input" placeholder="Email name">' +
+          '<br> <label for="swal-input5">Password</label>' +
+          '<input id="swal-input5" class="swal2-input" placeholder="password">' +
+          '<br> <label for="swal-input6">Phone</label>' +
+          '<input id="swal-input6" class="swal2-input" placeholder="Phone no">' +
+          '<br> <label for="swal-input7">Department</label>' +
+          '<input id="swal-input7" class="swal2-input" placeholder="Dept Id">' +
+          "</div>",
+        focusConfirm: false,
+        showCancelButton: true,
+        preConfirm: () => {
+          return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+            document.getElementById("swal-input3").value,
+            document.getElementById("swal-input4").value,
+            document.getElementById("swal-input5").value,
+            document.getElementById("swal-input6").value,
+            document.getElementById("swal-input7").value,
+          ];
+        },
+      });
+
+      if (formValues) {
+        this.moderator.username = formValues[0];
+        this.moderator.fname = formValues[1];
+        this.moderator.lname = formValues[2];
+        this.moderator.email = formValues[3];
+        this.moderator.password = formValues[4];
+        this.moderator.phone = formValues[5];
+        this.moderator.deptId = formValues[6];
+        this.registerModerator(this.moderator);
+        this.$swal
+          .fire({
+            icon: "success",
+            title: "Add moderator",
+            text: "successful!",
+          })
+          .then(function () {
+            window.location.reload();
+          });
       }
     },
   },

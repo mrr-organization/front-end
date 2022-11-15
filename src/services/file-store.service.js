@@ -8,6 +8,7 @@ class FileService {
     for (let i = 0; i < files.length; i++) {
       fromData.append("files", files[i])
     }
+    console.log(fromData)
     return axios.post(API_URL + 'uploadFiles/' + id + '/' + imageType, fromData, {
       headers: {
         "Authorization": authHeader().Authorization,
@@ -18,7 +19,9 @@ class FileService {
 
   uploadMultipleFile(id, file, imageType) {
     let fromData = new FormData();
-    fromData.append("file", file)
+    fromData.append("file", file);
+    console.log(file)
+    console.log(fromData.getAll("file"))
     return axios.post(API_URL + 'uploadFile/' + id + '/' + imageType, fromData, {
       headers: {
         "Authorization": authHeader().Authorization,

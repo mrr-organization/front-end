@@ -62,7 +62,7 @@
               <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
             </tr>
           </thead>
-          <tbody v-for="item in listRepair" :key="item.id">
+          <tbody v-for="(item, index) in listRepair" :key="index">
             <tr>
               <td>
                 <button @click="redirectToPreviewPage(item.id)">
