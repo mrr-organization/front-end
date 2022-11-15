@@ -12,7 +12,7 @@
             name="username"
             type="text"
             class="p-2 rounded form-control ring-1 ring-black"
-            placeholder="Email"
+            placeholder="Username"
           />
           <ErrorMessage
             name="username"

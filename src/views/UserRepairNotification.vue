@@ -37,7 +37,7 @@
           <h3 class="text-left" style="color: #312a21">รูปภาพประกอบ</h3>
           <label
             for="files"
-            class="self-end p-1 rounded btn "
+            class="self-end p-2 font-semibold rounded cursor-pointer btn "
             style="background-color: #f9d5a7; color: #312a21"
             >เลือกรูปภาพ</label
           >
@@ -50,8 +50,8 @@
             @change="previewMultiImage"
             class="self-end"
           />
-          <div class="p-2 mt-3 rounded ring-1 ring-black">
-            <p style="color: #312a21">ตัวอย่างรูปภาพ:</p>
+          <div class="p-2 mt-3 font-semibold rounded ring-2 ring-black">
+            <p style="color: #312a21">ตัวอย่างรูปภาพ</p>
             <template v-if="preview_list.length">
               <div
                 v-for="(item, index) in preview_list"

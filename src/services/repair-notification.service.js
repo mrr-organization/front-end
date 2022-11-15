@@ -3,7 +3,7 @@ import authHeader from './auth-header';
 // const API_URL = 'http://localhost:8080/api/repair-notification/';
 const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/repair-notification/';
 class RepairNotificationService {
-  getRepairNotificationById (id){
+  getRepairNotificationById(id) {
     return axios.get(API_URL + id)
   }
   createRepairNotification(from) {
@@ -35,20 +35,32 @@ class RepairNotificationService {
   }
 
   getAllRepairNotificationByUsername(username, offSet) {
-    return axios.get(API_URL + 'user/' + username +"/" + offSet +"/6", { headers: authHeader() })
+    return axios.get(API_URL + 'user/' + username + "/" + offSet + "/6", { headers: authHeader() })
+  }
+  getAllRepairNotificationByDepartment(deptId, offSet) {
+    return axios.get(API_URL + 'dept/' + deptId + "/" + offSet + "/6", { headers: authHeader() })
+  }
+  getAllRepairNotificationByDepartments(deptId, offSet) {
+    return axios.get(API_URL + 'dept-all/' + deptId + "/" + offSet + "/6", { headers: authHeader() })
   }
 
-  updateDepartment(updateDeptData) {
-    return axios.post(API_URL + updateDeptData.repairId + '/update-dept?deptId=' + updateDeptData.deptId, { headers: authHeader() });
+  updateDepartment(repairId, deptId) {
+    console.log(authHeader())
+    return axios.post(API_URL + repairId + '/update-dept/' + deptId, deptId, { headers: authHeader() });
   }
-  deleteRepairNotification (repairId) {
+  deleteRepairNotification(repairId) {
     return axios.delete(API_URL + 'delete-repair/' + repairId, { headers: authHeader() })
   }
   updateStatusReject(repairId) {
-    return axios.post(API_URL + repairId + '/reject', { headers: authHeader() });
-  }  
+    console.log(authHeader())
+    return axios.post(API_URL + repairId + '/reject', repairId, {
+      headers: {
+        'Authorization': authHeader().Authorization
+      } 
+    });
+  }
   updateStatusComplete(repairId) {
-    return axios.post(API_URL + repairId + '/complete', { headers: authHeader() });
+    return axios.post(API_URL + repairId + '/complete', repairId, { headers: authHeader() });
   }
 }
 export default new RepairNotificationService();

@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div v-if="totalPages > 0">
     <div class="pagination-row">
       <button
-        class="pagination-button hover:bg-[#FAF0EF] hover:transition-all"
+        class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold "
         @click="previous"
       >
         Previous
       </button>
       <span v-for="(item, index) in totalPages" :key="index">
-        <button class="pagination-button hover:bg-[#FAF0EF] hover:transition-all" @click="currentPage(index)">
+        <button class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold " @click="currentPage(index)">
           {{ index + 1 }}
         </button>
       </span>
       <button
-        class="pagination-button hover:bg-[#FAF0EF] hover:transition-all"
+        class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold"
         @click="next"
       >
         Next
@@ -72,4 +72,5 @@ export default {
 .pagination-row {
   pad: 5px;
 }
+
 </style>

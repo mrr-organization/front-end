@@ -8,7 +8,6 @@
           <h1 class="text-3xl font-bold sm:text-4xl">LINK GIT HUB</h1>
           <p class="font-semibold sm:text-lg" > https://github.com/mrr-organization </p>
       </div>
-     
   </div>
 </template>
 <script>

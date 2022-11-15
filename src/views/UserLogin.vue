@@ -56,10 +56,8 @@
         </Form>
       </div>
       <!-- or div-->
-      <div class=" w-72 inline-flex sm:w-0.5 sm:mx-auto bg-black h-96">
-        <div class="h-0.5">
-
-        </div>
+      <div class="w-72 inline-flex sm:w-0.5 sm:mx-auto bg-black h-96">
+        <div class="h-0.5"></div>
       </div>
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
@@ -89,18 +87,15 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
   components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
   data() {
-    const schema =yup.object().shape({
+    const schema = yup.object().shape({
       username: yup
         .string()
         .required("Username is required!")
-        .min(6, "Must be at least 6 characters!")
         .max(255, "Must be maximum 255 characters!"),
       password: yup
-      .string()
+        .string()
         .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
         .max(40, "Must be maximum 40 characters!"),
-      
     });
     return {
       loading: false,
@@ -114,17 +109,20 @@ export default {
     },
     user() {
       return this.$store.state.auth.user;
-    }
+    },
   },
   created() {
     if (this.loggedIn) {
-      if (this.user.userType === 'ADMIN'){
+      if (this.user.userType === "ADMIN") {
         this.$router.push("/admin-service");
       }
-      if (this.user.userType === 'MODERATOR'){
+      if (this.user.userType === "MODERATOR") {
         this.$router.push("/moderator-service");
       }
-      if (this.user.userType === 'STUDENT' || this.user.userType === 'PERSONNEL') {
+      if (
+        this.user.userType === "STUDENT" ||
+        this.user.userType === "PERSONNEL"
+      ) {
         this.$router.push("/user-service");
       }
     }
@@ -154,5 +152,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
