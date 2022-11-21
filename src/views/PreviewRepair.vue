@@ -40,7 +40,7 @@ import repairNotificationService from "@/services/repair-notification.service";
 export default {
   data() {
     return {
-        url: "htps://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
+        url: "https://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
         // url: "http://localhost:8080/api/file-service/",
       repairData: {},
     };
