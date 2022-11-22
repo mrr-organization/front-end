@@ -52,9 +52,9 @@ class AuthService {
     return axios.get(API_URL + 'verify?code=' + code);
   }
 
-  resetPassword (code, newPassword) {
+  resetPassword (code, password) {
     return axios.post(API_URL + 'forget-password/reset-password?code=' + code, {
-      newPassword: newPassword.password,
+      newPassword: password.password,
     });
   }
 

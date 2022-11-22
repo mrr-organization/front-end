@@ -70,8 +70,10 @@
       };
     },
     methods: {
-      sendResetPassword (schema) {
-          AuthService.resetPassword(this.$route.params.code, schema);
+      sendResetPassword (password) {
+          AuthService.resetPassword(this.$route.params.code, password).then(
+            this.$router.push('/user-login')
+        );
       }
     }
   };

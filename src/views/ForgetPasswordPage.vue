@@ -59,7 +59,10 @@ export default {
   },
   methods: {
     sendEmailForgetPassword (username) {
-        AuthService.forgetPassword(username);
+        AuthService.forgetPassword(username).then(
+            this.$router.push('/user-login')
+        );
+        
     }
   }
 };
