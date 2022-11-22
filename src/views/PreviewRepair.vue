@@ -9,7 +9,6 @@
         <p class="mt-2 ml-3 text-lg font-semibold">วันที่ร้องเรียน: {{repairData.repairResponse.createDate}}</p>
         <p class="ml-3 text-lg font-semibold">สถานะ: {{repairData.repairResponse.status}}</p>
         </div>
-      
       <div class="mt-6">
         <h3 class="ml-2 text-xl font-bold text-left" style="color: #312a21">หน่วยงานที่รับเรื่อง</h3>
         <p class="mt-2 ml-3 text-lg font-semibold">หน่วยงานที่รับเรื่อง: {{repairData.deptName}}</p>
@@ -40,7 +39,7 @@ import repairNotificationService from "@/services/repair-notification.service";
 export default {
   data() {
     return {
-        url: "htps://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
+        url: "https://www.k-mutt-mrr-service.systems/be-path/api/file-service/",
         // url: "http://localhost:8080/api/file-service/",
       repairData: {},
     };

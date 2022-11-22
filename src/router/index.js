@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routeOptions = [
+  {path: '/:pathMatch(.*)*', name: '404Page'},
   {path: '/', name: 'HomePage'},
   {path: '/about', name: 'AboutPage'},
   {path: '/dashboard', name: 'DashboardPage'},
@@ -12,7 +13,6 @@ const routeOptions = [
   {path: '/user-service', name: 'UserPage'},
   {path: '/user/profile', name: 'UserProfile'},
   {path: '/user/track-repair', name: 'UserTrackRepair'},
-  {path: '/user/repair-list', name: 'UserRepairList'},
   {path: '/user/repair-notification', name:'UserRepairNotification'},
   {path: '/user/edit/repair-notification/:id', name:'UserEditRepairNotification'},
   {path: '/admin-service', name: 'AdminPage'},
@@ -24,8 +24,13 @@ const routeOptions = [
   {path: '/admin/edit/repair-status', name:'AdminEditRepairStatus'},
   {path: '/notification', name:'NotificationPage'},
   {path: '/preview/:id', name:'PreviewRepair'},
-  {path: '/user/renew/repair-notification/:id', name:'RenewRepairNotification'}
+  {path: '/user/renew/repair-notification/:id', name:'RenewRepairNotification'},
+  {path: '/user/reset-password/:code', name:'ResetPasswordPage'},
+  {path: '/user/forget-password/', name:'ForgetPasswordPage'},
+  {path: '/user-register-google/:email', name: 'GoogleRegister'},
+  {path: '/verify/:code', name: 'VerifyPage'}
 ];
+
 
 const routes = routeOptions.map(route => {
   return { ...route,

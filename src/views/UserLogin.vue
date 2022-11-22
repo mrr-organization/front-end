@@ -32,6 +32,11 @@
                 class="font-semibold text-red-500 error-feedback"
               />
             </div>
+            <div class="">
+              <button 
+              @click="redirectToForgetPassword"
+              class="flex justify-end text-sm text-right ml-auto">Forget Password</button>
+            </div>
             <div class="form-group">
               <button
                 class="p-2 px-16 rounded btn btn-block"
@@ -129,6 +134,10 @@ export default {
   },
   mounted() {},
   methods: {
+    redirectToForgetPassword(){
+      this.$router.push("/user/forget-password/");
+    },
+
     redirectToRegisterPage() {
       this.$router.push("/user-register");
     },
