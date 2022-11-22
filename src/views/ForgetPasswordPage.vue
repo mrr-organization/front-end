@@ -1,17 +1,20 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen ">
     <Form @submit="sendEmailForgetPassword" :validation-schema="schema">
-      <div class="flex flex-col mt-10 space-y-5 item-center w-60">
+      <div class="flex flex-col w-64 mt-10 space-y-5 bg-white bg-opacity-75 rounded h-54 item-center">
+        <div>
+            <h1 class="text-lg font-bold text-[#312A21] mt-2">รีเซ็ตรหัสผ่าน</h1>
+          </div>
         <div class="form-group">
           <Field
             name="username"
             type="text"
             class="p-2 rounded form-control ring-1 ring-black"
             placeholder="ชื่อผู้ใช้หรืออีเมล"
-          />
+          /><br>
           <ErrorMessage
             name="username"
-            class="font-semibold text-red-500 error-feedback"
+            class="font-semibold text-red-500 error-feedback "
           />
         </div>
         <div class="form-group">
@@ -49,7 +52,7 @@ export default {
       username: yup
         .string()
         .required("ต้องระบุชื่อผู้ใช้หรืออีเมล!")
-        .max(255, "Must be maximum 255 characters!"),
+        .max(255, "ต้องมีความยาวไม่เกิน 255 อักษร!"),
     });
     return {
       loading: false,
