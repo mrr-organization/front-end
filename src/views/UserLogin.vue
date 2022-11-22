@@ -101,11 +101,11 @@ export default {
       username: yup
         .string()
         .required("ต้องระบุชื่อผู้ใช้!")
-        .max(255, "Must be maximum 255 characters!"),
+        .max(255, "มีความยาวสูงสุดได้แค่ 255 อักษร!"),
       password: yup
         .string()
         .required("ต้องการรหัสผ่าน!")
-        .max(40, "Must be maximum 40 characters!"),
+        .max(40, "มีความยาวสูงสุดได้แค่ 40 อักษร!"),
     });
     return {
       loading: false,

@@ -131,20 +131,21 @@ export default {
     deleteUser(username) {
       this.$swal
         .fire({
-          title: "Are you sure?",
-          text: `You won't delete ${username}`,
+          title: "คุณแน่ใจไหม?",
+          text: `ระงับบัญชี ${username}`,
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
+          cancelButtonColor: "#d33 ",
+          cancelButtonText: "ปฏิเสธ",
+          confirmButtonText: "ตกลง, ที่จะระงับ!",
         })
         .then((result) => {
           if (result.isConfirmed) {
             this.$swal.fire(
-              "Deleted!",
-              `${username} has been deleted.`,
-              "success"
+              "ระงับบัญชี!",
+              `${username} ถูกระงับบัญชีแล้ว.`,
+              "เสร็จสิ้น"
             ).then(function () {
               window.location.reload();
             });
@@ -246,7 +247,7 @@ export default {
           '<input id="swal-input2" class="swal2-input" placeholder="ชื่อจริง"> <br>' +
           '<label for="swal-input3">นามสกุล</label> <br>' +
           '<input id="swal-input3" class="swal2-input" placeholder="นามสกุล"> <br>' +
-          '<label for="swal-input4">อีเมล์</label> <br>' +
+          '<label for="swal-input4">อีเมล</label> <br>' +
           '<input id="swal-input4" class="swal2-input" placeholder="อีเมล์"> <br>' +
           '<label for="swal-input5">รหัสผ่าน</label> <br>' +
           '<input id="swal-input5" class="swal2-input" placeholder="รหัสผ่าน"> <br>' +
@@ -282,8 +283,8 @@ export default {
         this.$swal
           .fire({
             icon: "success",
-            title: "Add moderator",
-            text: "successful!",
+            title: "เพิ่มหน่วยงาน",
+            text: "เสร็จสิ้น!",
           })
           .then(function () {
             window.location.reload();

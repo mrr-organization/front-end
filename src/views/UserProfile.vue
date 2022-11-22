@@ -84,7 +84,7 @@ export default {
     },
     async editImage() {
       const { value: file } = await this.$swal.fire({
-        title: "Select image",
+        title: "เลือกรูปภาพ",
         input: "file",
         inputAttributes: {
           accept: "image/*",
@@ -98,7 +98,7 @@ export default {
         reader.onload = (e) => {
           this.$swal
             .fire({
-              title: "Your uploaded picture",
+              title: "รูปภาพที่คุณอัปโหลด",
               imageUrl: e.target.result,
               imageAlt: "The uploaded picture",
             })
@@ -149,8 +149,8 @@ export default {
         this.editProfile(this.editInfo);
         this.$swal.fire({
           icon: "success",
-          title: "Edit Profile",
-          text: "successful!",
+          title: "แก้ไขโปรไฟล์",
+          text: "เสร็จสิ้น!",
         }).then(function () {
               window.location.reload();
             });
