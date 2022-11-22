@@ -1,6 +1,6 @@
 <template>
-  <div class="px-2 mx-auto mt-16 max-w-7xl " style="background-color: #fef1e6">
-    <div class="p-6 -mx-2 text-2xl font-black text-left bg-white mt-14">
+  <div class="px-2 mx-auto mt-16 rounded max-w-7xl " style="background-color: #fef1e6">
+    <div class="p-6 -mx-2 text-2xl font-black text-left bg-white rounded mt-14">
       <h2 style="color: #312a21">รายการแจ้งซ่อมรหัสที่ : {{repairData.repairResponse.id}}</h2>
     </div>
       <div class="flex flex-col max-w-4xl mx-auto mt-5 text-left ">

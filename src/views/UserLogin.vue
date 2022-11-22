@@ -13,7 +13,7 @@
                 name="username"
                 type="text"
                 class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="username"
+                placeholder="ชื่อผู้ใช้"
               />
               <ErrorMessage
                 name="username"
@@ -25,7 +25,7 @@
                 name="password"
                 type="password"
                 class="p-2 rounded form-control ring-1 ring-black"
-                placeholder="Password"
+                placeholder="รหัสผ่าน"
               />
               <ErrorMessage
                 name="password"
@@ -35,7 +35,7 @@
             <div class="">
               <button 
               @click="redirectToForgetPassword"
-              class="flex justify-end text-sm text-right ml-auto">Forget Password</button>
+              class="flex justify-end ml-auto font-semibold text-base text-right underline text-[#312a21]  hover:text-[#384bb1] ">ลืมรหัสผ่าน</button>
             </div>
             <div class="form-group">
               <button
@@ -67,39 +67,44 @@
       <!-- another login-->
       <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">
-          <GoogleSignup
+          <!-- <GoogleSignup
             class="w-56 p-3"
             style="background-color: #faf0ef; color: #312a21"
-          ></GoogleSignup>
+          ></GoogleSignup> -->
           <ButtonCom
             @click="redirectToRegisterPage"
             msg="สมัครใช้งาน"
             class="w-56 p-3"
             style="background-color: #faf0ef; color: #312a21"
           ></ButtonCom>
-        </div>
+         
       </div>
+      <div
+            class="p-2 mt-2 text-base font-semibold sm:text-lg"
+            style=" color: #312a21"
+          >  สมัครใช้งานเพื่อร้องเรียนปัญหาที่พบเจอภายในมหาวิทยาลัย</div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
 import ButtonCom from "@/components/BasicButton.vue";
-import GoogleSignup from "@/components/GoogleSignup.vue";
+// import GoogleSignup from "@/components/GoogleSignup.vue";
 import * as yup from "yup";
 import { Form, Field, ErrorMessage } from "vee-validate";
 
 export default {
-  components: { ButtonCom, Form, Field, ErrorMessage, GoogleSignup },
+  components: { ButtonCom, Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
       username: yup
         .string()
-        .required("Username is required!")
+        .required("ต้องระบุชื่อผู้ใช้!")
         .max(255, "Must be maximum 255 characters!"),
       password: yup
         .string()
-        .required("Password is required!")
+        .required("ต้องการรหัสผ่าน!")
         .max(40, "Must be maximum 40 characters!"),
     });
     return {

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen">
-    <div class="flex flex-col justify-around w-full mt-14 sm:mb-14 item-center">
+    <div class="flex flex-col justify-around w-full mt-14 sm:mb-14 item-center ">
       <img
         v-if="!this.imageURL"
         src="@/assets/Profile.svg"
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div
-      class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white rounded-2xl"
+      class="flex flex-col w-full h-auto max-w-xl gap-3 p-3 mx-auto overflow-auto text-xl font-semibold bg-white rounded-2xl "
     >
       <div class="inline-flex flex-row flex-wrap justify-between gap-3">
         <span>ชื่อ - นามสกุล: {{ this.userDetail.userFullName }}</span>
@@ -30,7 +30,7 @@
         <span>เบอร์ติดต่อ: {{ this.userDetail.userPhone }}</span>
       </div>
     </div>
-    <div class="mt-5 space-x-8">
+    <div class="mt-5 space-x-8 " >
       <button
         @click="editImage"
         class="p-2 px-5 mt-1 bg-[#FFFFFF] rounded-xl hover:bg-[#02B072] hover:transition-all border border-slate-300"
@@ -114,19 +114,19 @@ export default {
     },
     async alertDisplay() {
       const { value: formValues } = await this.$swal.fire({
-        title: "Edit profile",
+        title: "แก้ไขโปรไฟล์",
         html:
           '<div>'+
-          '<label for="swal-input1">Username</label>' +
-          `<input id="swal-input1" class="swal2-input" placeholder=${this.userDetail.username} disabled>` +
-          '<label for="swal-input2">First name</label>' +
-          `<input id="swal-input2" class="swal2-input" placeholder=${this.userDetail.userFName} >` +
-          '<label for="swal-input3">Last name</label>' +
-          `<input id="swal-input3" class="swal2-input" placeholder=${this.userDetail.userLName} >` +
-          '<label for="swal-input4">Phone</label>' +
-          `<input id="swal-input4" class="swal2-input" placeholder=${this.userDetail.userPhone} >` +
-          '<br> <label for="swal-input5">User no</label>' +
-          `<input id="swal-input5" class="swal2-input" placeholder=${this.userDetail.userNo}>` +
+          '<label for="swal-input1">ชื่อผู้ใช้</label> <br>' +
+          `<input id="swal-input1" class="swal2-input" placeholder=${this.userDetail.username} disabled> <br>` +
+          '<label for="swal-input2">ชื่อจริง</label> <br>' +
+          `<input id="swal-input2" class="swal2-input" placeholder=${this.userDetail.userFName} > <br>` +
+          '<label for="swal-input3">นามสกุล</label> <br>' +
+          `<input id="swal-input3" class="swal2-input" placeholder=${this.userDetail.userLName} > <br>` +
+          '<label for="swal-input4">เบอร์ติดต่อ</label> <br>' +
+          `<input id="swal-input4" class="swal2-input " placeholder=${this.userDetail.userPhone} > <br>` +
+          '<br> <label for="swal-input5">รหัสสมาชิก</label> <br>' +
+          `<input id="swal-input5" class="swal2-input" placeholder=${this.userDetail.userNo}> <br>` +
           '</div>',
         focusConfirm: false,
         showCancelButton: true,

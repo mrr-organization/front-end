@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="updateRepairNotification">
-  <div class="px-2 mx-auto mt-16 max-w-7xl" style="background-color: #fef1e6">
-    <div class="p-6 -mx-2 text-2xl font-bold text-left bg-white mt-14">
+  <div class="px-2 mx-auto mt-16 rounded max-w-7xl " style="background-color: #fef1e6">
+    <div class="p-6 -mx-2 text-2xl font-bold text-left bg-white rounded mt-14">
       <h2 style="color: #312a21">แก้ไขข้อมูลแจ้งซ่อม / ร้องเรียนปัญหา</h2>
     </div>
     <div class="max-w-4xl mx-auto mt-3">

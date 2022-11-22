@@ -13,7 +13,7 @@
               name="username"
               type="username"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Username"
+              placeholder="ชื่อผู้ใช้"
             />
             <ErrorMessage name="username" class="text-sm font-semibold text-red-500 sm:text-lg error-feedback " />
           </div>
@@ -22,7 +22,7 @@
               name="email"
               type="email"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Email@mail.kmutt.ac.th"
+              placeholder="email@mail.kmutt.ac.th"
             />
             <ErrorMessage name="email" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -31,7 +31,7 @@
               name="fname"
               type="fname"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Firstname"
+              placeholder="ชื่อจริง"
             />
             <ErrorMessage name="fname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -40,7 +40,7 @@
               name="lname"
               type="lname"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Lastname"
+              placeholder="นามสกุล"
             />
             <ErrorMessage name="lname" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -49,7 +49,7 @@
               name="password"
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Password"
+              placeholder="รหัสผ่าน"
             />
             <ErrorMessage name="password" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -58,7 +58,7 @@
               name="comfirmPassword"
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Confirm password"
+              placeholder="ยืนยันรหัสผ่าน"
             />
             <ErrorMessage name="comfirmPassword" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -67,7 +67,7 @@
               name="phone"
               type="text"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="Phone number"
+              placeholder="เบอร์ติดต่อ"
             />
             <ErrorMessage name="phone" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>

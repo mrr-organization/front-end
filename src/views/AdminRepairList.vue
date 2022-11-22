@@ -1,21 +1,23 @@
 <template>
   <div
-    class="mx-auto mt-20 overflow-auto rounded-t-lg sm:mt-24 max-w-7xl sm:max-w-7xl"
+    class="mx-auto mt-20 overflow-auto rounded sm:mt-24 max-w-7xl sm:max-w-7xl"
     style="background-color: #fef1e6"
   >
     <table class="w-full text-xs table-auto sm:text-xl text-[#312A21]">
       <thead>
         <tr class="bg-white">
-          <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่</th>
+          <th class="p-3 px-4 rounded-t-lg lg:p-3">รหัสแจ้งซ่อม</th>
+          <th >วันที่ / เวลาสมัคร </th>
           <th>สถานที่ / พื่นที่</th>
           <th>ผู้แจ้ง / ผู้ร้องเรียน</th>
           <th>สถานะการแจ้งซ่อม / ร้องเรียน</th>
           <th>เพิ่มหน่วยงาน</th>
-          <th class="rounded-t-lg">อัพเดทสถานะ</th>
+          <th class="rounded-t-lg">ปฏิเสธคำร้อง</th>
         </tr>
       </thead>
       <tbody v-for="item in listRepair" :key="item.id">
         <tr>
+          <td>{{ item.id}}</td>
           <td>{{ item.createDate }}</td>
           <td>{{ item.location }}</td>
           <td>{{ item.createBy }}</td>
@@ -47,7 +49,7 @@
       </tbody>
     </table>
   </div>
-  <VSPagination
+  <VSPagination 
     :totalPages="totalPages"
     @page-number="getListRepairNotificationByStatus"
   >

@@ -30,7 +30,7 @@
           class="inline-flex items-center justify-center h-12 p-1 mt-6 rounded-lg sm:mt-10 sm:h-20"
           style="background-color: #fef1e6"
         >
-          <p class="text-xs font-bold sm:text-base">Status:</p>
+          <div class="text-xs font-bold sm:text-base">สถานะ:</div>
           <select
             @change="getNewRepair"
             class="text-xs font-bold border-2 sm:text-base"
@@ -49,7 +49,7 @@
       </div>
 
       <div
-        class="mx-auto mt-3 overflow-auto rounded-t-lg sm:mt-10 max-w-7xl sm:max-w-7xl"
+        class="mx-auto mt-3 overflow-auto rounded-lg sm:mt-10 "
         style="background-color: #fef1e6"
       >
         <table class="w-full text-sm table-auto sm:text-xl">
@@ -60,7 +60,7 @@
               <th>วันที่อัพเดท</th>
               <th>สถานที่ / พื่นที่</th>
               <th>รายละเอียด</th>
-              <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
+              <th >สถานะการแจ้งซ่อม</th>
             </tr>
           </thead>
           <tbody v-for="(item, index) in listRepair" :key="index">
@@ -86,9 +86,9 @@
                   {{ item.location }}
                 </button>
               </td>
-              <td>
-                <button @click="redirectToPreviewPage(item.id)">
-                  {{ item.detail }}
+              <td >
+                <button @click="redirectToPreviewPage(item.id)"  >
+                  <p>{{ item.detail }}</p>
                 </button>
               </td>
               <td>
@@ -104,6 +104,7 @@
           </tbody>
         </table>
       </div>
+      
     </div>
   </div>
   <VSPagination
@@ -129,18 +130,23 @@ export default {
         {
           statusName: "PENDING",
           bg: "bg-[#3366CC]",
+          
         },
+        
         {
           statusName: "IN PROGRESS",
-          bg: "bg-[#DC3912]",
+          bg: "bg-[#FF9900]",
+          
         },
         {
           statusName: "REJECT",
-          bg: "bg-[#FF9900]",
+          bg: "bg-[#DC3912] ",
+          
         },
         {
           statusName: "COMPLETED",
           bg: "bg-[#109618]",
+         
         },
       ],
       status: "",
@@ -216,5 +222,13 @@ td {
 }
 thead > tr > th {
   @apply whitespace-nowrap px-3;
+}
+p {
+  overflow:hidden;
+    white-space:nowrap;
+    -ms-text-overflow:ellipsis;
+    text-overflow:ellipsis;
+    width:200px;
+    height:1.2em;
 }
 </style>

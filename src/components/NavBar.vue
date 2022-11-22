@@ -1,16 +1,16 @@
 <template>
   <div class="relative">
     <div
-      class="fixed top-0 left-0 right-0 flex flex-row bg-white"
+      class="fixed top-0 left-0 right-0 flex flex-row bg-white "
     >
       <!-- bars -->
-      <div class="w-1/3 flex justify-start">
+      <div class="flex justify-start w-1/3 ">
         <div v-show="loggedIn">
           <!-- Menu -->
           <!-- onClick = false -->
           <div @click="onClick" v-if="!statusClick">
             <button >
-              <font-awesome-icon icon="bars" size="2xl" class="mt-2 ml-4 pb-2"/>
+              <font-awesome-icon icon="bars" size="2xl" class="pb-2 mt-2 ml-4"/>
             </button>
           </div>
           <div @click="onClick" v-if="statusClick">
@@ -23,7 +23,7 @@
           <div
             @click="onClick"
             v-if="statusClick"
-            class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black"
+            class="fixed bottom-0 bg-white w-[350px] top-12 border-t-2 border-t-black "
           >
             <div
               v-if="user.userType === menuType[0]"
@@ -150,10 +150,10 @@
           </div>
         </div>
       </div>
-      <div class="w-1/3 flex justify-center">
+      <div class="flex justify-center w-1/3">
         <button
         @click="redirectToHomePage"
-        class="flex justify-center text-2xl font-semibold uppercase items-center"
+        class="flex items-center justify-center text-2xl font-semibold uppercase"
         style="color: #384bb1"
       >
         MRR
@@ -161,7 +161,7 @@
       </div>
 
       <!-- loggedIn = true -->
-      <div class="w-1/3 flex justify-end items-center">
+      <div class="flex items-center justify-end w-1/3">
         <div
         v-if="loggedIn"
         class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
@@ -181,7 +181,7 @@
       <!-- loggedIn = false -->
       <div
         v-else
-        class="p-1 my-1 text-base font-semibold rounded sm:p-2 right-4 items-center"
+        class="items-center p-1 my-1 text-base font-semibold rounded sm:p-2 right-4"
       >
         <router-link
           to="/login-service"

@@ -7,7 +7,7 @@
           class="block p-2 py-2 pr-3 m-2 text-sm border rounded-full shadow-sm pl-7 w-36 sm:w-full placeholder:italic placeholder:text-slate-400 border-slate-300 sm:pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm icon backgroud"
           type="text"
           v-model="search"
-          placeholder="search username..."
+          placeholder="ค้นหาชื่อผู้ใช้..."
         />
       </div>
       <div
@@ -15,32 +15,32 @@
       >
         <button
           @click="showUser"
-          class="p-0.5 m-0.5 sm:p-1 sm:m-2 rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none texst-xs sm:text-sm font-semibold transition"
+          class="p-0.5 m-0.5 sm:p-1 sm:m-2 rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none text-xs sm:text-sm font-semibold transition"
         >
-          <p>USER</p>
+          <p>ผู้ใช้งาน</p>
         </button>
         <div class="border border-black"></div>
         <button
           @click="showModerator"
           class="p-0.5 m-0.5 sm:p-1 sm:m-2 rounded-md hover:bg-[#FAF0EF] active:bg-[#FF9817] focus:outline-none text-xs sm:text-sm font-semibold transition"
         >
-          <p>MODERATOR</p>
+          <p>หน่วยงาน</p>
         </button>
       </div>
     </div>
-    <div class="mt-5 bg-[#FAF0EF] rounded overflow-auto">
-      <div class="list-content">
+    <div class="mt-5 bg-[#FAF0EF]  overflow-auto rounded-lg">
+      <div class=" list-content">
         <table
           class="w-full text-xs border border-collapse border-slate-400 sm:text-xl text-[#312A21] table-fixed"
         >
           <thead>
             <tr class="bg-white">
-              <th class="border border-slate-300">username</th>
-              <th class="border border-slate-300">ชื่อ</th>
-              <th class="border border-slate-300">email</th>
-              <th class="border border-slate-300">วันที่สมัคร</th>
+              <th class="border border-slate-300">ชื่อผู้ใช้</th>
+              <th class="border border-slate-300">ชื่อ นามสกุล</th>
+              <th class="border border-slate-300">อีเมล์</th>
+              <th class="border border-slate-300">วันที่/เวลาสมัคร</th>
               <th class="border border-slate-300">จำนวนวันที่เป็นสมาชิก</th>
-              <th class="border border-slate-300">ลบผู้ใช้งาน</th>
+              <th class="border border-slate-300">ระงับผู้ใช้งาน</th>
             </tr>
           </thead>
           <tbody v-for="item in listUser" :key="item.id">
@@ -55,9 +55,9 @@
                   <p>{{ item.userFullName }}</p>
                 </button>
               </td>
-              <td class="break-normal  border email border-slate-300">
+              <td class="break-all border email border-slate-300">
                 <button>
-                  <p class="truncate w-40">{{ item.userEmail }}</p>
+                  <p >{{ item.userEmail }}</p>
                 </button>
               </td>
               <td class="break-all border register-date border-slate-300">
@@ -73,7 +73,7 @@
                   @click="deleteUser(item.username)"
                   class="p-1 bg-[#FF0000] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
                 >
-                  delete
+                  ระงับ
                 </button>
               </td>
             </tr>
@@ -85,7 +85,7 @@
       @click="alertDisplay"
       class="flex ml-auto mt-2 max-w-screen-2xl p-1 bg-[#FFFFFF] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
     >
-      Add moderator
+     เพิ่มหน่วยงานที่รับเรื่อง
     </button>
     <VSPagination :totalPages="totalPages" @page-number="getListUserPage">
     </VSPagination>
@@ -237,23 +237,23 @@ export default {
     },
     async alertDisplay() {
       const { value: formValues } = await this.$swal.fire({
-        title: "Add moderator",
+        title: "เพิ่มหน่วยงาน",
         html:
           "<div>" +
-          '<label for="swal-input1">Username</label>' +
-          `<input id="swal-input1" class="swal2-input" placeholder="Username">` +
-          '<label for="swal-input2">First name</label>' +
-          '<input id="swal-input2" class="swal2-input" placeholder="First name">' +
-          '<label for="swal-input3">Last name</label>' +
-          '<input id="swal-input3" class="swal2-input" placeholder="Last name">' +
-          '<label for="swal-input4">Email</label>' +
-          '<input id="swal-input4" class="swal2-input" placeholder="Email name">' +
-          '<br> <label for="swal-input5">Password</label>' +
-          '<input id="swal-input5" class="swal2-input" placeholder="password">' +
-          '<br> <label for="swal-input6">Phone</label>' +
-          '<input id="swal-input6" class="swal2-input" placeholder="Phone no">' +
-          '<br> <label for="swal-input7">Department</label>' +
-          '<input id="swal-input7" class="swal2-input" placeholder="Dept Id">' +
+          '<label for="swal-input1">ชื่อผู้ใช้</label> <br>' +
+          `<input id="swal-input1" class=" swal2-input" placeholder="ชื่อผู้ใช้"> <br>` +
+          '<label for="swal-input2">ชื่อจริง</label> <br>' +
+          '<input id="swal-input2" class="swal2-input" placeholder="ชื่อจริง"> <br>' +
+          '<label for="swal-input3">นามสกุล</label> <br>' +
+          '<input id="swal-input3" class="swal2-input" placeholder="นามสกุล"> <br>' +
+          '<label for="swal-input4">อีเมล์</label> <br>' +
+          '<input id="swal-input4" class="swal2-input" placeholder="อีเมล์"> <br>' +
+          '<label for="swal-input5">รหัสผ่าน</label> <br>' +
+          '<input id="swal-input5" class="swal2-input" placeholder="รหัสผ่าน"> <br>' +
+          '<label for="swal-input6">เบอร์ติดต่อ</label> <br>' +
+          '<input id="swal-input6" class="swal2-input" placeholder="เบอร์ติดต่อ"> <br>' +
+          ' <label for="swal-input7">รหัสหน่วยงาน</label> <br>' +
+          '<input id="swal-input7" class="swal2-input" placeholder="รหัสหน่วยงาน"> <br>' +
           "</div>",
         focusConfirm: false,
         showCancelButton: true,

@@ -5,7 +5,7 @@
         class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold "
         @click="previous"
       >
-        Previous
+        ก่อนหน้า
       </button>
       <span v-for="(item, index) in totalPages" :key="index">
         <button class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold " @click="currentPage(index)">
@@ -16,7 +16,7 @@
         class="pagination-button hover:bg-[#FAF0EF] hover:transition-all font-semibold"
         @click="next"
       >
-        Next
+      ถัดไป
       </button>
     </div>
     <slot />

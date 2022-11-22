@@ -31,3 +31,5 @@ vue.component("font-awesome-icon", FontAwesomeIcon)
 
 vue.mount('#app')
 
+
+

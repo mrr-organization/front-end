@@ -4,8 +4,8 @@
       <table class="w-full text-xs table-auto sm:text-xl">
         <thead>
           <tr class="bg-white">
-            <th>รหัสแจ้งเติอน</th>
-            <th class="p-3 px-4 rounded-t-lg lg:p-3">การแจ้งเตือน</th>
+            <th>รหัสแจ้งเตือน</th>
+            <th class="p-3 px-4 rounded-t-lg lg:p-3">รายละเอียดแจ้งเตือน</th>
             <th>วันที่ / เวลา</th>
             <th>ลบแจ้งเตือน</th>
           </tr>

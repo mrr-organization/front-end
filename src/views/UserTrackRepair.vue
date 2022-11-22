@@ -1,7 +1,7 @@
 <template>
    
-    <div class="mx-auto mt-24 max-w-7xl" style="background-color: #fef1e6">
-    <div class="p-6 text-2xl font-black text-left bg-white mt-14">
+    <div class="mx-auto mt-24 rounded max-w-7xl " style="background-color: #fef1e6">
+    <div class="p-6 text-2xl font-black text-left bg-white rounded mt-14">
       <h2 style="color: #312a21">ติดตามสถานะแจ้งซ่อม</h2>
     </div>
     <div class="min-h-[500px]">
@@ -11,8 +11,10 @@
         class="flex justify-center p-4"
       >
         <div class="flex w-full space-x-5">
-        <button @click="redirectToPreviewPage(item.id)">
-          <div class="">รายการแจ้งซ่อมรหัส : {{item.id}}</div>
+        <button @click="redirectToPreviewPage(item.id)" class="bg-[#3366CC] hover:bg-[#384BB1] rounded text-white sm:w-52">
+          <div class="text-sm ">{{item.location}}</div>
+          <div class="text-sm "> รายการแจ้งซ่อมรหัส :  {{item.id}} </div>
+          
         </button>
           <div class="flex justify-around w-full font-semibold items">
             <div class="flex flex-col items-center w-full">

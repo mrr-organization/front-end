@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col items-center justify-center h-screen">
     <div class="flex flex-row justify-around w-full m-16 item-center">
-      <div class="flex items-center justify-center h-96 w-96">
+      <div class="flex items-center justify-center h-96 w-96 ">
         <router-link to="/admin/manage-member"
           ><img src="@/assets/manage.svg" class="w-5/6 ml-4 h-5/6"
         /></router-link>
       </div>
-      <div class="flex items-center justify-center h-96 w-96">
+      <div class="flex items-center justify-center h-96 w-96 ">
         <router-link to="/admin/repair-list"
           ><img src="@/assets/update.svg" class="w-5/6 ml-3 h-5/6"
         /></router-link>

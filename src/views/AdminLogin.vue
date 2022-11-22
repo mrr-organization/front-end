@@ -12,7 +12,7 @@
             name="username"
             type="text"
             class="p-2 rounded form-control ring-1 ring-black"
-            placeholder="Username"
+            placeholder="ชื่อผู้ใช้"
           />
           <ErrorMessage
             name="username"
@@ -24,7 +24,7 @@
             name="password"
             type="password"
             class="p-2 rounded form-control ring-1 ring-black"
-            placeholder="Password"
+            placeholder="รหัสผ่าน"
           />
           <ErrorMessage
             name="password"
@@ -64,8 +64,8 @@ export default {
   components: { Form, Field, ErrorMessage },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("username is required!"),
-      password: yup.string().required("password is required!"),
+      username: yup.string().required("ต้องระบุชื่อผู้ใช้!"),
+      password: yup.string().required("ต้องการรหัสผ่าน!"),
     });
     return {
       loading: false,
