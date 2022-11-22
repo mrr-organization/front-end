@@ -47,5 +47,20 @@ class AuthService {
       roles: ["moderator"]
     }, { headers: authHeader() });
   }
+
+  verifyEmail (code) {
+    return axios.get(API_URL + 'verify?code=' + code);
+  }
+
+  resetPassword (code, newPassword) {
+    return axios.post(API_URL + 'forget-password/reset-password?code=' + code, {
+      newPassword: newPassword,
+    });
+  }
+
+  forgetPassword (usernameOrEmail) {
+    return axios.get(API_URL + 'forget-password?emailOrUsername=' + usernameOrEmail);
+  }
+
 }
 export default new AuthService();

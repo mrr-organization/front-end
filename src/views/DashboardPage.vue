@@ -55,10 +55,11 @@
         <table class="w-full text-sm table-auto sm:text-xl">
           <thead>
             <tr class="bg-white">
-              <th>เรื่องร้องเรียนที่</th>
+              <th>รหัสร้องเรียน</th>
               <th class="p-3 px-4 rounded-t-lg lg:p-3">วันที่ร้องเรียน</th>
               <th>วันที่อัพเดท</th>
               <th>สถานที่ / พื่นที่</th>
+              <th>รายละเอียด</th>
               <th class="rounded-t-lg">สถานะการแจ้งซ่อม / ร้องเรียน</th>
             </tr>
           </thead>
@@ -83,6 +84,11 @@
               <td>
                 <button @click="redirectToPreviewPage(item.id)">
                   {{ item.location }}
+                </button>
+              </td>
+              <td>
+                <button @click="redirectToPreviewPage(item.id)">
+                  {{ item.detail }}
                 </button>
               </td>
               <td>
