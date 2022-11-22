@@ -69,12 +69,13 @@
                 <button>{{ timeToWords(item.createDate) }}</button>
               </td>
               <td class="border count-register-date border-slate-300">
-                <button
+                <button v-if="item.enabled = true"
                   @click="deleteUser(item.username)"
                   class="p-1 bg-[#FF0000] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
                 >
                   ระงับ
                 </button>
+                <p v-else class="text-[#FF0000]">ผู้ใช้งานถูกระงับ</p>
               </td>
             </tr>
           </tbody>
@@ -132,18 +133,19 @@ export default {
       this.$swal
         .fire({
           title: "Are you sure?",
-          text: `You won't delete ${username}`,
+          text: `You won't ban ${username}`,
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
+          confirmButtonText: "Yes, ban it!",
         })
         .then((result) => {
           if (result.isConfirmed) {
+            UserService.banUser(username);
             this.$swal.fire(
-              "Deleted!",
-              `${username} has been deleted.`,
+              "Ban!",
+              `${username} has been ban.`,
               "success"
             ).then(function () {
               window.location.reload();

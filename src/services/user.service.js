@@ -31,5 +31,10 @@ class UserService {
   findUserByUsername(text, userType, offset) {
     return axios.get(API_URL + 'findByUsername/' + text + '/' + userType + '/' + offset + '/6', { headers: authHeader() });
   }
+
+  banUser(username) {
+    return axios.get(API_URL + 'ban-user/' + username, { headers: authHeader() });
+  }
+
 }
 export default new UserService();

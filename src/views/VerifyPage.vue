@@ -5,7 +5,7 @@
     :width="550"
   />
     </div>
-    <button @click="redirectToLogin" class="bg-green-500 p-2 rounded-xl">Back to Login</button>
+    <button @click="redirectToLogin" class="bg-green-500 p-2 rounded-xl text-white font-semibold">กลับไปหน้าล็อกอิน</button>
 </template>
 
 <script>
