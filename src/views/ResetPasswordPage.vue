@@ -1,13 +1,16 @@
 <template>
     <div class="flex flex-col items-center justify-center h-screen">
       <Form @submit="sendEmailForgetPassword" :validation-schema="schema">
-        <div class="flex flex-col mt-10 space-y-5 item-center w-60">
+        <div class="flex flex-col p-2 mt-10 space-y-5 bg-white bg-opacity-75 rounded w-72 h-72 item-center">
+          <div>
+            <h1 class="text-lg font-bold text-[#312A21]">รีเซ็ตรหัสผ่าน</h1>
+          </div>
             <div class="flex flex-col form-group">
             <Field
               name="password"
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="รหัสผ่าน"
+              placeholder="รหัสผ่านใหม่"
             />
             <ErrorMessage name="password" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -16,7 +19,7 @@
               name="comfirmPassword"
               type="password"
               class="p-2 rounded form-control ring-1 ring-black"
-              placeholder="ยืนยันรหัสผ่าน"
+              placeholder="ยืนยันรหัสผ่านใหม่"
             />
             <ErrorMessage name="comfirmPassword" class="text-sm font-semibold text-red-500 error-feedback sm:text-lg" />
           </div>
@@ -54,14 +57,14 @@
       const schema = yup.object().shape({
         password: yup
         .string()
-        .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
+        .required("ต้องการรหัสผ่าน!")
+        .min(6, "ต้องมีตัวอักษรอย่างน้อย 6 ตัว!")
+        .max(40, "ต้องมีความยาวไม่เกิน 40 อักษร!"),
       comfirmPassword: yup
         .string()
-        .required("ConfirmPassword is required!")
-        .min(6, "Must be at least 6 characters!")
-        .oneOf([yup.ref('password')], 'Passwords do not match')
+        .required("ต้องยืนยันรหัสผ่าน!")
+        .min(6, "ต้องมีตัวอักษรอย่างน้อย 6 ตัว!")
+        .oneOf([yup.ref('password')], 'รหัสผ่านไม่ตรงกัน')
       });
       return {
         loading: false,
