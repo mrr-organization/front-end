@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-96">
+    <div class="flex flex-col items-center justify-center h-screen">
       <Form @submit="sendEmailForgetPassword" :validation-schema="schema">
         <div class="flex flex-col mt-10 space-y-5 item-center w-60">
             <div class="flex flex-col form-group">
@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <button
-              class="p-2  rounded btn btn-block"
+              class="p-2 rounded btn btn-block"
               style="background-color: #384bb1"
               :disabled="loading"
             >
