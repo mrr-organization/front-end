@@ -84,7 +84,7 @@ export default {
     },
     async editImage() {
       const { value: file } = await this.$swal.fire({
-        title: "Select image",
+        title: "เลือกรูปภาพ",
         input: "file",
         inputAttributes: {
           accept: "image/*",
@@ -98,7 +98,7 @@ export default {
         reader.onload = (e) => {
           this.$swal
             .fire({
-              title: "Your uploaded picture",
+              title: "รูปภาพที่คุณอัปโหลด",
               imageUrl: e.target.result,
               imageAlt: "The uploaded picture",
             })
@@ -123,19 +123,19 @@ export default {
     },
     async alertDisplay() {
       const { value: formValues } = await this.$swal.fire({
-        title: "Edit profile",
+        title: "แก้ไขโปรไฟล์",
         html:
           '<div>'+
-          '<label for="swal-input1">Username</label>' +
-          `<input id="swal-input1" class="swal2-input" placeholder=${this.userDetail.username} disabled>` +
-          '<label for="swal-input2">First name</label>' +
-          `<input id="swal-input2" class="swal2-input" placeholder=${this.userDetail.userFName} >` +
-          '<label for="swal-input3">Last name</label>' +
-          `<input id="swal-input3" class="swal2-input" placeholder=${this.userDetail.userLName} >` +
-          '<label for="swal-input4">Phone</label>' +
-          `<input id="swal-input4" class="swal2-input" placeholder=${this.userDetail.userPhone} >` +
-          '<br> <label for="swal-input5">User no</label>' +
-          `<input id="swal-input5" class="swal2-input" placeholder=${this.userDetail.userNo}>` +
+          '<label for="swal-input1">ชื่อผู้ใช้</label> <br>' +
+          `<input id="swal-input1" class="swal2-input" placeholder=${this.userDetail.username} disabled> <br>` +
+          '<label for="swal-input2">ชื่อจริง</label> <br>' +
+          `<input id="swal-input2" class="swal2-input" placeholder=${this.userDetail.userFName} > <br>` +
+          '<label for="swal-input3">นามสกุล</label> <br>' +
+          `<input id="swal-input3" class="swal2-input" placeholder=${this.userDetail.userLName} > <br>` +
+          '<label for="swal-input4">เบอร์ติดต่อ</label> <br>' +
+          `<input id="swal-input4" class="swal2-input" placeholder=${this.userDetail.userPhone} > <br>` +
+          '<label for="swal-input5">รหัสสมาชิก</label> <br>' +
+          `<input id="swal-input5" class="swal2-input" placeholder=${this.userDetail.userNo}> <br>` +
           '</div>',
         focusConfirm: false,
         showCancelButton: true,
@@ -158,8 +158,8 @@ export default {
         this.editProfile(this.editInfo);
         this.$swal.fire({
           icon: "success",
-          title: "Edit Profile",
-          text: "successful!",
+          title: "แก้ไขโปรไฟล์",
+          text: "เสร็จสิ้น!",
         }).then(function () {
               window.location.reload();
             });

@@ -190,40 +190,40 @@ export default {
     const schema = yup.object().shape({
       username: yup
         .string()
-        .required("Username is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(255, "Must be maximum 255 characters!"),
+        .required("ต้องระบุชื่อผู้ใช้!")
+        .min(6, "ต้องมีตัวอักษรอย่างน้อย 6 ตัว!")
+        .max(255, "มีความยาวสูงสุดได้แค่ 255 อักษร!"),
       email: yup
         .string()
-        .required("Email is required!")
-        .email("Email is invalid!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),
+        .required("จำเป็นต้องใช้อีเมล!")
+        .email("อีเมลไม่ถูกต้อง!")
+        .min(3, "ต้องมีตัวอักษรอย่างน้อย 3 ตัว!")
+        .max(255, "มีความยาวสูงสุดได้แค่ 255 อักษร!"),
       fname: yup
         .string()
-        .required("Firstname is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),  
+        .required("ต้องระบุชื่อ!")
+        .min(3, "ต้องมีตัวอักษรอย่างน้อย 3 ตัว!")
+        .max(255, "มีความยาวสูงสุดได้แค่ 255 อักษร!"),  
       lname: yup
         .string()
-        .required("Lastname is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(255, "Must be maximum 255 characters!"),  
+        .required("ต้องระบุนามสกุล!")
+        .min(3, "ต้องมีตัวอักษรอย่างน้อย 3 ตัว!")
+        .max(255, "มีความยาวสูงสุดได้แค่ 255 อักษร!"),  
       password: yup
         .string()
-        .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
+        .required("ต้องการรหัสผ่าน!")
+        .min(6, "ต้องมีตัวอักษรอย่างน้อย 6 ตัว!")
+        .max(40, "มีความยาวสูงสุดได้แค่ 40 อักษร!"),
       comfirmPassword: yup
         .string()
-        .required("ConfirmPassword is required!")
-        .min(6, "Must be at least 6 characters!")
-        .oneOf([yup.ref('password')], 'Passwords do not match'),
+        .required("ต้องยืนยันรหัสผ่าน!")
+        .min(6, "ต้องมีตัวอักษรอย่างน้อย 6 ตัว!")
+        .oneOf([yup.ref('password')], 'รหัสผ่านไม่ตรงกัน'),
       phone: yup
         .string()
-        .required("Phone number is required!")
-        .min(4, "Must be at least 4 number!")
-        .max(10, "Must be maximum 10 number!"),
+        .required("ต้องระบุหมายเลขโทรศัพท์!")
+        .min(10, "ต้องมีหมายเลขโทรศัพท์อย่างน้อย 9 ตัว!")
+        .max(10, "ต้องไม่เกิน 10 หมายเลขโทรศัพท์!"),
     });
     return {
       successful: false,

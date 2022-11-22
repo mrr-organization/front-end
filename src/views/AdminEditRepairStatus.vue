@@ -97,8 +97,8 @@ export default {
         this.$swal
           .fire({
             icon: "success",
-            title: "Update Status",
-            text: "successful!",
+            title: "อัปเดตสถานะ",
+            text: "เสร็จสิ้น!",
           })
           .then(function () {
             window.location.reload();

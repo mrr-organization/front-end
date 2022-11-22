@@ -90,7 +90,7 @@ export default {
     },
     async updateModerator(repairId) {
       const { value: department } = await this.$swal.fire({
-        title: "Select department",
+        title: "เลือกหน่วยงานที่รับเรื่อง",
         input: "select",
         inputOptions: {
           1: this.deptRegisList[0].deptName,
@@ -118,8 +118,8 @@ export default {
         this.$swal
           .fire({
             icon: "success",
-            title: "Update Department",
-            text: "successful!",
+            title: "อัปเดตหน่วยงานที่รับเรื่อง",
+            text: "เสร็จสิ้น!",
           })
           .then(function () {
             window.location.reload();
@@ -155,8 +155,8 @@ export default {
         this.$swal
           .fire({
             icon: "success",
-            title: "Update Status",
-            text: "successful!",
+            title: "ปฏิเสธคำร้อง",
+            text: "เสร็จสิ้น!",
           })
           .then(function () {
             window.location.reload();
