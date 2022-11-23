@@ -69,7 +69,7 @@
                 <button>{{ timeToWords(item.createDate) }}</button>
               </td>
               <td class="border count-register-date border-slate-300">
-                <button v-if="item.enabled = true"
+                <button v-if="item.enabled"
                   @click="deleteUser(item.username)"
                   class="p-1 bg-[#FF0000] rounded-lg hover:bg-[#02B072] hover:transition-all border border-slate-300"
                 >
@@ -104,6 +104,7 @@ export default {
   },
   data() {
     return {
+      text: true,
       search: "",
       type: "USER",
       totalPages: 0,
