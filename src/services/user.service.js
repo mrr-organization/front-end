@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-// const API_URL = 'http://localhost:8080/api/user-service/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/user-service/';
+
+const API_URL = process.env.VUE_APP_API_USER_PATH;
+
 class UserService {
   getUserFullResponse(uid) {
     return axios.get(API_URL + "user/full/" + uid, { headers: authHeader() });

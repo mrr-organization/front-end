@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-// const API_URL = 'http://localhost:8080/api/repair-notification/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/repair-notification/';
+
+const API_URL = process.env.VUE_APP_API_REPAIR_PATH ;
+
 class RepairNotificationService {
   getRepairNotificationById(id) {
     return axios.get(API_URL + id)

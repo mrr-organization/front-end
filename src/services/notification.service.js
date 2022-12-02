@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-// const API_URL = 'http://localhost:8080/api/notification/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/notification/';
+
+const API_URL = process.env.VUE_APP_API_NOTIFICATION_PATH ;
+
 class NotificationService {
   getNotificationByUsername(username, offSet) {
     return axios.get(API_URL + 'user/' + username +"/" + offSet + "/6", { headers: authHeader() });

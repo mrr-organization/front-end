@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-// const API_URL = 'http://localhost:8080/api/file-service/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/file-service/';
+
+const API_URL = process.env.VUE_APP_API_FILE_PATH;
+
 class FileService {
   uploadMultipleFiles(id, files, imageType) {
     let fromData = new FormData();

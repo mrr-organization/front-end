@@ -1,6 +1,7 @@
 import axios from 'axios';
-// const API_URL = 'http://localhost:8080/api/department-service/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/department-service/';
+
+const API_URL = process.env.VUE_APP_API_DEPT_PATH;
+
 class DepartmentService {
   getAllDepartments() {
     return axios.get(API_URL);

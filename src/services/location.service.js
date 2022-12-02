@@ -1,6 +1,7 @@
 import axios from 'axios';
-// const API_URL = 'http://localhost:8080/api/location-service/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/location-service/';
+
+const API_URL = process.env.VUE_APP_API_LOCATION_PATH ;
+
 class LocationService {
   getAllLocation() {
     return axios.get(API_URL);

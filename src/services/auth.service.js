@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-// const API_URL = 'http://localhost:8080/api/auth/';
-const API_URL = 'https://www.k-mutt-mrr-service.systems/be-path/api/auth/';
+
+const API_URL = process.env.VUE_APP_API_AUTH_PATH;
+
 class AuthService {
   async login(user) {
     const response = await axios
@@ -48,17 +49,17 @@ class AuthService {
     }, { headers: authHeader() });
   }
 
-  verifyEmail (code) {
+  verifyEmail(code) {
     return axios.get(API_URL + 'verify?code=' + code);
   }
 
-  resetPassword (code, password) {
+  resetPassword(code, password) {
     return axios.post(API_URL + 'forget-password/reset-password?code=' + code, {
       newPassword: password.password,
     });
   }
 
-  forgetPassword (usernameOrEmail) {
+  forgetPassword(usernameOrEmail) {
     return axios.get(API_URL + 'forget-password?emailOrUsername=' + usernameOrEmail.username);
   }
 
